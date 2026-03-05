@@ -23,7 +23,7 @@ class AgentCategory(Enum):
     SENTIMENT = "sentiment"
     MACRO = "macro"
     MARKET_STRUCTURE = "market_structure"
-    RISK = "quant"
+    RISK = "risk"
     META = "meta"
 
 

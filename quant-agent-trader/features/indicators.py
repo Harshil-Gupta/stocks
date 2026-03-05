@@ -209,7 +209,7 @@ class FundamentalFeatures:
         }
     
     @staticmethod
-    def calculate profitability_metrics(
+    def calculate_profitability_metrics(
         roe: float,
         roa: float,
         profit_margin: float,

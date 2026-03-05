@@ -81,6 +81,120 @@ class RLConfig:
     update_frequency: int = 100
 
 
+# Indian Market Configuration
+INDIA_MARKET_HOURS = {
+    "timezone": "Asia/Kolkata",
+    "session_start": "09:15:00",
+    "session_end": "15:30:00",
+    "pre_market_start": "09:00:00",
+    "closing_auction": "15:40:00",
+}
+
+INDIA_NSE_SYMBOLS = [
+    "RELIANCE", "TCS", "HDFCBANK", "INFY", "HINDUNILVR", "ICICIBANK",
+    "SBIN", "BHARTIARTL", "KOTAKBANK", "LT", "HCLTECH", "ASIANPAINT",
+    "MARUTI", "TITAN", "BAJFINANCE", "WIPRO", "ULTRACEMCO", "NTPC",
+    "POWERGRID", "M&M", "SUNPHARMA", "TATASTEEL", "DRREDDY", "CIPLA",
+    "ADANIPORTS", "BAJAJFINSV", "GRASIM", "HEROMOTOCO", "INDUSINDBK",
+    "JSWSTEEL", "SBILIFE", "SHREECEM", "AXISBANK", "ADANIENT", "DIVISLAB",
+]
+
+INDIA_BSE_SYMBOLS = [
+    "RELIANCE", "TCS", "HDFCBANK", "INFY", "HINDUNILVR", "ICICIBANK",
+    "SBIN", "BHARTIARTL", "KOTAKBANK", "LT", "HCLTECH", "ASIANPAINT",
+]
+
+INDIA_INDICES = {
+    "NIFTY 50": "^NSEI",
+    "NIFTY BANK": "^NSEB",
+    "NIFTY IT": "^CNXIT",
+    "NIFTY PHARMA": "^CNXPHARMA",
+    "NIFTY AUTO": "^CNXAUTO",
+    "NIFTY METAL": "^CNXMETAL",
+    "NIFTY FMCG": "^CNXFMCG",
+    "NIFTY ENERGY": "^CNXENERGY",
+    "NIFTY REALTY": "^CNXREALTY",
+    "INDIA VIX": "^INDIAVIX",
+}
+
+INDIA_FNO_STOCKS = [
+    "RELIANCE", "TCS", "HDFCBANK", "INFY", "ICICIBANK", "KOTAKBANK",
+    "LT", "HINDUNILVR", "SBIN", "BHARTIARTL", "BAJFINANCE", "M&M",
+    "TATASTEEL", "SUNPHARMA", "WIPRO", "HCLTECH", "ASIANPAINT", "AXISBANK",
+]
+
+INDIA_REGIME_WEIGHTS = {
+    "bull": {
+        "technical": 0.30,
+        "fundamental": 0.25,
+        "sentiment": 0.15,
+        "fno": 0.10,
+        "india_vix": 0.10,
+        "risk": 0.10
+    },
+    "bear": {
+        "technical": 0.15,
+        "fundamental": 0.25,
+        "sentiment": 0.10,
+        "fno": 0.10,
+        "india_vix": 0.20,
+        "risk": 0.20
+    },
+    "sideways": {
+        "technical": 0.25,
+        "fundamental": 0.20,
+        "sentiment": 0.15,
+        "fno": 0.10,
+        "india_vix": 0.10,
+        "risk": 0.20
+    },
+    "high_volatility": {
+        "technical": 0.15,
+        "fundamental": 0.20,
+        "sentiment": 0.10,
+        "fno": 0.15,
+        "india_vix": 0.25,
+        "risk": 0.15
+    }
+}
+
+INDIA_TRADING_RULES = {
+    "lot_sizes": {
+        "RELIANCE": 1, "TCS": 1, "HDFCBANK": 1, "INFY": 1,
+        "HINDUNILVR": 1, "ICICIBANK": 1, "SBIN": 1, "BHARTIARTL": 1,
+        "KOTAKBANK": 1, "LT": 1, "BAJFINANCE": 1,
+    },
+    "tick_size": 0.05,
+    "max_order_size": 1000000,
+    "price_band_limits": {
+        "normal": 5.0,
+        "lower_circuit": 5.0,
+        "upper_circuit": 5.0,
+    },
+    "brokerage_rate": 0.001,
+    "stt_rate": 0.001,
+    "sebi_charges": 0.00015,
+    "stamp_duty": 0.002,
+    " gst": 0.18,
+}
+
+
+@dataclass
+class IndiaConfig:
+    """India-specific market configuration."""
+    enable_india_mode: bool = True
+    use_nse: bool = True
+    use_bse: bool = False
+    include_fno: bool = True
+    include_india_vix: bool = True
+    default_currency: str = "INR"
+    nse_holidays: List[str] = field(default_factory=lambda: [
+        "2024-01-26", "2024-03-08", "2024-03-25", "2024-04-11",
+        "2024-05-01", "2024-06-17", "2024-07-17", "2024-08-15",
+        "2024-10-02", "2024-11-01", "2024-11-15", "2024-12-25",
+    ])
+
+
 @dataclass
 class SystemConfig:
     """Main system configuration."""
@@ -108,6 +222,9 @@ class SystemConfig:
     
     # RL config
     rl: RLConfig = field(default_factory=RLConfig)
+    
+    # India config
+    india: IndiaConfig = field(default_factory=IndiaConfig)
 
 
 # Regime-based weight adjustments
@@ -178,6 +295,9 @@ AGENT_CATEGORIES = {
     "quant": [
         "mean_reversion_agent", "stat_arb_agent", "factor_model_agent",
         "pairs_trading_agent", "momentum_factor_agent", "value_factor_agent"
+    ],
+    "india": [
+        "india_vix_agent", "fno_agent", "nifty_sentiment_agent"
     ],
     "meta": [
         "reliability_scoring_agent", "regime_classification_agent",
