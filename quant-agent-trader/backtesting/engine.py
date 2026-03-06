@@ -878,7 +878,7 @@ class BacktestEngine:
             },
             "Risk Metrics": {
                 "Max Drawdown": f"{m.max_drawdown * 100:.2f}%",
-                "Max Drawdown Value": f"${m.max_drawdown_percent:.2f}",
+                "Max Drawdown Value": f"₹{m.max_drawdown_percent:.2f}",
             },
             "Trade Statistics": {
                 "Total Trades": m.total_trades,
@@ -890,12 +890,12 @@ class BacktestEngine:
                 "Avg Holding Period": f"{m.avg_holding_period:.1f} days",
             },
             "Costs": {
-                "Total Commission": f"${m.total_commission:.2f}",
-                "Total Slippage": f"${m.total_slippage:.2f}",
+                "Total Commission": f"₹{m.total_commission:.2f}",
+                "Total Slippage": f"₹{m.total_slippage:.2f}",
             },
             "Capital": {
-                "Starting Capital": f"${m.starting_capital:,.2f}",
-                "Final Equity": f"${m.final_equity:,.2f}",
+                "Starting Capital": f"₹{m.starting_capital:,.2f}",
+                "Final Equity": f"₹{m.final_equity:,.2f}",
             }
         }
     

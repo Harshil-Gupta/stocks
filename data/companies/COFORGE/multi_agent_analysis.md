@@ -7,7 +7,7 @@
 - **Sector:** IT Services
 - **Q3 FY26 Revenue:** ₹4,188 Cr (+28.5% YoY)
 - **Q3 PAT:** ₹364 Cr (+71.2% YoY, excl. extraordinary)
-- **Order Book:** $1.72B (+30% YoY)
+- **Order Book:** ₹1.72B (+30% YoY)
 - **EBITDA Margin:** 17.4%
 - **Target Upside:** 65%
 
@@ -36,7 +36,7 @@
   "key_highlights": [
     "28.5% YoY revenue growth - exceptional",
     "71.2% PAT growth YoY",
-    "$1.72B order book (+30% YoY)",
+    "₹1.72B order book (+30% YoY)",
     "6 large deals signed in Q3",
     "AI/Cloud focus - Encora acquisition",
     "Best performing midcap IT stock"

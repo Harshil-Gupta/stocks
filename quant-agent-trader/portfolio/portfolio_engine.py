@@ -479,9 +479,9 @@ class PortfolioEngine:
         ]
         
         if stop_loss:
-            reasoning_parts.append(f"Stop-loss: ${stop_loss:.2f}")
+            reasoning_parts.append(f"Stop-loss: ₹{stop_loss:.2f}")
         if take_profit:
-            reasoning_parts.append(f"Take-profit: ${take_profit:.2f}")
+            reasoning_parts.append(f"Take-profit: ₹{take_profit:.2f}")
         
         return "; ".join(reasoning_parts)
 

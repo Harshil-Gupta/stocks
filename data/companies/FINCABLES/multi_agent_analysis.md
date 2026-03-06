@@ -14,7 +14,7 @@
     "PAT +10% YoY to ₹136 Cr",
     "Volume growth: Electrical wires +28%, Optic fiber +34%",
     "Solar cables at 80-85% capacity utilization",
-    "Fiber prices rebounded: $3 → $5",
+    "Fiber prices rebounded: ₹3 → ₹5",
     "Capacity doubling: 4M to 8M km fiber",
     "Price hikes: 5 in Q3, 2 more in Q4"
   ],

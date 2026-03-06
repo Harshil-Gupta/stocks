@@ -12,7 +12,7 @@
   "key_strengths": [
     "22nd consecutive growth quarter",
     "Revenue growth: +9.4% YoY to ₹1,617 Cr",
-    "Strong deal pipeline: $202M TCV",
+    "Strong deal pipeline: ₹202M TCV",
     "AI focus: Agentic AI solutions with Microsoft",
     "Europe showing early turnaround",
     "Net cash: ₹9.0 Bn, healthy",

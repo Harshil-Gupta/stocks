@@ -18,9 +18,9 @@
 
 | Quarter | Intl Revenue | Domestic | Consolidated | Notes |
 |---------|-------------|----------|--------------|-------|
-| Q1 FY26 | $81.8M | ₹2,275 cr | ₹2,965 cr | Mega $73M deal won |
-| Q2 FY26 | $82.0M | ₹1,391 cr | ₹2,019 cr | BFSI headwinds |
-| Q3 FY26 | $82.3M | ₹2,346 cr | ₹3,081 cr | +45.4% QoQ |
+| Q1 FY26 | ₹81.8M | ₹2,275 cr | ₹2,965 cr | Mega ₹73M deal won |
+| Q2 FY26 | ₹82.0M | ₹1,391 cr | ₹2,019 cr | BFSI headwinds |
+| Q3 FY26 | ₹82.3M | ₹2,346 cr | ₹3,081 cr | +45.4% QoQ |
 
 ### Margin Progression
 
@@ -41,7 +41,7 @@
 | AI Training | ✅ | 95% workforce AI-trained |
 | BFSI Recovery | ✅ | Large deals secured Q3 |
 | Cloud Modernization | ✅ | 55% of pipeline |
-| Large Deal Momentum | ✅ | 40% pipeline, $73M mega deal |
+| Large Deal Momentum | ✅ | 40% pipeline, ₹73M mega deal |
 | Margin 16.6 Expansion | ✅ |% → 19.5% in 3 quarters |
 | Utilization Improvement | ✅ | 86.6% → 90% |
 | Healthcare Vertical Growth | ✅ | 33% of revenue (from 13% 3 yrs) |
@@ -120,7 +120,7 @@
 
 ### Q1 FY26 (Jul 2025) — Key Quotes
 - "Secured three large deals - two in BFSI and one in TMT"
-- "$73M AI-led Digital Modernization Deal with Leading US TMT"
+- "₹73M AI-led Digital Modernization Deal with Leading US TMT"
 - "Healthcare + BFSI scaled to 32% of revenue from 13%"
 
 ---

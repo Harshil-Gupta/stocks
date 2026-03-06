@@ -11,7 +11,7 @@ Date: November 14, 2025
 
 **BFSI and TMT Headwinds:** Revenue declines from large BFSI and TMT clients were largely offset by new deal wins in healthcare and mid-sized AI deals.
 
-**Order Book and Pipeline:** Book-to-bill ratio stood at 1.28, with large deals comprising about 40% of the pipeline. 8 clients now exceed $10 million annual run rate.
+**Order Book and Pipeline:** Book-to-bill ratio stood at 1.28, with large deals comprising about 40% of the pipeline. 8 clients now exceed ₹10 million annual run rate.
 
 **Domestic Business Reset:** Domestic revenue dropped sharply due to business model changes and Microsoft's evolving direct-sales strategy, though gross contribution and PAT for this segment held up.
 
@@ -21,7 +21,7 @@ Date: November 14, 2025
 
 | Metric | Q2 FY26 | QoQ | YoY |
 |--------|---------|-----|-----|
-| International Services Revenue | $82 million | +0.2% CC | +1% |
+| International Services Revenue | ₹82 million | +0.2% CC | +1% |
 | International Revenue (INR) | ₹730.3 cr | +4.3% | +3.2% |
 | Domestic Revenue | ₹1,391.3 cr | -38.8% | -4.8% |
 | Consolidated Revenue | ₹2,019.3 cr | -28.5% | -2.3% |
@@ -45,8 +45,8 @@ Date: November 14, 2025
 ### Large Deals
 - Won large healthcare deal in US
 - 40% of pipeline in large deals
-- 8 clients >$10M annual run rate
-- 13 clients >$5M
+- 8 clients >₹10M annual run rate
+- 13 clients >₹5M
 
 ### Vertical Mix
 - Healthcare + BFSI: 33% of revenue (up from 13% 3 years ago)

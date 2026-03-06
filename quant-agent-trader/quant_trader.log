@@ -1,0 +1,261 @@
+2026-03-06 10:45:19,448 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 10:45:19,448 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 10:45:19,449 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 10:45:19,449 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 10:45:19,449 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 10:45:19,449 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 10:45:19,449 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 10:45:19,449 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 10:45:19,449 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 10:45:22,612 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 10:45:23,594 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 10:45:23,594 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 10:45:23,594 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 10:45:23,594 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 10:45:23,594 - orchestration.dispatcher - ERROR - Agent 'rsi_agent' execution failed: Agent 'rsi_agent' missing required features: {'low', 'high'}
+2026-03-06 10:45:23,595 - orchestration.dispatcher - ERROR - Agent 'momentum_agent' execution failed: Agent 'momentum_agent' missing required features: {'returns'}
+2026-03-06 10:45:23,595 - orchestration.dispatcher - ERROR - Agent 'breakout_agent' execution failed: Agent 'breakout_agent' missing required features: {'low', 'high'}
+2026-03-06 10:45:23,595 - orchestration.dispatcher - ERROR - Agent 'volume_agent' execution failed: Agent 'volume_agent' missing required features: {'returns'}
+2026-03-06 10:45:23,595 - orchestration.dispatcher - ERROR - Agent 'fno_agent' execution failed: Agent 'fno_agent' missing required features: {'price', 'oi_change', 'fii_activity', 'open_interest'}
+2026-03-06 10:45:23,596 - orchestration.dispatcher - ERROR - Agent 'nifty_sentiment_agent' execution failed: Agent 'nifty_sentiment_agent' missing required features: {'nifty_price', 'nifty_above_sma50', 'declines', 'advances', 'nifty_bank_price', 'nifty_above_sma200', 'sector_performance'}
+2026-03-06 10:45:23,596 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_top_holders'}
+2026-03-06 10:45:23,596 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 10:45:23,596 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 10:50:34,440 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 10:50:34,440 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 10:50:34,441 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 10:50:34,441 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 10:50:34,441 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 10:50:34,441 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 10:50:34,441 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 10:50:34,441 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 10:50:34,441 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 10:50:37,286 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 10:50:38,618 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 10:50:38,618 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 10:50:38,618 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 10:50:38,618 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 10:50:38,619 - orchestration.dispatcher - ERROR - Agent 'rsi_agent' execution failed: Agent 'rsi_agent' missing required features: {'low', 'high'}
+2026-03-06 10:50:38,619 - orchestration.dispatcher - ERROR - Agent 'momentum_agent' execution failed: Agent 'momentum_agent' missing required features: {'returns'}
+2026-03-06 10:50:38,620 - orchestration.dispatcher - ERROR - Agent 'breakout_agent' execution failed: Agent 'breakout_agent' missing required features: {'low', 'high'}
+2026-03-06 10:50:38,620 - orchestration.dispatcher - ERROR - Agent 'volume_agent' execution failed: Agent 'volume_agent' missing required features: {'returns'}
+2026-03-06 10:50:38,620 - orchestration.dispatcher - ERROR - Agent 'fno_agent' execution failed: Agent 'fno_agent' missing required features: {'oi_change', 'open_interest', 'fii_activity', 'price'}
+2026-03-06 10:50:38,620 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_top_holders'}
+2026-03-06 10:50:38,621 - orchestration.dispatcher - ERROR - Agent 'nifty_sentiment_agent' execution failed: Agent 'nifty_sentiment_agent' missing required features: {'nifty_above_sma200', 'nifty_above_sma50', 'nifty_bank_price', 'declines', 'sector_performance', 'advances', 'nifty_price'}
+2026-03-06 10:50:38,621 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 10:50:38,621 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 10:51:41,740 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 10:51:41,741 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 10:51:41,741 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 10:51:41,741 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 10:51:41,741 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 10:51:41,741 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 10:51:41,741 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 10:51:41,741 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 10:51:41,741 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 10:51:42,467 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 10:51:43,383 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 10:51:43,383 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 10:51:43,383 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 10:51:43,383 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 10:51:43,383 - orchestration.dispatcher - ERROR - Agent 'rsi_agent' execution failed: Agent 'rsi_agent' missing required features: {'low', 'high'}
+2026-03-06 10:51:43,384 - orchestration.dispatcher - ERROR - Agent 'momentum_agent' execution failed: Agent 'momentum_agent' missing required features: {'returns'}
+2026-03-06 10:51:43,384 - orchestration.dispatcher - ERROR - Agent 'breakout_agent' execution failed: Agent 'breakout_agent' missing required features: {'low', 'high'}
+2026-03-06 10:51:43,385 - orchestration.dispatcher - ERROR - Agent 'volume_agent' execution failed: Agent 'volume_agent' missing required features: {'returns'}
+2026-03-06 10:51:43,385 - orchestration.dispatcher - ERROR - Agent 'fno_agent' execution failed: Agent 'fno_agent' missing required features: {'fii_activity', 'open_interest', 'oi_change', 'price'}
+2026-03-06 10:51:43,385 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_top_holders'}
+2026-03-06 10:51:43,385 - orchestration.dispatcher - ERROR - Agent 'nifty_sentiment_agent' execution failed: Agent 'nifty_sentiment_agent' missing required features: {'nifty_above_sma200', 'advances', 'nifty_above_sma50', 'nifty_price', 'declines', 'sector_performance', 'nifty_bank_price'}
+2026-03-06 10:51:43,386 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 10:51:43,386 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 10:52:46,725 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 10:52:46,726 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 10:52:46,726 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 10:52:46,726 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 10:52:46,726 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 10:52:46,726 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 10:52:46,726 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 10:52:46,726 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 10:52:46,726 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 10:52:47,342 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 10:52:47,870 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 10:52:47,870 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 10:52:47,870 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 10:52:47,870 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 10:52:47,871 - orchestration.dispatcher - ERROR - Agent 'rsi_agent' execution failed: Agent 'rsi_agent' missing required features: {'low', 'high'}
+2026-03-06 10:52:47,871 - orchestration.dispatcher - ERROR - Agent 'momentum_agent' execution failed: Agent 'momentum_agent' missing required features: {'returns'}
+2026-03-06 10:52:47,872 - orchestration.dispatcher - ERROR - Agent 'breakout_agent' execution failed: Agent 'breakout_agent' missing required features: {'low', 'high'}
+2026-03-06 10:52:47,872 - orchestration.dispatcher - ERROR - Agent 'fno_agent' execution failed: Agent 'fno_agent' missing required features: {'fii_activity', 'open_interest', 'price', 'oi_change'}
+2026-03-06 10:52:47,872 - orchestration.dispatcher - ERROR - Agent 'volume_agent' execution failed: Agent 'volume_agent' missing required features: {'returns'}
+2026-03-06 10:52:47,873 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_top_holders'}
+2026-03-06 10:52:47,873 - orchestration.dispatcher - ERROR - Agent 'nifty_sentiment_agent' execution failed: Agent 'nifty_sentiment_agent' missing required features: {'nifty_above_sma50', 'nifty_bank_price', 'declines', 'nifty_above_sma200', 'nifty_price', 'sector_performance', 'advances'}
+2026-03-06 10:52:47,874 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 10:52:47,874 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 19:00:44,193 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 19:00:44,193 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 19:00:44,193 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 19:00:44,193 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 19:00:44,194 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 19:00:44,194 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 19:00:44,194 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 19:00:44,194 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 19:00:44,194 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 19:00:44,194 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 19:00:44,194 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 19:00:45,211 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 19:00:45,983 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 19:00:45,984 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 19:00:45,984 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 19:00:45,984 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 19:00:45,985 - orchestration.dispatcher - ERROR - Agent 'rsi_agent' execution failed: Agent 'rsi_agent' missing required features: {'low', 'high'}
+2026-03-06 19:00:45,986 - orchestration.dispatcher - ERROR - Agent 'momentum_agent' execution failed: Agent 'momentum_agent' missing required features: {'returns'}
+2026-03-06 19:00:45,986 - orchestration.dispatcher - ERROR - Agent 'breakout_agent' execution failed: Agent 'breakout_agent' missing required features: {'low', 'high'}
+2026-03-06 19:00:45,986 - orchestration.dispatcher - ERROR - Agent 'volume_agent' execution failed: Agent 'volume_agent' missing required features: {'returns'}
+2026-03-06 19:00:45,987 - orchestration.dispatcher - ERROR - Agent 'fno_agent' execution failed: Agent 'fno_agent' missing required features: {'fii_activity', 'open_interest', 'oi_change', 'price'}
+2026-03-06 19:00:45,987 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_top_holders'}
+2026-03-06 19:00:45,987 - orchestration.dispatcher - ERROR - Agent 'nifty_sentiment_agent' execution failed: Agent 'nifty_sentiment_agent' missing required features: {'nifty_bank_price', 'sector_performance', 'nifty_above_sma200', 'nifty_price', 'advances', 'nifty_above_sma50', 'declines'}
+2026-03-06 19:00:46,056 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 19:00:46,056 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 19:02:53,623 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 19:02:53,624 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 19:02:53,624 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 19:02:53,624 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 19:02:53,624 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 19:02:53,624 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 19:02:53,624 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 19:02:53,624 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 19:02:53,624 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 19:02:54,316 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 19:02:55,027 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 19:02:55,028 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 19:02:55,028 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 19:02:55,028 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 19:02:55,030 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_top_holders'}
+2026-03-06 19:02:55,030 - orchestration.dispatcher - ERROR - Agent 'nifty_sentiment_agent' execution failed: Agent 'nifty_sentiment_agent' missing required features: {'nifty_bank_price', 'nifty_price', 'nifty_above_sma50', 'nifty_above_sma200', 'advances', 'declines', 'sector_performance'}
+2026-03-06 19:02:55,030 - orchestration.dispatcher - ERROR - Agent 'fno_agent' execution failed: Agent 'fno_agent' missing required features: {'fii_activity', 'price', 'oi_change', 'open_interest'}
+2026-03-06 19:02:55,031 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 19:02:55,031 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 19:03:14,098 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 19:03:14,099 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 19:03:14,099 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 19:03:14,099 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 19:03:14,099 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 19:03:14,099 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 19:03:14,099 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 19:03:14,099 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 19:03:14,099 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 19:03:14,692 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 19:03:15,243 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 19:03:15,243 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 19:03:15,244 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 19:03:15,244 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 19:03:15,246 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_top_holders'}
+2026-03-06 19:03:15,246 - orchestration.dispatcher - ERROR - Agent 'fno_agent' execution failed: Agent 'fno_agent' missing required features: {'open_interest', 'fii_activity', 'oi_change', 'price'}
+2026-03-06 19:03:15,246 - orchestration.dispatcher - ERROR - Agent 'nifty_sentiment_agent' execution failed: Agent 'nifty_sentiment_agent' missing required features: {'nifty_above_sma200', 'declines', 'advances', 'sector_performance', 'nifty_bank_price', 'nifty_above_sma50', 'nifty_price'}
+2026-03-06 19:03:15,247 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 19:03:15,247 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 19:10:35,343 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-06 19:10:35,344 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 19:10:35,344 - __main__ - INFO - Initialized 6 technical agents
+2026-03-06 19:10:35,344 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 19:10:35,344 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 19:10:35,344 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 19:10:35,345 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 19:10:35,345 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 19:10:35,345 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 19:10:35,345 - __main__ - INFO - Agent dispatcher initialized
+2026-03-06 19:10:35,345 - __main__ - INFO - Initialized with 6 agents
+2026-03-06 19:10:35,345 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-06 19:10:36,046 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-06 19:10:36,553 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-06 19:10:37,547 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-06 19:10:38,031 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-06 19:10:38,032 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-06 19:10:38,464 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-06 19:10:38,464 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-06 19:10:38,464 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-06 19:10:38,464 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-06 19:10:38,468 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 19:10:38,468 - __main__ - INFO - Quant Trading System shutdown complete

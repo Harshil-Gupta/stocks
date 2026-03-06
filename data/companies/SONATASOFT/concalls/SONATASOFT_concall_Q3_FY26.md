@@ -26,11 +26,11 @@ Date: February 6, 2026
 | Metric | Reported | Commentary |
 |--------|----------|------------|
 | Consolidated Revenue | ₹3,080.6 crores | +45.4% QoQ; +8.4% YoY |
-| International Services Revenue | $82.3 million | +0.3% QoQ (CC) |
+| International Services Revenue | ₹82.3 million | +0.3% QoQ (CC) |
 | Domestic Business Revenue (SITL) | ₹2,345.9 crores | +68.6% QoQ |
 | Consolidated PAT (Normalized) | ₹127.5 crores | +6.1% QoQ; +21.4% YoY |
 | EBITDA Margin (International) | 19.5% | +220 bps QoQ |
-| Order Book | $97 million | Book-to-bill 1.18x |
+| Order Book | ₹97 million | Book-to-bill 1.18x |
 | AI-led Order Book | 14% | Up from 10% in Q2 |
 | Dividend | ₹1.25 per share | Quarterly payout |
 | Headcount | 6,404 | Down from 6,649 |

@@ -151,8 +151,19 @@ class TechnicalFeatures:
             return {}
         
         latest = df.iloc[-1]
+        
+        # Ensure returns are calculated
+        returns = 0.0
+        if 'returns' in df.columns and len(df) > 1:
+            returns = float(df['returns'].iloc[-1])
+        
         return {
             'close': float(latest.get('close', 0)),
+            'open': float(latest.get('open', 0)),
+            'high': float(latest.get('high', 0)),
+            'low': float(latest.get('low', 0)),
+            'volume': float(latest.get('volume', 0)),
+            'returns': returns,
             'rsi': float(latest.get('rsi', 50)),
             'macd': float(latest.get('macd', 0)),
             'macd_signal': float(latest.get('macd_signal', 0)),

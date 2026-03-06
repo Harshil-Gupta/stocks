@@ -130,8 +130,8 @@ class CashflowAgent(BaseAgent):
                 confidence = min(85.0, 60.0 + fcf_yield * 400)
                 numerical_score = min(1.0, fcf_yield * 10 + 0.3)
                 reasoning = (
-                    f"Strong cash generation: FCF ${fcf:,.0f}, "
-                    f"Operating Cash Flow ${operating_cashflow:,.0f}, "
+                    f"Strong cash generation: FCF ₹{fcf:,.0f}, "
+                    f"Operating Cash Flow ₹{operating_cashflow:,.0f}, "
                     f"FCF Yield {fcf_yield:.2%}. "
                     f"Company generating healthy cash flows."
                 )
@@ -142,8 +142,8 @@ class CashflowAgent(BaseAgent):
                 confidence = min(85.0, 65.0 + abs(min(0, fcf_yield)) * 400)
                 numerical_score = max(-1.0, fcf_yield * 10 - 0.3)
                 reasoning = (
-                    f"Weak cash generation: FCF ${fcf:,.0f}, "
-                    f"Operating Cash Flow ${operating_cashflow:,.0f}, "
+                    f"Weak cash generation: FCF ₹{fcf:,.0f}, "
+                    f"Operating Cash Flow ₹{operating_cashflow:,.0f}, "
                     f"FCF Yield {fcf_yield:.2%}. "
                     f"Company facing cash flow challenges."
                 )
@@ -154,7 +154,7 @@ class CashflowAgent(BaseAgent):
                 confidence = 55.0 + fcf_yield * 200
                 numerical_score = fcf_yield * 5
                 reasoning = (
-                    f"Positive cash flow: FCF ${fcf:,.0f}, "
+                    f"Positive cash flow: FCF ₹{fcf:,.0f}, "
                     f"FCF Yield {fcf_yield:.2%}. "
                     f"Stable cash generation."
                 )
@@ -165,7 +165,7 @@ class CashflowAgent(BaseAgent):
                 confidence = 55.0
                 numerical_score = -0.2
                 reasoning = (
-                    f"Cash flow concerns: FCF ${fcf:,.0f}, "
+                    f"Cash flow concerns: FCF ₹{fcf:,.0f}, "
                     f"FCF Yield {fcf_yield:.2%}. "
                     f"Monitoring cash generation."
                 )
@@ -176,8 +176,8 @@ class CashflowAgent(BaseAgent):
                 confidence = 55.0
                 numerical_score = 0.0
                 reasoning = (
-                    f"Stable cash flow: FCF ${fcf:,.0f}, "
-                    f"Operating Cash Flow ${operating_cashflow:,.0f}, "
+                    f"Stable cash flow: FCF ₹{fcf:,.0f}, "
+                    f"Operating Cash Flow ₹{operating_cashflow:,.0f}, "
                     f"FCF Yield {fcf_yield:.2%}. "
                     f"No immediate cash flow concerns."
                 )

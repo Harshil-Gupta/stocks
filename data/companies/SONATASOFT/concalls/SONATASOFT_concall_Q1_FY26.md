@@ -7,7 +7,7 @@ Date: July 30, 2025
 
 | Metric | Q1 FY26 | QoQ | YoY |
 |--------|---------|-----|-----|
-| International Revenue | $81.8M | +0.6% QoQ | - |
+| International Revenue | ₹81.8M | +0.6% QoQ | - |
 | International Revenue (₹) | ₹699.9 cr | -0.3% | +1.8% |
 | Domestic Revenue | ₹2,274.7 cr | +18.6% | +23.0% |
 | Consolidated Revenue | ₹2,965.2 cr | +13.3% | +17.3% |
@@ -17,7 +17,7 @@ Date: July 30, 2025
 ### Key Developments in Q1
 
 - **3 Large Deals Won:** 2 in BFSI, 1 in TMT
-- **Mega Deal:** $73M AI-led Digital Modernization Deal with Leading US TMT Company
+- **Mega Deal:** ₹73M AI-led Digital Modernization Deal with Leading US TMT Company
 - **New Clients:** 7 new customers added
 - **Healthcare + BFSI:** Now 32% of revenue (up from 13% 3 years ago)
 
@@ -32,7 +32,7 @@ Date: July 30, 2025
 ## Key Metrics
 
 ### International Services
-- Revenue: $81.8M (+0.6% QoQ, -0.9% CC)
+- Revenue: ₹81.8M (+0.6% QoQ, -0.9% CC)
 - EBITDA margin: 16.6%
 - PAT: ₹70.7 cr (+13.5% QoQ, +8.6% YoY)
 - DSO: 62 days
@@ -56,6 +56,6 @@ Date: July 30, 2025
 ## Key Insights from Q1
 
 1. **Diversification Working:** BFSI + Healthcare now 32% of revenue (from 13% in 3 years)
-2. **Large Deal Momentum:** $73M mega deal shows enterprise capability
+2. **Large Deal Momentum:** ₹73M mega deal shows enterprise capability
 3. **AI Traction:** AI-led deals gaining momentum
 4. **Domestic Growth:** Strong domestic growth (+18.6% QoQ) offset by margin pressure

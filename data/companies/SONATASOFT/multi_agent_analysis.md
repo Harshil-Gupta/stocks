@@ -67,14 +67,14 @@
 {
   "agent": "MacroSector",
   "macro_environment": "Favorable. RBI repo rate at 5.25% (cut 25bps in Dec 2025). Inflation low at 1.33%. GDP growth strong at 8.2%. Rupee stable.",
-  "sector_strength": "Moderate. India IT sector to grow 6.1% to $315bn in FY26 (Nasscom). Sector facing AI disruption concerns but fundamentals intact.",
+  "sector_strength": "Moderate. India IT sector to grow 6.1% to ₹315bn in FY26 (Nasscom). Sector facing AI disruption concerns but fundamentals intact.",
   "external_risks": [
     "AI disruption fears causing sector-wide derating",
     "Geopolitical uncertainty",
     "Global IT spending moderation"
   ],
   "tailwinds": [
-    "IT exports expected at $246bn (+5.6% YoY)",
+    "IT exports expected at ₹246bn (+5.6% YoY)",
     "GCC (Global Capability Centres) expansion in India",
     "AI services demand rising",
     "Budget 2026 increased safe harbour threshold to Rs 2000cr",
