@@ -8,6 +8,17 @@ from typing import Dict, List, Optional
 import os
 from pathlib import Path
 
+# Get optimal worker count based on CPU cores
+def _get_optimal_workers() -> int:
+    """Get optimal worker count based on CPU cores."""
+    try:
+        import multiprocessing
+        cpu_count = os.cpu_count() or 4
+        # Optimal: min(cpu_count * 2, 16) for CPU-bound tasks
+        return min(cpu_count * 2, 16)
+    except Exception:
+        return 8
+
 # Project root
 PROJECT_ROOT = Path(__file__).parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
@@ -18,8 +29,8 @@ LOGS_DIR = PROJECT_ROOT / "logs"
 @dataclass
 class DataConfig:
     """Market data source configurations."""
-    polygon_api_key: str = os.getenv("POLYGON_API_KEY", "")
-    alpha_vantage_key: str = os.getenv("ALPHA_VANTAGE_KEY", "")
+    polygon_api_key: str = ""  # Optional - using NSE India API now
+    alpha_vantage_key: str = ""  # Optional
     cache_ttl: int = 300  # seconds
     max_retries: int = 3
     rate_limit_delay: float = 0.1
@@ -28,7 +39,7 @@ class DataConfig:
 @dataclass
 class AgentConfig:
     """Agent execution configurations."""
-    max_concurrent_agents: int = 100
+    max_concurrent_agents: int = field(default_factory=_get_optimal_workers)
     agent_timeout: int = 30  # seconds
     enable_caching: bool = True
     cache_ttl: int = 3600

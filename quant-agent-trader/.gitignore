@@ -6,3 +6,5 @@ kite_login/
 orchestration/__pycache__/
 signals/__pycache__/
 quant_trader.log
+agents/__pycache__/
+config/__pycache__

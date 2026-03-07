@@ -35,7 +35,7 @@ from config.settings import (
 )
 from data.ingestion.market_data import DataIngestionEngine, MockDataSource
 from data.ingestion.india_data import india_data_engine, IndiaDataSource, NSE_SYMBOLS
-from data.ingestion.mf_data import mf_data_engine
+from ingestion.mf.engine import mf_data_engine
 from signals.signal_schema import AgentSignal, AggregatedSignal, PortfolioDecision
 from signals.signal_aggregator import SignalAggregator
 from orchestration.dispatcher import AgentDispatcher, DispatcherConfig
@@ -86,7 +86,7 @@ class QuantTradingSystem:
     
     def __init__(self, config: Optional[SystemConfig] = None):
         self.config = config or system_config
-        self.dispatcher: Optional[AgentDispatcher] = None
+        self.dispatcher: AgentDispatcher
         self.aggregator: SignalAggregator = SignalAggregator()
         self.data_engine: Optional[DataIngestionEngine] = None
         self.backtest_engine: BacktestEngine = BacktestEngine()
@@ -115,6 +115,7 @@ class QuantTradingSystem:
             logger.warning("No API keys found, using mock data source")
     
     def _initialize_agents(self) -> None:
+
         agent_base_config = BaseAgentConfig(
             enable_cache=self.config.agents.enable_caching,
             cache_ttl_seconds=self.config.agents.cache_ttl,
@@ -149,7 +150,11 @@ class QuantTradingSystem:
         
         logger.info(f"Initialized {len(self.agents)} total agents")
     
-    def _initialize_dispatcher(self) -> None:
+    def _initialize_dispatcher(self) -> AgentDispatcher:
+        
+        if not self.agents:
+            raise RuntimeError("Agents must be initialized before dispatcher")
+
         dispatcher_config = DispatcherConfig(
             max_workers=self.config.agents.max_concurrent_agents,
             timeout_seconds=self.config.agents.agent_timeout,
@@ -159,9 +164,12 @@ class QuantTradingSystem:
         )
         
         self.dispatcher = AgentDispatcher(config=dispatcher_config)
+        logger.info(f"Dispatcher created: {self.dispatcher}")
+
         self.dispatcher.register_agents(self.agents)
         
-        logger.info("Agent dispatcher initialized")
+        logger.info(f"Dispatcher initialized with {len(self.agents)} agents")
+        return self.dispatcher
     
     async def fetch_market_data(
         self,
@@ -300,10 +308,17 @@ class QuantTradingSystem:
         return fno_data
     
     async def get_mf_holdings_data(self, symbol: str) -> Dict[str, Any]:
-        """Get MF holdings data for Indian stock."""
+        """Get MF holdings data for Indian stock using new MF engine."""
         try:
-            combined = await mf_data_engine.get_combined_analysis(symbol)
-            return combined
+            # Use new MF data engine
+            holdings_data = await mf_data_engine.get_stock_mf_holdings(symbol)
+            
+            # Convert to dict format for compatibility
+            return {
+                "mf": holdings_data.to_dict(),
+                "fii": {},  # FII data from NSE
+                "analysis": {}
+            }
         except Exception as e:
             logger.warning(f"Error fetching MF data for {symbol}: {e}")
             return {}
@@ -404,20 +419,20 @@ class QuantTradingSystem:
                     logger.warning(f"Could not fetch CRISIL data: {e}")
                 
                 # Fetch valuation data (from yfinance)
-                try:
-                    import yfinance as yf
-                    ticker = yf.Ticker(f"{symbol}.NS" if is_indian else symbol)
-                    info = ticker.info
+                # try:
+                #     import yfinance as yf
+                #     ticker = yf.Ticker(f"{symbol}.NS" if is_indian else symbol)
+                #     info = ticker.info
                     
-                    features["pe_ratio"] = info.get("trailingPE", 0.0) or 0.0
-                    features["pb_ratio"] = info.get("priceToBook", 0.0) or 0.0
-                    features["ps_ratio"] = info.get("priceToSalesTrailing12Months", 0.0) or 0.0
-                    features["ev_ebitda"] = info.get("enterpriseToEbitda", 0.0) or 0.0
-                    features["dividend_yield"] = info.get("dividendYield", 0.0) or 0.0
-                    features["eps"] = info.get("trailingEps", 0.0) or 0.0
-                    features["book_value"] = info.get("bookValue", 0.0) or 0.0
-                except Exception as e:
-                    logger.warning(f"Could not fetch valuation data: {e}")
+                #     features["pe_ratio"] = info.get("trailingPE", 0.0) or 0.0
+                #     features["pb_ratio"] = info.get("priceToBook", 0.0) or 0.0
+                #     features["ps_ratio"] = info.get("priceToSalesTrailing12Months", 0.0) or 0.0
+                #     features["ev_ebitda"] = info.get("enterpriseToEbitda", 0.0) or 0.0
+                #     features["dividend_yield"] = info.get("dividendYield", 0.0) or 0.0
+                #     features["eps"] = info.get("trailingEps", 0.0) or 0.0
+                #     features["book_value"] = info.get("bookValue", 0.0) or 0.0
+                # except Exception as e:
+                #     logger.warning(f"Could not fetch valuation data: {e}")
         
         current_price = float(df.iloc[-1]['close'])
         
@@ -433,6 +448,9 @@ class QuantTradingSystem:
             # MF Holdings agent already added in self.agents, just add India-specific agents
             active_agents.extend([vix_agent, fno_agent, sentiment_agent])
         
+        if self.dispatcher is None:
+            raise RuntimeError("Dispatcher not initialized")
+
         dispatch_results = self.dispatcher.dispatch_agents(
             agents=active_agents,
             market_data={symbol: features},

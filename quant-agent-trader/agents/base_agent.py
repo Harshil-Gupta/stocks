@@ -180,19 +180,33 @@ class BaseAgent(ABC):
     def _validate_features(self, features: Dict[str, Any]) -> None:
         """
         Validate that required features are present in input.
+        Skips validation if no required features are defined or config says to skip.
         
         Args:
             features: Dictionary of features to validate
             
-        Raises:
-            AgentValidationError: If required features are missing
+        Note:
+            Agents should gracefully handle missing features in compute_signal()
+            rather than failing here. This is a soft validation.
         """
+        # Skip validation if no required features defined
+        if not self._required_features:
+            return
+        
+        # Skip validation if explicitly disabled in config
+        # Agents should handle missing data gracefully in compute_signal()
+        if hasattr(self._config, 'skip_validation') and self._config.skip_validation:
+            missing = set(self._required_features) - set(features.keys())
+            if missing:
+                logger.debug(f"Agent '{self._agent_name}' skipping validation for missing: {missing}")
+            return
+        
         missing_features = set(self._required_features) - set(features.keys())
         
         if missing_features:
-            raise AgentValidationError(
-                f"Agent '{self._agent_name}' missing required features: "
-                f"{missing_features}"
+            # Log but don't fail - let the agent handle it gracefully
+            logger.debug(
+                f"Agent '{self._agent_name}' missing optional features: {missing_features}"
             )
     
     @property

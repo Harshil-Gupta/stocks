@@ -10,7 +10,6 @@ import pandas as pd
 from typing import Optional, Dict, List, Any
 from datetime import datetime, timedelta
 import logging
-import yfinance as yf
 
 logger = logging.getLogger(__name__)
 
@@ -51,11 +50,10 @@ class MFHoldingsData:
 class MFDataSource:
     """
     Mutual Fund data source for Indian stocks.
-    Uses yfinance as primary source for MF holdings data.
     """
     
-    def __init__(self):
-        self._session_cache: Optional[aiohttp.ClientSession] = None
+    # def __init__(self):
+        # self._session_cache: Optional[aiohttp.ClientSession] = None
     
     def _normalize_symbol(self, symbol: str) -> str:
         """Convert Indian symbol to yfinance format."""

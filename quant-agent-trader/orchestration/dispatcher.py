@@ -120,59 +120,21 @@ class DispatcherConfig:
     log_execution_time: bool = True
 
 
-class RayClient:
-    """Mock Ray client for when Ray is not available."""
-    
-    def __init__(self, address: Optional[str] = None):
-        self._available = False
-        self._address = address
-    
-    @property
-    def is_available(self) -> bool:
-        return self._available
-    
-    def remote(self, func: Callable) -> Callable:
-        """Mock remote decorator."""
-        return func
-    
-    def get(self, futures: List[Any]) -> List[Any]:
-        """Mock get method."""
-        return futures
-    
-    def shutdown(self) -> None:
-        """Mock shutdown method."""
-        pass
-
-
-def _get_ray_client(address: Optional[str] = None) -> Union["RayClient", Any]:
-    """
-    Get Ray client if available.
-    
-    Args:
-        address: Ray cluster address
-        
-    Returns:
-        RayClient instance
-    """
-    try:
-        import ray
-        ray.init(address=address, ignore_reinit_error=True)
-        logger.info("Ray initialized successfully")
-        return ray
-    except ImportError:
-        logger.warning("Ray not available, falling back to asyncio/threadpool")
-        return RayClient(address=address)
-    except Exception as e:
-        logger.warning(f"Failed to initialize Ray: {e}, falling back to asyncio/threadpool")
-        return RayClient(address=address)
+# Removed broken Ray implementation
+# ThreadPoolExecutor is more efficient for this use case:
+# - No serialization overhead (unlike Ray)
+# - Lower latency for simple agent computations  
+# - No IPC overhead
+# - Simpler and more reliable
 
 
 class AgentDispatcher:
     """
     Dispatcher for parallel agent execution.
     
-    Manages lifecycle of multiple agents and executes them in parallel
-    using Ray (if available) or asyncio/threadpool.
+    Uses ThreadPoolExecutor for parallel agent execution.
+    Note: Ray was removed as ThreadPoolExecutor is more efficient for this use case.
+    Ray is only beneficial for GPU-heavy workloads or distributed computing.
     
     Attributes:
         config: DispatcherConfig for execution settings
@@ -206,9 +168,8 @@ class AgentDispatcher:
         """
         self._config = config or DispatcherConfig()
         self._registry = registry or AgentRegistry()
-        self._ray_client: Union[RayClient, Any] = None
         self._executor: Optional[ThreadPoolExecutor] = None
-        self._execution_backend: ExecutionBackend = ExecutionBackend.ASYNCIO
+        self._execution_backend: ExecutionBackend = ExecutionBackend.THREADPOOL
         
         self._initialize_backend()
         self._active_agents: Dict[str, BaseAgent] = {}
@@ -218,14 +179,14 @@ class AgentDispatcher:
         )
     
     def _initialize_backend(self) -> None:
-        """Initialize the execution backend."""
-        if self._config.enable_ray:
-            self._ray_client = _get_ray_client(self._config.ray_address)
-            if hasattr(self._ray_client, "is_available") and self._ray_client.is_available:
-                self._execution_backend = ExecutionBackend.RAY
-                logger.info("Using Ray backend for distributed execution")
-                return
+        """Initialize the execution backend - always uses ThreadPoolExecutor."""
+        # ThreadPoolExecutor is optimal for this use case:
+        # - No serialization overhead (unlike Ray)
+        # - Lower latency for simple agent computations
+        # - No IPC overhead
+        # - Simpler and more reliable
         
+        # For GPU-heavy ML workloads or distributed computing, consider using Ray separately
         self._execution_backend = ExecutionBackend.THREADPOOL
         self._executor = ThreadPoolExecutor(max_workers=self._config.max_workers)
         logger.info(f"Using ThreadPoolExecutor with {self._config.max_workers} workers")
@@ -466,12 +427,8 @@ class AgentDispatcher:
         results: Dict[str, List[DispatchResult]] = {}
         
         for symbol, features in market_data.items():
-            dispatch_results: List[DispatchResult] = []
-            
-            if self._execution_backend == ExecutionBackend.RAY:
-                dispatch_results = self._dispatch_ray(resolved_agents, features, use_cache)
-            else:
-                dispatch_results = self._dispatch_threadpool(resolved_agents, features, use_cache)
+            # Always use ThreadPoolExecutor - it's more efficient for this use case
+            dispatch_results = self._dispatch_threadpool(resolved_agents, features, use_cache)
             
             if aggregate and dispatch_results:
                 aggregated = self._aggregate_signals(dispatch_results)
@@ -504,29 +461,6 @@ class AgentDispatcher:
                 resolved.append(agent)
         
         return resolved
-    
-    def _dispatch_ray(
-        self,
-        agents: List[BaseAgent],
-        features: Dict[str, Any],
-        use_cache: bool,
-    ) -> List[DispatchResult]:
-        """Dispatch agents using Ray."""
-        if not hasattr(self._ray_client, "remote"):
-            return self._dispatch_threadpool(agents, features, use_cache)
-        
-        try:
-            remote_funcs = [
-                self._ray_client.remote(self._execute_agent)(agent, features, use_cache)
-                for agent in agents
-            ]
-            
-            ray_results = self._ray_client.get(remote_funcs)
-            return list(ray_results)
-            
-        except Exception as e:
-            logger.warning(f"Ray execution failed: {e}, falling back to threadpool")
-            return self._dispatch_threadpool(agents, features, use_cache)
     
     def _dispatch_threadpool(
         self,
@@ -924,12 +858,7 @@ class AgentDispatcher:
             self._executor.shutdown(wait=True)
             self._executor = None
         
-        if hasattr(self._ray_client, "shutdown"):
-            try:
-                self._ray_client.shutdown()
-            except Exception as e:
-                logger.warning(f"Error shutting down Ray: {e}")
-        
+        # Ray is no longer used - ThreadPoolExecutor handles cleanup above
         logger.info("AgentDispatcher shutdown complete")
     
     def __enter__(self) -> "AgentDispatcher":
