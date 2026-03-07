@@ -15,6 +15,7 @@ from agents.fundamental.valuation_agent import ValuationAgent
 from agents.fundamental.earnings_agent import EarningsAgent
 from agents.fundamental.cashflow_agent import CashflowAgent
 from agents.fundamental.growth_agent import GrowthAgent
+from agents.fundamental.crisil_agent import CRISILAnalysisAgent, CRISILDataEngine, crisil_engine
 
 # Sentiment agents
 from agents.sentiment.news_sentiment_agent import NewsSentimentAgent
@@ -32,7 +33,8 @@ __all__ = [
     # Technical
     "RSIAgent", "MACDAgent", "MomentumAgent", "TrendAgent", "BreakoutAgent", "VolumeAgent",
     # Fundamental
-    "ValuationAgent", "EarningsAgent", "CashflowAgent", "GrowthAgent",
+    "ValuationAgent", "EarningsAgent", "CashflowAgent", "GrowthAgent", "CRISILAnalysisAgent", "CRISILDataEngine", "crisil_engine",
+    
     # Sentiment
     "NewsSentimentAgent", "AnalystRatingAgent",
     # Risk

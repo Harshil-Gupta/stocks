@@ -50,6 +50,8 @@ from agents.india.india_vix_agent import IndiaVIXAgent
 from agents.india.fno_agent import FNOAgent
 from agents.india.nifty_sentiment_agent import NiftySentimentAgent
 from agents.india.mf_holdings_agent import MFHoldingsAgent, MFHoldingsAnalyzer
+from agents.fundamental.crisil_agent import CRISILAnalysisAgent, CRISILDataEngine, crisil_engine
+from agents.fundamental.valuation_agent import ValuationAgent
 from backtesting.engine import BacktestEngine, BacktestConfigExtended
 from features.indicators import TechnicalFeatures
 
@@ -120,6 +122,7 @@ class QuantTradingSystem:
             max_retries=self.config.agents.max_retries,
         )
         
+        # Technical agents
         self.agents = [
             RSIAgent(config=agent_base_config),
             MACDAgent(config=agent_base_config),
@@ -129,7 +132,22 @@ class QuantTradingSystem:
             VolumeAgent(config=agent_base_config),
         ]
         
-        logger.info(f"Initialized {len(self.agents)} technical agents")
+        # Add fundamental agents (CRISIL, Valuation)
+        try:
+            self.agents.append(CRISILAnalysisAgent(config=agent_base_config))
+            self.agents.append(ValuationAgent(config=agent_base_config))
+            logger.info("Added CRISIL and Valuation agents")
+        except Exception as e:
+            logger.warning(f"Could not add CRISIL/Valuation agents: {e}")
+        
+        # Add MF holdings agent for Indian stocks
+        try:
+            self.agents.append(MFHoldingsAgent(config=agent_base_config))
+            logger.info("Added MF Holdings agent")
+        except Exception as e:
+            logger.warning(f"Could not add MF Holdings agent: {e}")
+        
+        logger.info(f"Initialized {len(self.agents)} total agents")
     
     def _initialize_dispatcher(self) -> None:
         dispatcher_config = DispatcherConfig(
@@ -342,6 +360,7 @@ class QuantTradingSystem:
                 fno_data = await self.get_fno_data(symbol)
                 features.update(fno_data)
                 
+                # Fetch MF holdings data
                 mf_analysis = await self.get_mf_holdings_data(symbol)
                 
                 if mf_analysis:
@@ -355,6 +374,50 @@ class QuantTradingSystem:
                     features["mf_monthly_trend"] = mf_data.get("monthly_trend", [])
                     features["fii_holding_pct"] = fii_data.get("fii_holding_pct", 0.0)
                     features["fii_change"] = fii_data.get("fii_change", 0.0)
+                    
+                    # Enhanced MF features for v2.0 agent
+                    features["mf_quarterly_change"] = mf_data.get("change_in_holding", 0.0) * 0.25  # Estimated quarterly
+                    features["mf_new_additions"] = min(5, mf_data.get("num_mfs_holding", 0) // 4)  # Estimated
+                    features["mf_net_flow"] = mf_data.get("change_in_holding", 0.0) * 100  # Estimated in Crores
+                    features["mf_avg_flow"] = 100.0  # Default average
+                    features["mf_yoy_change"] = mf_data.get("change_in_holding", 0.0) * 4  # Estimated YOY
+                    
+                    # Top holder concentration
+                    if mf_data.get("top_mf_holders"):
+                        top_holder = mf_data["top_mf_holders"][0]
+                        features["mf_top_holder_pct"] = top_holder.get("pct", 0.0)
+                    else:
+                        features["mf_top_holder_pct"] = 0.0
+                
+                # Fetch CRISIL data
+                try:
+                    from agents.fundamental.crisil_agent import crisil_engine
+                    crisil_data = await crisil_engine.get_crisil_analysis(symbol)
+                    features["crisil_rating"] = crisil_data.get("rating", "")
+                    features["crisil_outlook"] = crisil_data.get("outlook", "stable")
+                    features["industry_outlook"] = crisil_data.get("industry_outlook", "stable")
+                    features["business_risk"] = crisil_data.get("business_risk", "moderate")
+                    features["financial_risk"] = crisil_data.get("financial_risk", "moderate")
+                    features["management_score"] = crisil_data.get("management_score", 50.0)
+                    features["corporate_governance_score"] = crisil_data.get("corporate_governance_score", 50.0)
+                except Exception as e:
+                    logger.warning(f"Could not fetch CRISIL data: {e}")
+                
+                # Fetch valuation data (from yfinance)
+                try:
+                    import yfinance as yf
+                    ticker = yf.Ticker(f"{symbol}.NS" if is_indian else symbol)
+                    info = ticker.info
+                    
+                    features["pe_ratio"] = info.get("trailingPE", 0.0) or 0.0
+                    features["pb_ratio"] = info.get("priceToBook", 0.0) or 0.0
+                    features["ps_ratio"] = info.get("priceToSalesTrailing12Months", 0.0) or 0.0
+                    features["ev_ebitda"] = info.get("enterpriseToEbitda", 0.0) or 0.0
+                    features["dividend_yield"] = info.get("dividendYield", 0.0) or 0.0
+                    features["eps"] = info.get("trailingEps", 0.0) or 0.0
+                    features["book_value"] = info.get("bookValue", 0.0) or 0.0
+                except Exception as e:
+                    logger.warning(f"Could not fetch valuation data: {e}")
         
         current_price = float(df.iloc[-1]['close'])
         
@@ -367,11 +430,8 @@ class QuantTradingSystem:
             fno_agent = FNOAgent(config=india_agent_config)
             sentiment_agent = NiftySentimentAgent(config=india_agent_config)
             
-            if mf_analysis:
-                mf_agent = MFHoldingsAgent(config=india_agent_config)
-                active_agents.extend([vix_agent, fno_agent, sentiment_agent, mf_agent])
-            else:
-                active_agents.extend([vix_agent, fno_agent, sentiment_agent])
+            # MF Holdings agent already added in self.agents, just add India-specific agents
+            active_agents.extend([vix_agent, fno_agent, sentiment_agent])
         
         dispatch_results = self.dispatcher.dispatch_agents(
             agents=active_agents,

@@ -328,7 +328,7 @@ class SignalAggregator:
         self, 
         signals: List[AgentSignal], 
         regime: str = "normal"
-    ) -> Dict[str, float]:
+    ) -> Dict[str, Dict[str, float]]:
         """
         Get detailed weight breakdown by category.
         

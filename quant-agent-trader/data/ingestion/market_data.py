@@ -9,6 +9,7 @@ from typing import Optional, Dict, List, Any
 from datetime import datetime, timedelta
 import logging
 from abc import ABC, abstractmethod
+from typing import Union
 
 logger = logging.getLogger(__name__)
 
@@ -195,7 +196,7 @@ class DataIngestionEngine:
         symbols: List[str],
         source: str = "polygon",
         **kwargs
-    ) -> Dict[str, pd.DataFrame]:
+    ) -> Dict[str, Union[pd.DataFrame, BaseException]]:
         """Fetch data for multiple symbols in parallel."""
         tasks = [
             self.get_price_data(symbol, source, **kwargs)

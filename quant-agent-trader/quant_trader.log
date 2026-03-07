@@ -259,3 +259,464 @@
 2026-03-06 19:10:38,464 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
 2026-03-06 19:10:38,468 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
 2026-03-06 19:10:38,468 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-06 19:45:21,540 - main - INFO - Initializing Quant Trading System...
+2026-03-06 19:45:21,540 - main - WARNING - No API keys found, using mock data source
+2026-03-06 19:45:21,540 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:21,540 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:21,540 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:21,540 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:21,540 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:21,540 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:21,541 - main - INFO - Initialized 6 technical agents
+2026-03-06 19:45:21,541 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 19:45:21,541 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 19:45:21,541 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 19:45:21,541 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 19:45:21,541 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 19:45:21,541 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 19:45:21,541 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 19:45:21,541 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 19:45:21,541 - main - INFO - Agent dispatcher initialized
+2026-03-06 19:45:21,541 - main - INFO - Initialized with 6 agents
+2026-03-06 19:45:51,275 - main - INFO - Initializing Quant Trading System...
+2026-03-06 19:45:51,276 - main - WARNING - No API keys found, using mock data source
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-06 19:45:51,276 - main - INFO - Initialized 6 technical agents
+2026-03-06 19:45:51,276 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-06 19:45:51,276 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-06 19:45:51,276 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-06 19:45:51,276 - main - INFO - Agent dispatcher initialized
+2026-03-06 19:45:51,276 - main - INFO - Initialized with 6 agents
+2026-03-06 19:45:51,276 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-06 19:45:51,276 - main - INFO - Quant Trading System shutdown complete
+2026-03-07 02:23:31,540 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 02:23:31,540 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 02:23:31,540 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 02:23:31,540 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 02:23:31,541 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 02:23:31,541 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 02:23:31,541 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 02:23:31,541 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 02:23:31,541 - __main__ - INFO - Initialized 6 technical agents
+2026-03-07 02:23:31,541 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 02:23:31,541 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 02:23:31,541 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 02:23:31,541 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 02:23:31,542 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 02:23:31,542 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 02:23:31,542 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 02:23:31,542 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 02:23:31,542 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 02:23:31,542 - __main__ - INFO - Initialized with 6 agents
+2026-03-07 02:23:31,542 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 02:23:34,345 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 02:23:34,585 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 02:23:35,494 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 02:23:36,440 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 02:23:36,441 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 02:23:36,885 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 02:23:36,886 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 02:23:36,886 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 02:23:36,886 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-07 02:23:36,890 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 02:23:36,891 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 02:25:25,600 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 02:25:25,600 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 02:25:25,601 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 02:25:25,601 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 02:25:25,601 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 02:25:25,601 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 02:25:25,601 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 02:25:25,601 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 02:25:25,601 - __main__ - INFO - Initialized 6 technical agents
+2026-03-07 02:25:25,601 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 02:25:25,602 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 02:25:25,602 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 02:25:25,602 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 02:25:25,602 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 02:25:25,602 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 02:25:25,602 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 02:25:25,602 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 02:25:25,602 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 02:25:25,602 - __main__ - INFO - Initialized with 6 agents
+2026-03-07 02:25:25,602 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 02:25:26,275 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 02:25:26,504 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 02:25:27,520 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 02:25:28,167 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 02:25:28,168 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 02:25:28,688 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 02:25:28,688 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 02:25:28,688 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 02:25:28,688 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-07 02:25:28,692 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 02:25:28,692 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 02:30:25,710 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 02:30:25,710 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 02:30:25,710 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 02:30:25,711 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 02:30:25,711 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 02:30:25,711 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 02:30:25,711 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 02:30:25,711 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 02:30:25,711 - __main__ - INFO - Initialized 6 technical agents
+2026-03-07 02:30:25,711 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 02:30:25,711 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 02:30:25,711 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 02:30:25,712 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 02:30:25,712 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 02:30:25,712 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 02:30:25,712 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 02:30:25,712 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 02:30:25,712 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 02:30:25,712 - __main__ - INFO - Initialized with 6 agents
+2026-03-07 02:30:25,712 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 02:30:26,306 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 02:30:26,527 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 02:30:27,669 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 02:30:28,314 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 02:30:28,314 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 02:30:28,848 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 02:30:28,849 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 02:30:28,849 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 02:30:28,849 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-07 02:30:28,853 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 02:30:28,853 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 02:32:21,049 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 02:32:21,049 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 02:32:21,049 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 02:32:21,049 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 02:32:21,049 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 02:32:21,049 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 02:32:21,049 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 02:32:21,049 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 02:32:21,049 - __main__ - INFO - Initialized 6 technical agents
+2026-03-07 02:32:21,050 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 02:32:21,050 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 02:32:21,050 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 02:32:21,050 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 02:32:21,050 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 02:32:21,050 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 02:32:21,050 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 02:32:21,050 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 02:32:21,050 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 02:32:21,050 - __main__ - INFO - Initialized with 6 agents
+2026-03-07 02:32:21,050 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 02:32:21,569 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 02:32:21,709 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 02:32:22,479 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 02:32:22,938 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 02:32:22,938 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 02:32:23,275 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 02:32:23,276 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 02:32:23,276 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 02:32:23,276 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 1.0.0)
+2026-03-07 02:32:23,280 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 02:32:23,280 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 14:08:53,629 - main - INFO - Initializing Quant Trading System...
+2026-03-07 14:08:53,630 - main - WARNING - No API keys found, using mock data source
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:08:53,630 - main - INFO - Added CRISIL and Valuation agents
+2026-03-07 14:08:53,630 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 14:08:53,630 - main - INFO - Added MF Holdings agent
+2026-03-07 14:08:53,630 - main - INFO - Initialized 9 total agents
+2026-03-07 14:08:53,630 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 14:08:53,630 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 14:08:53,631 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 14:08:53,631 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 14:08:53,631 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 14:08:53,631 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 14:08:53,632 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 14:08:53,632 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 14:08:53,632 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 14:08:53,632 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 14:08:53,632 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 14:08:53,632 - main - INFO - Agent dispatcher initialized
+2026-03-07 14:08:53,632 - main - INFO - Initialized with 9 agents
+2026-03-07 14:11:36,446 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 14:11:36,446 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 14:11:36,446 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 14:11:36,446 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 14:11:36,446 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 14:11:36,447 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 14:11:36,447 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 14:11:36,447 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 14:11:36,447 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:11:36,447 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:11:36,447 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 14:11:36,447 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 14:11:36,447 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 14:11:36,447 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 14:11:36,448 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 14:11:36,448 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 14:11:36,448 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 14:11:36,449 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 14:11:36,449 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 14:11:36,449 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 14:11:37,200 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 14:11:37,374 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 14:11:38,241 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 14:11:38,776 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 14:11:38,776 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 14:11:38,777 - data.ingestion.india_data - ERROR - Error fetching quote for RELIANCE: 'IndiaDataEngine' object has no attribute '_normalize_symbol'
+2026-03-07 14:11:38,777 - data.ingestion.india_data - ERROR - Error fetching quote for RELIANCE: 'IndiaDataEngine' object has no attribute '_normalize_symbol'
+2026-03-07 14:11:39,127 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 14:11:39,127 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 14:11:39,127 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 14:11:39,127 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 14:11:39,129 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_quarterly_change', 'mf_new_additions', 'mf_net_flow'}
+2026-03-07 14:11:39,129 - orchestration.dispatcher - ERROR - Agent 'crisil_analysis_agent' execution failed: Agent 'crisil_analysis_agent' missing required features: {'business_risk', 'financial_risk', 'management_score', 'industry_outlook', 'crisil_rating', 'crisil_outlook'}
+2026-03-07 14:11:39,130 - orchestration.dispatcher - ERROR - Agent 'valuation_agent' execution failed: Agent 'valuation_agent' missing required features: {'ps_ratio', 'pe_ratio', 'pb_ratio'}
+2026-03-07 14:11:39,130 - orchestration.dispatcher - ERROR - Agent 'mf_holdings_agent' execution failed: Agent 'mf_holdings_agent' missing required features: {'mf_quarterly_change', 'mf_new_additions', 'mf_net_flow'}
+2026-03-07 14:11:39,132 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 14:11:39,133 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 14:14:50,387 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 14:14:50,388 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:14:50,388 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 14:14:50,388 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 14:14:50,388 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 14:14:50,388 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 14:14:50,388 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 14:14:50,388 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 14:14:50,388 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 14:14:50,388 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 14:14:50,388 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 14:14:51,297 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 14:14:51,530 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 14:14:52,878 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 14:14:53,541 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 14:14:53,541 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 14:14:54,717 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 14:14:54,717 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 14:14:54,717 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 14:14:54,717 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 14:14:54,720 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 14:14:54,720 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 14:15:49,980 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 14:15:49,980 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 14:15:49,980 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 14:15:49,980 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 14:15:49,980 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 14:15:49,980 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 14:15:49,980 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 14:15:49,980 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 14:15:49,981 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 14:15:49,981 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 14:15:49,981 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 14:15:49,981 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 14:15:49,981 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 14:15:49,981 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 14:15:49,981 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 14:15:49,981 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 14:15:49,981 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 14:15:50,648 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 14:15:50,810 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 14:15:51,798 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 14:15:52,554 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 14:15:52,554 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 14:15:53,162 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 14:15:53,162 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 14:15:53,162 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 14:15:53,165 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 14:15:53,165 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 15:10:23,292 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 15:10:23,293 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:10:23,293 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:10:23,293 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 15:10:23,294 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 15:10:23,294 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 15:10:23,294 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 15:10:23,294 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 15:10:23,294 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 15:10:23,294 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 15:10:23,295 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 15:10:23,295 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 15:10:25,949 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 15:10:26,120 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 15:10:26,869 - yfinance - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ^NSEB"}}}
+2026-03-07 15:10:27,362 - yfinance - ERROR - $^NSEB: possibly delisted; no price data found  (period=1y) (Yahoo error = "No data found, symbol may be delisted")
+2026-03-07 15:10:27,362 - data.ingestion.india_data - WARNING - No data returned for NIFTY BANK
+2026-03-07 15:10:28,072 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 15:10:28,072 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 15:10:28,073 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 15:10:28,077 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 15:10:28,077 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 15:14:13,533 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 15:14:13,533 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:14:13,534 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 15:14:13,534 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 15:14:13,534 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 15:14:13,534 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 15:14:13,534 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 15:14:13,534 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 15:14:13,534 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 15:14:13,534 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 15:14:13,534 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 15:14:14,007 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 15:14:14,229 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 15:14:14,400 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-07 15:14:14,540 - data.ingestion.india_data - ERROR - Error fetching quote for RELIANCE: 'close'
+2026-03-07 15:14:14,679 - data.ingestion.india_data - ERROR - Error fetching quote for RELIANCE: 'close'
+2026-03-07 15:14:15,559 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 15:14:15,560 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 15:14:15,560 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 15:14:15,563 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 15:14:15,563 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 15:15:01,747 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 15:15:01,747 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:15:01,747 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 15:15:01,747 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 15:15:01,747 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 15:15:01,747 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 15:15:01,747 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 15:15:01,747 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 15:15:01,748 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 15:15:01,748 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 15:15:01,748 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 15:15:01,748 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 15:15:01,748 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 15:15:01,748 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 15:15:01,748 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 15:15:01,748 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 15:15:01,748 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 15:15:02,395 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 15:15:02,730 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 15:15:02,910 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-07 15:15:04,354 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 15:15:04,354 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 15:15:04,354 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 15:15:04,357 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 15:15:04,357 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 15:16:09,141 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 15:16:09,142 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 15:16:09,142 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 15:16:09,142 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 15:16:09,143 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 15:16:09,143 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 15:16:09,143 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 100 workers
+2026-03-07 15:16:09,143 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 15:16:09,143 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 15:16:09,143 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 15:16:09,143 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 15:16:09,143 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 15:16:09,143 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 15:16:09,143 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 15:16:09,144 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 15:16:09,144 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 15:16:09,144 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 15:16:09,144 - __main__ - INFO - Agent dispatcher initialized
+2026-03-07 15:16:09,144 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 15:16:09,144 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 15:16:09,712 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 15:16:10,038 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 15:16:10,206 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-07 15:16:11,675 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 15:16:11,676 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 15:16:11,676 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 15:16:11,680 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 15:16:11,680 - __main__ - INFO - Quant Trading System shutdown complete

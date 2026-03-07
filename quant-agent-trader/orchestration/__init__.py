@@ -10,13 +10,15 @@ This module provides:
 
 from orchestration.dispatcher import (
     AgentDispatcher,
-    AgentRegistry,
     BatchDispatchResult,
     DispatcherBuilder,
     DispatcherConfig,
     DispatchResult,
     ExecutionBackend,
 )
+
+# AgentRegistry is imported from agents.base_agent
+from agents.base_agent import AgentRegistry
 
 __all__ = [
     "AgentDispatcher",

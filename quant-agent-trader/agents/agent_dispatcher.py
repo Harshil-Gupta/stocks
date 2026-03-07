@@ -251,11 +251,12 @@ class AgentDispatcher:
             List of agents to run
         """
         if categories is None:
-            return [
-                self._registry.get(name)
-                for name in self._registry.list_agents()
-                if self._registry.get(name) is not None
-            ]
+            agents: List[BaseAgent] = []
+            for name in self._registry.list_agents():
+                agent = self._registry.get(name)
+                if agent is not None:
+                    agents.append(agent)
+            return agents
         
         agents = []
         for cat_name in categories:

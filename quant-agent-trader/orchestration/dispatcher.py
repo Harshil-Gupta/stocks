@@ -138,9 +138,13 @@ class RayClient:
     def get(self, futures: List[Any]) -> List[Any]:
         """Mock get method."""
         return futures
+    
+    def shutdown(self) -> None:
+        """Mock shutdown method."""
+        pass
 
 
-def _get_ray_client(address: Optional[str] = None) -> RayClient:
+def _get_ray_client(address: Optional[str] = None) -> Union["RayClient", Any]:
     """
     Get Ray client if available.
     
@@ -202,7 +206,7 @@ class AgentDispatcher:
         """
         self._config = config or DispatcherConfig()
         self._registry = registry or AgentRegistry()
-        self._ray_client: Optional[RayClient] = None
+        self._ray_client: Union[RayClient, Any] = None
         self._executor: Optional[ThreadPoolExecutor] = None
         self._execution_backend: ExecutionBackend = ExecutionBackend.ASYNCIO
         
@@ -390,6 +394,8 @@ class AgentDispatcher:
         
         for result in successful_results:
             signal = result.signal
+            if signal is None:
+                continue
             confidence = signal.confidence
             
             total_confidence += confidence
@@ -403,7 +409,11 @@ class AgentDispatcher:
             final_score = 0.0
             avg_confidence = 0.0
         
-        decision = max(signal_votes, key=signal_votes.get)
+        # Get the decision with highest votes, with fallback
+        if signal_votes:
+            decision = max(signal_votes, key=signal_votes.get)  # type: ignore
+        else:
+            decision = "hold"
         
         return AgentSignal(
             agent_name="aggregated",
@@ -554,7 +564,9 @@ class AgentDispatcher:
                     )
             
             for agent in agents:
-                results.append(agent_results.get(agent.agent_name))
+                result = agent_results.get(agent.agent_name)
+                if result is not None:
+                    results.append(result)
         
         return results
     
@@ -611,8 +623,15 @@ class AgentDispatcher:
                         success=False,
                         error=str(result),
                     ))
-                else:
+                elif isinstance(result, DispatchResult):
                     symbol_results.append(result)
+                else:
+                    # Handle unexpected result types
+                    symbol_results.append(DispatchResult(
+                        agent_name="unknown",
+                        success=False,
+                        error=f"Unexpected result type: {type(result)}",
+                    ))
             
             if aggregate and symbol_results:
                 aggregated = self._aggregate_signals(symbol_results)
