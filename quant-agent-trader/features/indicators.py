@@ -75,6 +75,53 @@ class TechnicalFeatures:
         # Trend strength
         df['trend_strength'] = abs(df['sma_20'] - df['sma_50']) / df['sma_50']
         
+        # Additional Advanced Indicators
+        # Williams %R
+        df['williams_r'] = TechnicalFeatures.calculate_williams_r(df)
+        
+        # CCI (Commodity Channel Index)
+        df['cci'] = TechnicalFeatures.calculate_cci(df)
+        
+        # ADX (Average Directional Index)
+        df['adx'], df['plus_di'], df['minus_di'] = TechnicalFeatures.calculate_adx(df)
+        
+        # OBV (On-Balance Volume)
+        df['obv'] = TechnicalFeatures.calculate_obv(df)
+        
+        # VWAP (Volume Weighted Average Price)
+        df['vwap'] = TechnicalFeatures.calculate_vwap(df)
+        
+        # MFI (Money Flow Index)
+        df['mfi'] = TechnicalFeatures.calculate_mfi(df)
+        
+        # Keltner Channels
+        df['keltner_upper'], df['keltner_middle'], df['keltner_lower'] = TechnicalFeatures.calculate_keltner_channels(df)
+        
+        # Donchian Channels
+        df['donchian_upper'], df['donchian_middle'], df['donchian_lower'] = TechnicalFeatures.calculate_donchian_channels(df)
+        
+        # Ichimoku Cloud
+        df['ichimoku_tenkan'], df['ichimoku_kijun'], df['ichimoku_senkou_a'], df['ichimoku_senkou_b'], df['ichimoku_cloud'] = TechnicalFeatures.calculate_ichimoku(df)
+        
+        # ROC (Rate of Change)
+        for period in [5, 10, 20]:
+            df[f'roc_{period}'] = ((df['close'] - df['close'].shift(period)) / df['close'].shift(period)) * 100
+        
+        # Average Price
+        df['avg_price'] = (df['high'] + df['low'] + df['close']) / 3
+        
+        # Typical Price
+        df['typical_price'] = (df['high'] + df['low'] + df['close']) / 3
+        
+        # Median Price
+        df['median_price'] = (df['high'] + df['low']) / 2
+        
+        # Weight Close Price
+        df['weighted_close'] = (df['high'] + df['low'] + 2 * df['close']) / 4
+        
+        # True Range (for ADX)
+        df['true_range'] = TechnicalFeatures.calculate_true_range(df)
+        
         return df
     
     @staticmethod
@@ -145,6 +192,128 @@ class TechnicalFeatures:
         return pivot, support_1, resistance_1
     
     @staticmethod
+    def calculate_williams_r(df: pd.DataFrame, period: int = 14) -> pd.Series:
+        """Calculate Williams %R indicator."""
+        highest_high = df['high'].rolling(window=period).max()
+        lowest_low = df['low'].rolling(window=period).min()
+        
+        williams_r = -100 * (highest_high - df['close']) / (highest_high - lowest_low)
+        return williams_r
+    
+    @staticmethod
+    def calculate_cci(df: pd.DataFrame, period: int = 20) -> pd.Series:
+        """Calculate Commodity Channel Index."""
+        typical_price = (df['high'] + df['low'] + df['close']) / 3
+        sma_tp = typical_price.rolling(window=period).mean()
+        mean_deviation = typical_price.rolling(window=period).apply(
+            lambda x: np.mean(np.abs(x - np.mean(x))), raw=True
+        )
+        cci = (typical_price - sma_tp) / (0.015 * mean_deviation)
+        return cci
+    
+    @staticmethod
+    def calculate_adx(df: pd.DataFrame, period: int = 14) -> tuple:
+        """Calculate Average Directional Index (ADX)."""
+        plus_dm = df['high'].diff()
+        minus_dm = -df['low'].diff()
+        
+        plus_dm[plus_dm < 0] = 0
+        minus_dm[minus_dm < 0] = 0
+        
+        tr = TechnicalFeatures.calculate_true_range(df)
+        
+        atr = tr.rolling(window=period).mean()
+        
+        plus_di = 100 * (plus_dm.rolling(window=period).mean() / atr)
+        minus_di = 100 * (minus_dm.rolling(window=period).mean() / atr)
+        
+        dx = 100 * np.abs(plus_di - minus_di) / (plus_di + minus_di)
+        adx = dx.rolling(window=period).mean()
+        
+        return adx, plus_di, minus_di
+    
+    @staticmethod
+    def calculate_true_range(df: pd.DataFrame) -> pd.Series:
+        """Calculate True Range."""
+        high_low = df['high'] - df['low']
+        high_close = np.abs(df['high'] - df['close'].shift())
+        low_close = np.abs(df['low'] - df['close'].shift())
+        
+        true_range = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
+        return true_range
+    
+    @staticmethod
+    def calculate_obv(df: pd.DataFrame) -> pd.Series:
+        """Calculate On-Balance Volume."""
+        obv = (np.sign(df['close'].diff()) * df['volume']).fillna(0).cumsum()
+        return obv
+    
+    @staticmethod
+    def calculate_vwap(df: pd.DataFrame) -> pd.Series:
+        """Calculate Volume Weighted Average Price."""
+        typical_price = (df['high'] + df['low'] + df['close']) / 3
+        vwap = (typical_price * df['volume']).cumsum() / df['volume'].cumsum()
+        return vwap
+    
+    @staticmethod
+    def calculate_mfi(df: pd.DataFrame, period: int = 14) -> pd.Series:
+        """Calculate Money Flow Index."""
+        typical_price = (df['high'] + df['low'] + df['close']) / 3
+        money_flow = typical_price * df['volume']
+        
+        positive_flow = money_flow.where(typical_price > typical_price.shift(1), 0)
+        negative_flow = money_flow.where(typical_price < typical_price.shift(1), 0)
+        
+        positive_sum = positive_flow.rolling(window=period).sum()
+        negative_sum = negative_flow.rolling(window=period).sum()
+        
+        money_ratio = positive_sum / negative_sum
+        mfi = 100 - (100 / (1 + money_ratio))
+        
+        return mfi
+    
+    @staticmethod
+    def calculate_keltner_channels(df: pd.DataFrame, period: int = 20, multiplier: float = 2.0) -> tuple:
+        """Calculate Keltner Channels."""
+        middle = df['close'].ewm(span=period).mean()
+        atr = TechnicalFeatures.calculate_atr(df).rolling(window=period).mean()
+        
+        upper = middle + (multiplier * atr)
+        lower = middle - (multiplier * atr)
+        
+        return upper, middle, lower
+    
+    @staticmethod
+    def calculate_donchian_channels(df: pd.DataFrame, period: int = 20) -> tuple:
+        """Calculate Donchian Channels."""
+        upper = df['high'].rolling(window=period).max()
+        lower = df['low'].rolling(window=period).min()
+        middle = (upper + lower) / 2
+        
+        return upper, middle, lower
+    
+    @staticmethod
+    def calculate_ichimoku(df: pd.DataFrame) -> tuple:
+        """Calculate Ichimoku Cloud."""
+        nine_period_high = df['high'].rolling(window=9).max()
+        nine_period_low = df['low'].rolling(window=9).min()
+        tenkan = (nine_period_high + nine_period_low) / 2
+        
+        twenty_six_period_high = df['high'].rolling(window=26).max()
+        twenty_six_period_low = df['low'].rolling(window=26).min()
+        kijun = (twenty_six_period_high + twenty_six_period_low) / 2
+        
+        senkou_a = ((tenkan + kijun) / 2).shift(26)
+        
+        fifty_two_period_high = df['high'].rolling(window=52).max()
+        fifty_two_period_low = df['low'].rolling(window=52).min()
+        senkou_b = ((fifty_two_period_high + fifty_two_period_low) / 2).shift(26)
+        
+        cloud = np.where(senkou_a >= senkou_b, 1, -1)
+        
+        return tenkan, kijun, senkou_a, senkou_b, cloud
+    
+    @staticmethod
     def get_current_features(df: pd.DataFrame) -> Dict:
         """Get latest feature values as a dictionary."""
         if df.empty:
@@ -181,6 +350,26 @@ class TechnicalFeatures:
             'stoch_k': float(latest.get('stoch_k', 50)),
             'stoch_d': float(latest.get('stoch_d', 50)),
             'price_position_20': float(latest.get('price_position_20', 0.5)),
+            # New indicators
+            'williams_r': float(latest.get('williams_r', -50)),
+            'cci': float(latest.get('cci', 0)),
+            'adx': float(latest.get('adx', 0)),
+            'plus_di': float(latest.get('plus_di', 0)),
+            'minus_di': float(latest.get('minus_di', 0)),
+            'obv': float(latest.get('obv', 0)),
+            'vwap': float(latest.get('vwap', 0)),
+            'mfi': float(latest.get('mfi', 50)),
+            'keltner_upper': float(latest.get('keltner_upper', 0)),
+            'keltner_middle': float(latest.get('keltner_middle', 0)),
+            'keltner_lower': float(latest.get('keltner_lower', 0)),
+            'donchian_upper': float(latest.get('donchian_upper', 0)),
+            'donchian_middle': float(latest.get('donchian_middle', 0)),
+            'donchian_lower': float(latest.get('donchian_lower', 0)),
+            'ichimoku_tenkan': float(latest.get('ichimoku_tenkan', 0)),
+            'ichimoku_kijun': float(latest.get('ichimoku_kijun', 0)),
+            'roc_5': float(latest.get('roc_5', 0)),
+            'roc_10': float(latest.get('roc_10', 0)),
+            'roc_20': float(latest.get('roc_20', 0)),
         }
 
 
