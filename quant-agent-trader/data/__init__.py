@@ -7,11 +7,25 @@ This module provides:
 - IndiaDataSource: India-specific market data source
 - india_data_engine: Pre-configured India data engine
 - mf_data_engine: Mutual fund data engine
+- unified_data_service: Unified interface to all data sources
 """
 
 from data.ingestion.market_data import DataIngestionEngine, MockDataSource
 from data.ingestion.india_data import IndiaDataSource, india_data_engine, NSE_SYMBOLS
 from data.ingestion.mf_data import mf_data_engine
+from data.services import (
+    unified_data_service,
+    UnifiedDataService,
+    get_stock_data,
+    get_market_dashboard,
+    get_institutional_holdings,
+    get_macro,
+    get_regime,
+    get_amfi_stock_holdings,
+    get_amfi_top_holders,
+    get_amfi_sector_holdings,
+    DataServiceRegistry,
+)
 
 __all__ = [
     "DataIngestionEngine",
@@ -20,4 +34,16 @@ __all__ = [
     "india_data_engine",
     "mf_data_engine",
     "NSE_SYMBOLS",
+    # Services
+    "unified_data_service",
+    "UnifiedDataService",
+    "get_stock_data",
+    "get_market_dashboard",
+    "get_institutional_holdings",
+    "get_macro",
+    "get_regime",
+    "get_amfi_stock_holdings",
+    "get_amfi_top_holders",
+    "get_amfi_sector_holdings",
+    "DataServiceRegistry",
 ]
