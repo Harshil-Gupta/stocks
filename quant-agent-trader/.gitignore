@@ -8,3 +8,4 @@ signals/__pycache__/
 quant_trader.log
 agents/__pycache__/
 config/__pycache__
+agents/fundamental/__pycache__/

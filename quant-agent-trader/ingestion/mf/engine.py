@@ -279,7 +279,7 @@ class MFDataEngine:
     # Stock-level queries
     # =====================
     
-    async def get_stock_mf_holdings(self, symbol: str) -> MFHoldingsData:
+    def get_stock_mf_holdings(self, symbol: str) -> MFHoldingsData:
         """
         Get MF holdings for a specific stock.
         
@@ -341,7 +341,6 @@ class MFDataEngine:
                 logger.info(f"Using simulated MF data for {symbol_upper}")
             else:
                 # Generate random data for unknown stocks
-                import random
                 mf_count = random.randint(5, 25)
                 total_weight = round(random.uniform(1.5, 6.0), 2)
                 holdings_data.change_in_holding = round(random.uniform(-0.3, 0.6), 2)
@@ -362,25 +361,28 @@ class MFDataEngine:
     def _generate_trend(self, mf_count: int, total_pct: float, change: float = 0.0) -> List[Dict]:
         """Generate monthly trend (simulated for demo)."""
         from datetime import datetime
+        from dateutil.relativedelta import relativedelta
         
         trend = []
-        monthly_change = change / 4  # Distribute change across months
+        monthly_change = change / 4  # Distribute change across 4 months
         
+        now = datetime.now()
         for i in range(4):
-            month_date = datetime.now()
-            month_date = month_date.replace(month=((month_date.month - i - 1) % 12) + 1)
+            month_date = now - relativedelta(months=3 - i)
             month_name = month_date.strftime("%b %Y")
             
-            # Calculate gradual change
-            pct = max(0, total_pct - (monthly_change * (3 - i)))
+            # Calculate gradual change - if change is positive, trend should be increasing
+            months_from_start = i
+            pct = total_pct - (monthly_change * (3 - months_from_start))
+            pct = max(0, pct)
             
             trend.append({
                 "month": month_name,
                 "mf_holding_pct": round(pct, 2),
-                "num_mfs": max(0, mf_count - i // 2)
+                "num_mfs": mf_count
             })
         
-        return list(reversed(trend))
+        return trend
     
     # =====================
     # Smart money signals
@@ -396,8 +398,7 @@ class MFDataEngine:
         Returns:
             MFBuyingSignal with recommendation
         """
-        import asyncio
-        holdings = asyncio.run(self.get_stock_mf_holdings(symbol))
+        holdings = self.get_stock_mf_holdings(symbol)
         
         # Determine signal based on metrics
         if holdings.num_mfs >= 5 and holdings.mf_holding_pct >= 5:
@@ -480,15 +481,14 @@ class MFDataEngine:
         Returns:
             Dict mapping symbol to holdings data
         """
-        import asyncio
-        
-        tasks = [self.get_stock_mf_holdings(s) for s in symbols]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-        
-        return {
-            symbol: (data if not isinstance(data, Exception) else MFHoldingsData(symbol=symbol))
-            for symbol, data in zip(symbols, results)
-        }
+        results = {}
+        for symbol in symbols:
+            try:
+                results[symbol] = self.get_stock_mf_holdings(symbol)
+            except Exception as e:
+                logger.error(f"Error getting holdings for {symbol}: {e}")
+                results[symbol] = MFHoldingsData(symbol=symbol)
+        return results
 
 
 # Global instance

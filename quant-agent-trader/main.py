@@ -310,8 +310,8 @@ class QuantTradingSystem:
     async def get_mf_holdings_data(self, symbol: str) -> Dict[str, Any]:
         """Get MF holdings data for Indian stock using new MF engine."""
         try:
-            # Use new MF data engine
-            holdings_data = await mf_data_engine.get_stock_mf_holdings(symbol)
+            # Use new MF data engine (synchronous)
+            holdings_data = mf_data_engine.get_stock_mf_holdings(symbol)
             
             # Convert to dict format for compatibility
             return {

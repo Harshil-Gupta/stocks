@@ -15,6 +15,9 @@ The Quant Agent Trader is a sophisticated trading system that leverages multiple
 - **Portfolio Management**: Position sizing, risk management, and rebalancing
 - **Technical Analysis**: RSI, MACD, Momentum, Trend, Breakout, Volume agents
 - **India-Specific Agents**: India VIX, FNO, Nifty Sentiment, MF Holdings agents
+- **Fundamental Analysis**: CRISIL ratings, Valuation, Earnings, Cashflow, Growth agents
+- **Mutual Fund Data Engine**: Modular MF data ingestion with AMFI, MFAPI, ValueResearch sources
+- **Smart Money Tracking**: MF holdings analysis with quarterly trends and institutional ownership
 - **Reinforcement Learning**: Feedback system for continuous strategy improvement
 
 ## Installation
@@ -104,9 +107,10 @@ set ALPHA_VANTAGE_KEY=your_alpha_vantage_key
 |----------|-------------|--------|
 | **Technical** | Price/volume analysis | RSI, MACD, Momentum, Trend, Breakout, Volume |
 | **Sentiment** | Market mood analysis | News Sentiment, Analyst Ratings |
-| **Fundamental** | Financial metrics | Valuation, Earnings, Cashflow, Growth |
-| **Risk** | Risk assessment | Volatility Regime, Tail Risk |
-| **India** | India-specific | India VIX, FNO, Nifty Sentiment, MF Holdings |
+| **Fundamental** | Financial metrics | CRISIL Analysis, Valuation, Earnings, Cashflow, Growth |
+| **Risk** | Risk assessment | Volatility Regime, Tail Risk, India VIX |
+| **Market Structure** | F&O data | FNO, Nifty Sentiment |
+| **Institutional** | Smart money tracking | MF Holdings |
 
 ### Signal Flow
 
@@ -411,28 +415,73 @@ quant-agent-trader/
 ├── agents/
 │   ├── base_agent.py          # Base agent class
 │   ├── agent_dispatcher.py    # Agent execution dispatcher
-│   ├── regime_classifier.py  # Market regime classification
+│   ├── regime_classifier.py   # Market regime classification
 │   ├── technical/             # Technical analysis agents
 │   ├── sentiment/             # Sentiment analysis agents
-│   ├── fundamental/          # Fundamental analysis agents
-│   ├── risk/                 # Risk management agents
-│   └── india/                # India-specific agents
+│   ├── fundamental/           # Fundamental analysis agents (incl. CRISIL)
+│   ├── risk/                  # Risk management agents
+│   └── india/                 # India-specific agents
 ├── config/
 │   └── settings.py            # Configuration settings
 ├── data/
-│   └── ingestion/            # Data ingestion modules
+│   └── ingestion/             # Data ingestion modules
+│       ├── india_data.py      # Indian market data (NSE)
+│       ├── nse_api.py         # NSE India API client
+│       └── mf_data.py         # Mutual fund data
 ├── signals/
 │   ├── signal_schema.py       # Signal data structures
 │   └── signal_aggregator.py  # Signal aggregation logic
 ├── orchestration/
 │   └── dispatcher.py          # Agent orchestration
+├── ingestion/
+│   └── mf/                    # MF data ingestion engine
+│       ├── engine.py           # Main MF data engine
+│       ├── models.py          # MF data models
+│       ├── sources/           # Data sources
+│       │   ├── amfi_source.py
+│       │   ├── mfapi_source.py
+│       │   └── valueresearch_scraper.py
+│       └── utils/             # Utilities
 ├── backtesting/
-│   └── engine.py             # Backtesting engine
+│   └── engine.py              # Backtesting engine
 ├── portfolio/
 │   └── portfolio_engine.py   # Portfolio management
 ├── features/
-│   └── indicators.py         # Technical indicators
+│   └── indicators.py          # Technical indicators
 └── main.py                   # Main entry point
+```
+
+## Mutual Fund Data Engine
+
+The system includes a comprehensive MF data ingestion engine for smart money analysis:
+
+### Data Sources
+
+- **AMFI**: Official NAV data from Association of Mutual Funds in India
+- **MFAPI**: Historical NAV data with returns calculation
+- **ValueResearch**: Portfolio holdings (may be blocked by rate limiting)
+
+### Features
+
+- Stock-level MF holdings aggregation
+- Top fund holder tracking
+- Monthly/quarterly trend analysis
+- Smart money signal generation
+- Simulated data for demonstration when sources are blocked
+
+### Usage
+
+```python
+from ingestion.mf.engine import mf_data_engine
+
+# Get MF holdings for a stock
+holdings = mf_data_engine.get_stock_mf_holdings("RELIANCE")
+print(f"MFs holding: {holdings.num_mfs}")
+print(f"Ownership: {holdings.mf_holding_pct}%")
+
+# Generate MF buying signal
+signal = mf_data_engine.analyze_stock_mf_signal("RELIANCE")
+print(f"Signal: {signal.signal}, Confidence: {signal.confidence}")
 ```
 
 ## Troubleshooting
@@ -443,6 +492,8 @@ quant-agent-trader/
 2. **Agent errors**: Some agents may fail if required features are missing
 3. **Import errors**: Ensure all dependencies are installed
 4. **Memory issues**: Reduce `max_concurrent_agents` in config
+5. **ValueResearch 403 errors**: The scraper may be blocked; system uses simulated data
+6. **NIFTY BANK symbol errors**: Use ^NSEBANK instead of ^NSEB
 
 ### Logging
 
