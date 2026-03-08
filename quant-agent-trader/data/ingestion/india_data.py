@@ -218,7 +218,6 @@ class IndiaDataSource:
             else:
                 # Single symbol response
                 if not data.empty:
-                    symbols[0]
                     data.columns = [c.lower() for c in data.columns]
                     result[symbols[0]] = data
             

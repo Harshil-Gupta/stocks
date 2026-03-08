@@ -15,6 +15,7 @@ metrics where actual data is unavailable.
 
 from typing import Dict, Any, Optional, List
 import logging
+import random
 
 from agents.base_agent import BaseAgent, AgentMetadata, AgentConfig
 from signals.signal_schema import AgentSignal, AgentCategory
@@ -380,11 +381,13 @@ class CRISILDataEngine:
             return self.cache[symbol_upper]
         
         # Get mock data or generate simulated data
+        # Use hash of symbol for deterministic random selection
+        random.seed(hash(symbol_upper) % 1000)
+        
         if symbol_upper in self.MOCK_RATINGS:
             data = self.MOCK_RATINGS[symbol_upper].copy()
         else:
             # Generate simulated data for unknown symbols
-            import random
             ratings = ["AAA", "AA+", "AA", "A+", "A", "BBB+", "BBB"]
             outlooks = ["positive", "stable", "negative"]
             risks = ["low", "moderate", "high"]
@@ -403,7 +406,6 @@ class CRISILDataEngine:
         
         # Generate management score based on rating
         rating_score = CRISILAnalysisAgent.RATING_SCORES.get(data["rating"], 50)
-        import random
         data["management_score"] = min(100, rating_score + random.uniform(-10, 10))
         
         # Add corporate governance score

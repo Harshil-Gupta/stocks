@@ -110,7 +110,6 @@ class MFDataSource:
             "SBICARDS": "SBICARDS.NS",
             "SIEMENS": "SIEMENS.NS",
             "TATACONSUM": "TATACONSUM.NS",
-            "TCS": "TCS.NS",
             "TECHM": "TECHM.NS",
             "VEDL": "VEDL.NS",
             "WISTRON": "WISTRON.NS",

@@ -186,7 +186,7 @@ INDIA_TRADING_RULES = {
     "stt_rate": 0.001,
     "sebi_charges": 0.00015,
     "stamp_duty": 0.002,
-    " gst": 0.18,
+    "gst": 0.18,
 }
 
 

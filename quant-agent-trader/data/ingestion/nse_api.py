@@ -130,7 +130,7 @@ class NSEIndiaAPI:
                 "isin": metadata.get("isin"),
                 "face_value": metadata.get("faceValue"),
                 "book_value": metadata.get("bookValue"),
-                " dividend_yield": metadata.get("divYield"),
+                "dividend_yield": metadata.get("divYield"),
                 "eps": metadata.get("eps"),
                 "ceiling": price_info.get("priceband", {}).get("upperCircuit"),
                 "floor": price_info.get("priceband", {}).get("lowerCircuit"),

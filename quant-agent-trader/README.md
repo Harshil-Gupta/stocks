@@ -19,6 +19,7 @@ The Quant Agent Trader is a sophisticated trading system that leverages multiple
 - **Mutual Fund Data Engine**: Modular MF data ingestion with AMFI, MFAPI, ValueResearch sources
 - **Smart Money Tracking**: MF holdings analysis with quarterly trends and institutional ownership
 - **Reinforcement Learning**: Feedback system for continuous strategy improvement
+- **Self-Improving AI**: Genetic algorithm for automated strategy generation, backtesting, and evolution
 
 ## Installation
 
@@ -442,13 +443,19 @@ quant-agent-trader/
 │       │   ├── mfapi_source.py
 │       │   └── valueresearch_scraper.py
 │       └── utils/             # Utilities
+├── learning/
+│   ├── feedback_system.py     # RL feedback for agent weights
+│   ├── strategy_generator.py  # Strategy template generation
+│   ├── strategy_evaluator.py # Backtesting and metrics
+│   ├── evolution_engine.py   # Genetic algorithm engine
+│   └── self_improving_system.py # Main orchestration
 ├── backtesting/
 │   └── engine.py              # Backtesting engine
 ├── portfolio/
 │   └── portfolio_engine.py   # Portfolio management
 ├── features/
 │   └── indicators.py          # Technical indicators
-└── main.py                   # Main entry point
+└── main.py                    # Main entry point
 ```
 
 ## Mutual Fund Data Engine
@@ -482,6 +489,67 @@ print(f"Ownership: {holdings.mf_holding_pct}%")
 # Generate MF buying signal
 signal = mf_data_engine.analyze_stock_mf_signal("RELIANCE")
 print(f"Signal: {signal.signal}, Confidence: {signal.confidence}")
+```
+
+## Self-Improving Quant AI System
+
+The system includes a self-improving AI module that automatically generates, tests, and evolves trading strategies using genetic algorithms.
+
+### Components
+
+- **Strategy Generator**: Creates diverse trading strategies using templates (momentum, mean_reversion, breakout, trend_following)
+- **Strategy Evaluator**: Backtesting engine with full metrics (Sharpe, Sortino, Calmar, max drawdown)
+- **Evolution Engine**: Genetic algorithm with tournament selection, elite preservation, crossover, and mutation
+- **Self-Improving System**: Orchestrates the entire pipeline - scrape data → generate → backtest → evolve → archive
+
+### Usage
+
+```bash
+# Run strategy evolution
+python -m learning.self_improving_system --symbols RELIANCE,HDFCBANK --generations 10 --population 20
+
+# Parameters
+# --symbols: Comma-separated stock symbols
+# --population: Population size (default: 20)
+# --generations: Number of generations (default: 10)
+# --mutation: Mutation rate (default: 0.15)
+```
+
+### Programmatic Usage
+
+```python
+from learning.self_improving_system import SelfImprovingQuantSystem, SystemConfig
+
+# Configure the system
+config = SystemConfig(
+    symbols=['RELIANCE', 'HDFCBANK', 'INFY'],
+    population_size=20,
+    generations=10,
+    min_fitness=0.3
+)
+
+# Create and run evolution
+system = SelfImprovingQuantSystem(config)
+
+def progress(gen, total, fitness):
+    print(f"Generation {gen + 1}/{total}: Best Fitness = {fitness:.4f}")
+
+result = system.evolve_strategies(progress_callback=progress)
+
+# Get best strategy
+best = result.best_strategy
+print(f"Best: {best.name}, Return: {result.best_result.total_return:.2%}")
+```
+
+### Learning Modules
+
+```
+learning/
+├── feedback_system.py          # RL feedback for agent weight optimization
+├── strategy_generator.py       # Strategy template generation
+├── strategy_evaluator.py      # Backtesting and metrics
+├── evolution_engine.py        # Genetic algorithm engine
+└── self_improving_system.py   # Main orchestration
 ```
 
 ## Troubleshooting

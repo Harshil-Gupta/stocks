@@ -337,6 +337,9 @@ class RLFeedbackSystem:
         
         contributions: Dict[str, float] = {}
         
+        if not agent_signals:
+            return {}
+            
         for signal_info in agent_signals:
             agent_name = signal_info.get("agent_name", "")
             if agent_name and agent_name in self._agent_weights:
@@ -353,7 +356,7 @@ class RLFeedbackSystem:
                 contributions[agent_name] = (
                     contributions[agent_name] / total_contribution
                 ) * reward
-        else:
+        elif contributions:
             for agent_name in contributions:
                 contributions[agent_name] = reward / len(contributions)
         

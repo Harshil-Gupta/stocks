@@ -92,28 +92,28 @@ class ValuationAgent(BaseAgent):
             valid_ratios = []
             ratio_scores = []
             
-            if pe_ratio and pe_ratio > 0:
+            if pe_ratio is not None and pe_ratio > 0:
                 pe_score = pe_ratio / self._industry_pe
                 valid_ratios.append("pe")
                 ratio_scores.append(pe_score)
                 supporting_data["pe_score"] = pe_score
                 supporting_data["pe_vs_industry"] = pe_ratio / self._industry_pe
             
-            if pb_ratio and pb_ratio > 0:
+            if pb_ratio is not None and pb_ratio > 0:
                 pb_score = pb_ratio / self._industry_pb
                 valid_ratios.append("pb")
                 ratio_scores.append(pb_score)
                 supporting_data["pb_score"] = pb_score
                 supporting_data["pb_vs_industry"] = pb_ratio / self._industry_pb
             
-            if ps_ratio and ps_ratio > 0:
+            if ps_ratio is not None and ps_ratio > 0:
                 ps_score = ps_ratio / self._industry_ps
                 valid_ratios.append("ps")
                 ratio_scores.append(ps_score)
                 supporting_data["ps_score"] = ps_score
                 supporting_data["ps_vs_industry"] = ps_ratio / self._industry_ps
             
-            if ev_ebitda and ev_ebitda > 0:
+            if ev_ebitda is not None and ev_ebitda > 0:
                 ev_ebitda_score = ev_ebitda / self._industry_ev_ebitda
                 valid_ratios.append("ev_ebitda")
                 ratio_scores.append(ev_ebitda_score)

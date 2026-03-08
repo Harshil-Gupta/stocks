@@ -86,7 +86,7 @@ class QuantTradingSystem:
     
     def __init__(self, config: Optional[SystemConfig] = None):
         self.config = config or system_config
-        self.dispatcher: AgentDispatcher
+        self.dispatcher: Optional[AgentDispatcher] = None
         self.aggregator: SignalAggregator = SignalAggregator()
         self.data_engine: Optional[DataIngestionEngine] = None
         self.backtest_engine: BacktestEngine = BacktestEngine()

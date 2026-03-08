@@ -104,10 +104,14 @@ class RegimeClassifier:
         volatility_20 = latest.get('volatility_20', 0)
 
         hist_vol = df['volatility_20'].dropna()
-        if len(hist_vol) < 20:
+        if hist_vol.empty or len(hist_vol) < 20:
             return "normal"
 
-        avg_volatility = hist_vol.rolling(20).mean().iloc[-1]
+        rolling_mean = hist_vol.rolling(20).mean()
+        if rolling_mean.empty or pd.isna(rolling_mean.iloc[-1]):
+            return "normal"
+            
+        avg_volatility = rolling_mean.iloc[-1]
         current_vol = volatility_20
 
         if current_vol > avg_volatility * 2.5 or atr_pct > 5:
