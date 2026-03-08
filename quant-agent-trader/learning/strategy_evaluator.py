@@ -354,6 +354,10 @@ class StrategyEvaluator:
         delta = prices.diff()
         gain = (delta.where(delta > 0, 0)).rolling(period).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(period).mean()
+        
+        # Avoid division by zero
+        loss = loss.replace(0, 0.0001)
+        
         rs = gain / loss
         return 100 - (100 / (1 + rs))
     
