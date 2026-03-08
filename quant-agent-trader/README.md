@@ -8,12 +8,40 @@ The Quant Agent Trader is a sophisticated trading system that leverages multiple
 
 ### Key Features
 
-- **Multi-Agent Architecture**: Parallel execution of multiple trading agents
+- **Multi-Agent Architecture**: Parallel execution of 40+ trading agents
 - **Market Support**: US markets (NYSE, NASDAQ) and Indian markets (NSE, BSE)
 - **Signal Aggregation**: Intelligent combination of agent signals with regime-based weighting
 - **Backtesting Engine**: Comprehensive historical simulation with detailed metrics
 - **Portfolio Management**: Position sizing, risk management, and rebalancing
-- **Technical Analysis**: RSI, MACD, Momentum, Trend, Breakout, Volume agents
+
+### Agent Categories (40+ Agents)
+
+#### Technical Analysis (19 agents)
+- **Core**: RSI, MACD, Momentum, Trend, Breakout, Volume
+- **Advanced**: Bollinger Bands, ATR, Support/Resistance, Volume Profile
+- **Chart Patterns**: Ichimoku Cloud, Williams %R, CCI, ADX, OBV, VWAP, MFI, Keltner Channels, Donchian Channels
+
+#### Fundamental Analysis (8 agents)
+- Valuation, Earnings, Cashflow, Growth, Dividend, Balance Sheet, Industry Comparison, Management Quality
+
+#### Sentiment Analysis (4 agents)
+- News Sentiment, Analyst Ratings, Insider Trading, Social Sentiment
+
+#### Risk Management (4 agents)
+- Volatility Regime, Tail Risk, Drawdown, Correlation Risk
+
+#### Macro Economics (6 agents)
+- Interest Rate, Inflation, GDP, Sector Rotation, Currency, Commodity
+
+#### Market Structure (4 agents)
+- Options Flow, Dark Pool, Order Imbalance, Put/Call Ratio
+
+#### Quantitative (4 agents)
+- Mean Reversion, Statistical Arbitrage, Factor Model, Pairs Trading
+
+#### India-Specific (4 agents)
+- India VIX, F&O, Nifty Sentiment, MF Holdings
+
 - **India-Specific Agents**: India VIX, FNO, Nifty Sentiment, MF Holdings agents
 - **Fundamental Analysis**: CRISIL ratings, Valuation, Earnings, Cashflow, Growth agents
 - **Mutual Fund Data Engine**: Modular MF data ingestion with AMFI, MFAPI, ValueResearch sources
