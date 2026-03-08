@@ -60,7 +60,7 @@ class ValueResearchScraper:
             response = self._session.get(url, timeout=15)
             
             if response.status_code != 200:
-                logger.warning(f"VRO returned status {response.status_code} for {fund_slug}")
+                logger.debug(f"VRO returned status {response.status_code} for {fund_slug}")
                 return []
             
             soup = BeautifulSoup(response.text, "html.parser")

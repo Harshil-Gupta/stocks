@@ -127,7 +127,7 @@ class BaseAgent(ABC):
         
         self._validate_metadata()
         
-        logger.info(
+        logger.debug(
             f"Initialized agent: {agent_name} "
             f"(category: {agent_category.value}, version: {self._metadata.version})"
         )

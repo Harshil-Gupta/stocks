@@ -166,13 +166,17 @@ MOCK_STOCK_HOLDINGS = {
     },
 }
 
-# Default holdings for unknown stocks
-DEFAULT_HOLDINGS = {
-    "num_mfs": random.randint(5, 20),
-    "mf_holding_pct": round(random.uniform(1.0, 5.0), 2),
-    "change_in_holding": round(random.uniform(-0.5, 0.8), 2),
-    "top_holders": []
-}
+def _generate_default_holdings() -> Dict:
+    """Generate default holdings for unknown stocks (deterministic for testing)."""
+    return {
+        "num_mfs": 10,
+        "mf_holding_pct": 3.0,
+        "change_in_holding": 0.1,
+        "top_holders": []
+    }
+
+
+DEFAULT_HOLDINGS = _generate_default_holdings()
 
 
 class MFDataEngine:
@@ -248,7 +252,7 @@ class MFDataEngine:
         Returns:
             Dict with NAV, holdings, returns, etc.
         """
-        info = {
+        info: Dict[str, Any] = {
             "scheme_code": scheme_code,
             "name": self._top_mfs.get(scheme_code, {}).get("name", "Unknown"),
         }
@@ -340,11 +344,11 @@ class MFDataEngine:
                 top_holders = mock["top_holders"].copy()
                 logger.info(f"Using simulated MF data for {symbol_upper}")
             else:
-                # Generate random data for unknown stocks
-                mf_count = random.randint(5, 25)
-                total_weight = round(random.uniform(1.5, 6.0), 2)
-                holdings_data.change_in_holding = round(random.uniform(-0.3, 0.6), 2)
-                logger.info(f"Using random MF data for unknown stock {symbol_upper}")
+                # Use deterministic default data for unknown stocks
+                mf_count = DEFAULT_HOLDINGS["num_mfs"]
+                total_weight = DEFAULT_HOLDINGS["mf_holding_pct"]
+                holdings_data.change_in_holding = DEFAULT_HOLDINGS["change_in_holding"]
+                logger.info(f"Using default MF data for unknown stock {symbol_upper}")
         
         holdings_data.num_mfs = mf_count
         holdings_data.mf_holding_pct = round(total_weight, 2)

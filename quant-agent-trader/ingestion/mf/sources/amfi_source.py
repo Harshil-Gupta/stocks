@@ -87,9 +87,22 @@ class AMFIDataSource:
             # Clean column names
             df.columns = df.columns.str.strip()
             
-            # Filter for equity schemes only
-            df = df[df['Scheme Type'].str.contains('Open', case=False, na=False)]
-            df = df[df['Scheme Type'].str.contains('Growth|ELSS', case=False, na=False)]
+            # Validate required columns exist
+            required_cols = ['Scheme Type', 'Scheme Code', 'Net Asset Value']
+            missing_cols = [col for col in required_cols if col not in df.columns]
+            if missing_cols:
+                logger.warning(f"AMFI data missing columns: {missing_cols}. Available: {list(df.columns)}")
+                # Try to proceed with available columns
+                if 'Net Asset Value' not in df.columns:
+                    raise ValueError(f"Required column 'Net Asset Value' not found in AMFI data")
+            
+            # Filter for equity schemes only (safe with try-except)
+            if 'Scheme Type' in df.columns:
+                try:
+                    df = df[df['Scheme Type'].str.contains('Open', case=False, na=False)]
+                    df = df[df['Scheme Type'].str.contains('Growth|ELSS', case=False, na=False)]
+                except Exception as e:
+                    logger.warning(f"Error filtering scheme type: {e}")
             
             # Store in cache
             self._cache = df
