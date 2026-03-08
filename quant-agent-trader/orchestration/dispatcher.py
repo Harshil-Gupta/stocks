@@ -24,11 +24,13 @@ from typing import (
     Set,
     TypeVar,
     Union,
+    cast,
 )
 
 import numpy as np
 
-from signals.signal_schema import AgentCategory, AgentSignal
+from signals.signal_schema import AgentCategory, AgentSignal, AggregatedSignal
+from signals.signal_aggregator import SignalAggregator
 from agents.base_agent import AgentRegistry, BaseAgent, AgentError, AgentConfig
 
 logger = logging.getLogger(__name__)
@@ -48,7 +50,7 @@ class DispatchResult:
     """Result of agent dispatch operation."""
     agent_name: str
     success: bool
-    signal: Optional[AgentSignal] = None
+    signal: Optional[Union[AgentSignal, AggregatedSignal]] = None
     error: Optional[str] = None
     execution_time_ms: float = 0.0
     timestamp: datetime = field(default_factory=datetime.now)
@@ -73,7 +75,7 @@ class BatchDispatchResult:
     """Result of batch dispatch operation."""
     symbol: str
     dispatch_results: List[DispatchResult]
-    aggregated_signal: Optional[AgentSignal] = None
+    aggregated_signal: Optional[Union[AgentSignal, AggregatedSignal]] = None
     total_time_ms: float = 0.0
     timestamp: datetime = field(default_factory=datetime.now)
     
@@ -330,64 +332,59 @@ class AgentDispatcher:
         self,
         dispatch_results: List[DispatchResult],
         method: str = "weighted_average",
-    ) -> Optional[AgentSignal]:
+        stock_symbol: str = "UNKNOWN",
+        regime: str = "normal",
+    ) -> Optional[AggregatedSignal]:
         """
-        Aggregate signals from multiple agents.
+        Aggregate signals from multiple agents using SignalAggregator.
         
         Args:
             dispatch_results: List of dispatch results
-            method: Aggregation method
+            method: Aggregation method (passed to SignalAggregator)
+            stock_symbol: Stock symbol for the aggregated signal
+            regime: Market regime for weight adjustment
             
         Returns:
-            Aggregated AgentSignal or None
+            AggregatedSignal or None
         """
-        successful_results = [r for r in dispatch_results if r.success and r.signal]
+        # Filter to only get AgentSignal objects (exclude already aggregated signals)
+        successful_results = [
+            r for r in dispatch_results 
+            if r.success and r.signal and isinstance(r.signal, AgentSignal)
+        ]
         
         if not successful_results:
             return None
         
-        if len(successful_results) == 1:
-            return successful_results[0].signal
+        # Extract AgentSignal objects (already filtered by isinstance check above)
+        signals: List[AgentSignal] = [
+            cast(AgentSignal, r.signal) for r in successful_results
+        ]
         
-        total_confidence = 0.0
-        weighted_score = 0.0
-        signal_votes: Dict[str, float] = {"buy": 0.0, "sell": 0.0, "hold": 0.0}
+        if not signals:
+            return None
         
-        for result in successful_results:
-            signal = result.signal
-            if signal is None:
-                continue
-            confidence = signal.confidence
-            
-            total_confidence += confidence
-            weighted_score += signal.numerical_score * confidence
-            signal_votes[signal.signal] += confidence
+        if len(signals) == 1:
+            # Single signal - convert to AggregatedSignal format
+            single = signals[0]
+            return AggregatedSignal(
+                stock_symbol=stock_symbol,
+                final_score=(single.numerical_score + 1) / 2,  # Convert [-1,1] to [0,1]
+                decision=single.signal,
+                confidence=single.confidence,
+                supporting_agents=[single.agent_name],
+                conflicting_agents=[],
+                agent_signals=signals,
+                regime=regime,
+                timestamp=single.timestamp if hasattr(single, 'timestamp') else datetime.now()
+            )
         
-        if total_confidence > 0:
-            final_score = weighted_score / total_confidence
-            avg_confidence = total_confidence / len(successful_results)
-        else:
-            final_score = 0.0
-            avg_confidence = 0.0
-        
-        # Get the decision with highest votes, with fallback
-        if signal_votes:
-            decision = max(signal_votes, key=signal_votes.get)  # type: ignore
-        else:
-            decision = "hold"
-        
-        return AgentSignal(
-            agent_name="aggregated",
-            agent_category="meta",
-            signal=decision,
-            confidence=avg_confidence,
-            numerical_score=final_score,
-            reasoning=f"Aggregated {len(successful_results)} agents using {method}",
-            supporting_data={
-                "method": method,
-                "agent_count": len(successful_results),
-                "signal_votes": signal_votes,
-            },
+        # Use SignalAggregator for proper weighted ensemble
+        aggregator = SignalAggregator()
+        return aggregator.aggregate_signals(
+            signals=signals,
+            regime=regime,
+            stock_symbol=stock_symbol
         )
     
     def dispatch_agents(
@@ -431,7 +428,11 @@ class AgentDispatcher:
             dispatch_results = self._dispatch_threadpool(resolved_agents, features, use_cache)
             
             if aggregate and dispatch_results:
-                aggregated = self._aggregate_signals(dispatch_results)
+                aggregated = self._aggregate_signals(
+                    dispatch_results, 
+                    stock_symbol=symbol,
+                    regime="normal"
+                )
                 if aggregated:
                     dispatch_results.append(DispatchResult(
                         agent_name="aggregated",

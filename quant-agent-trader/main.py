@@ -715,7 +715,9 @@ def print_analysis_results(results: Dict[str, Any]) -> None:
         print("\n" + "-"*40)
         print("AGGREGATED SIGNAL")
         print("-"*40)
-        print(f"  Decision: {aggregated.get('decision', 'N/A').upper()}")
+        # Debug: print all keys
+        print(f"  DEBUG - Keys: {list(aggregated.keys())}")
+        print(f"  Decision: {aggregated.get('decision', 'N/A')}")
         print(f"  Confidence: {aggregated.get('confidence', 0):.1f}%")
         print(f"  Final Score: {aggregated.get('final_score', 0):.3f}")
         print(f"  Regime: {aggregated.get('regime', 'N/A')}")

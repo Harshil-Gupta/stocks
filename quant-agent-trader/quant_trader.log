@@ -1029,3 +1029,138 @@
 2026-03-07 19:31:18,359 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
 2026-03-07 19:31:18,364 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
 2026-03-07 19:31:18,364 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 19:36:12,475 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 19:36:12,475 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 19:36:12,475 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 19:36:12,475 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 19:36:12,475 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 19:36:12,475 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 16 workers
+2026-03-07 19:36:12,475 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 19:36:12,475 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-07 19:36:12,475 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 19:36:12,476 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 19:36:12,476 - __main__ - INFO - Dispatcher initialized with 9 agents
+2026-03-07 19:36:12,476 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 19:36:12,476 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 19:36:13,791 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 19:36:14,088 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 19:36:15,825 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-07 19:36:17,276 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for parag-parikh-flexi-cap-fund
+2026-03-07 19:36:17,387 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for sbi-blue-chip-fund
+2026-03-07 19:36:17,513 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for hdfc-top-100-fund
+2026-03-07 19:36:17,704 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for icici-blue-chip-fund
+2026-03-07 19:36:18,823 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for uti-flexi-cap-fund
+2026-03-07 19:36:20,600 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for mirae-asset-large-cap-fund
+2026-03-07 19:36:20,708 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for axis-blue-chip-fund
+2026-03-07 19:36:20,708 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-07 19:36:20,709 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 19:36:20,709 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 19:36:20,709 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 19:36:20,712 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 19:36:20,712 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-07 19:38:31,919 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-07 19:38:31,919 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-07 19:38:31,919 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-07 19:38:31,919 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-07 19:38:31,919 - __main__ - INFO - Added MF Holdings agent
+2026-03-07 19:38:31,920 - __main__ - INFO - Initialized 9 total agents
+2026-03-07 19:38:31,920 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 16 workers
+2026-03-07 19:38:31,920 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-07 19:38:31,920 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-07 19:38:31,920 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-07 19:38:31,920 - __main__ - INFO - Dispatcher initialized with 9 agents
+2026-03-07 19:38:31,920 - __main__ - INFO - Initialized with 9 agents
+2026-03-07 19:38:31,920 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-07 19:38:32,983 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-07 19:38:33,216 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-07 19:38:36,691 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-07 19:38:37,050 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for parag-parikh-flexi-cap-fund
+2026-03-07 19:38:37,111 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for sbi-blue-chip-fund
+2026-03-07 19:38:37,172 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for hdfc-top-100-fund
+2026-03-07 19:38:37,236 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for icici-blue-chip-fund
+2026-03-07 19:38:37,298 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for uti-flexi-cap-fund
+2026-03-07 19:38:37,594 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for mirae-asset-large-cap-fund
+2026-03-07 19:38:37,665 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for axis-blue-chip-fund
+2026-03-07 19:38:37,665 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-07 19:38:37,665 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-07 19:38:37,665 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-07 19:38:37,665 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-07 19:38:37,668 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-07 19:38:37,669 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-08 18:24:04,492 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-08 18:24:04,493 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: rsi_agent (category: technical, version: 1.0.0)
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: macd_agent (category: technical, version: 1.0.0)
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: momentum_agent (category: technical, version: 1.0.0)
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: trend_agent (category: technical, version: 1.0.0)
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: breakout_agent (category: technical, version: 1.0.0)
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: volume_agent (category: technical, version: 1.0.0)
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: crisil_analysis_agent (category: fundamental, version: 1.0.0)
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: valuation_agent (category: fundamental, version: 1.0.0)
+2026-03-08 18:24:04,493 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-08 18:24:04,493 - agents.base_agent - INFO - Initialized agent: mf_holdings_agent (category: fundamental, version: 2.0.0)
+2026-03-08 18:24:04,493 - __main__ - INFO - Added MF Holdings agent
+2026-03-08 18:24:04,493 - __main__ - INFO - Initialized 9 total agents
+2026-03-08 18:24:04,493 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 16 workers
+2026-03-08 18:24:04,494 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-08 18:24:04,494 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-08 18:24:04,494 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-08 18:24:04,494 - __main__ - INFO - Dispatcher initialized with 9 agents
+2026-03-08 18:24:04,494 - __main__ - INFO - Initialized with 9 agents
+2026-03-08 18:24:04,494 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-08 18:24:05,211 - data.ingestion.india_data - INFO - Fetched 248 data points for RELIANCE
+2026-03-08 18:24:05,503 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-08 18:24:05,631 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-08 18:24:06,232 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for parag-parikh-flexi-cap-fund
+2026-03-08 18:24:06,315 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for sbi-blue-chip-fund
+2026-03-08 18:24:06,369 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for hdfc-top-100-fund
+2026-03-08 18:24:06,414 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for icici-blue-chip-fund
+2026-03-08 18:24:06,464 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for uti-flexi-cap-fund
+2026-03-08 18:24:06,496 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for mirae-asset-large-cap-fund
+2026-03-08 18:24:06,552 - ingestion.mf.sources.valueresearch_scraper - WARNING - VRO returned status 403 for axis-blue-chip-fund
+2026-03-08 18:24:06,552 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-08 18:24:06,552 - agents.base_agent - INFO - Initialized agent: india_vix_agent (category: risk, version: 1.0.0)
+2026-03-08 18:24:06,552 - agents.base_agent - INFO - Initialized agent: fno_agent (category: market_structure, version: 1.0.0)
+2026-03-08 18:24:06,552 - agents.base_agent - INFO - Initialized agent: nifty_sentiment_agent (category: sentiment, version: 1.0.0)
+2026-03-08 18:24:06,557 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-08 18:24:06,557 - __main__ - INFO - Quant Trading System shutdown complete
