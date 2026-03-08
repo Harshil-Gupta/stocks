@@ -46,6 +46,42 @@ from agents.technical.momentum_agent import MomentumAgent
 from agents.technical.trend_agent import TrendAgent
 from agents.technical.breakout_agent import BreakoutAgent
 from agents.technical.volume_agent import VolumeAgent
+from agents.technical.bollinger_agent import BollingerAgent
+from agents.technical.atr_agent import ATRAgent
+from agents.technical.support_resistance_agent import SupportResistanceAgent
+from agents.technical.volume_profile_agent import VolumeProfileAgent
+from agents.technical.ichimoku_agent import IchimokuAgent
+from agents.technical.williams_r_agent import WilliamsRAgent
+from agents.technical.cci_agent import CCIAgent
+from agents.technical.adx_agent import ADXAgent
+from agents.technical.obv_agent import OBVAgent
+from agents.technical.vwap_agent import VWAPAgent
+from agents.technical.mfi_agent import MFIAgent
+from agents.technical.keltner_agent import KeltnerAgent
+from agents.technical.donchian_agent import DonchianAgent
+from agents.fundamental.valuation_agent import ValuationAgent
+from agents.fundamental.dividend_agent import DividendAgent
+from agents.fundamental.balance_sheet_agent import BalanceSheetAgent
+from agents.fundamental.industry_comparison_agent import IndustryComparisonAgent
+from agents.fundamental.management_quality_agent import ManagementQualityAgent
+from agents.sentiment.insider_trading_agent import InsiderTradingAgent
+from agents.sentiment.social_sentiment_agent import SocialSentimentAgent
+from agents.risk.drawdown_agent import DrawdownAgent
+from agents.risk.correlation_risk_agent import CorrelationRiskAgent
+from agents.macro.interest_rate_agent import InterestRateAgent
+from agents.macro.inflation_agent import InflationAgent
+from agents.macro.gdp_agent import GDPAgent
+from agents.macro.sector_rotation_agent import SectorRotationAgent
+from agents.macro.currency_agent import CurrencyAgent
+from agents.macro.commodity_agent import CommodityAgent
+from agents.market_structure.options_flow_agent import OptionsFlowAgent
+from agents.market_structure.dark_pool_agent import DarkPoolAgent
+from agents.market_structure.order_imbalance_agent import OrderImbalanceAgent
+from agents.market_structure.put_call_ratio_agent import PutCallRatioAgent
+from agents.quant.mean_reversion_agent import MeanReversionAgent
+from agents.quant.stat_arb_agent import StatArbAgent
+from agents.quant.factor_model_agent import FactorModelAgent
+from agents.quant.pairs_trading_agent import PairsTradingAgent
 from agents.india.india_vix_agent import IndiaVIXAgent
 from agents.india.fno_agent import FNOAgent
 from agents.india.nifty_sentiment_agent import NiftySentimentAgent
@@ -131,7 +167,66 @@ class QuantTradingSystem:
             TrendAgent(config=agent_base_config),
             BreakoutAgent(config=agent_base_config),
             VolumeAgent(config=agent_base_config),
+            BollingerAgent(config=agent_base_config),
+            ATRAgent(config=agent_base_config),
+            SupportResistanceAgent(config=agent_base_config),
+            VolumeProfileAgent(config=agent_base_config),
+            IchimokuAgent(config=agent_base_config),
+            WilliamsRAgent(config=agent_base_config),
+            CCIAgent(config=agent_base_config),
+            ADXAgent(config=agent_base_config),
+            OBVAgent(config=agent_base_config),
+            VWAPAgent(config=agent_base_config),
+            MFIAgent(config=agent_base_config),
+            KeltnerAgent(config=agent_base_config),
+            DonchianAgent(config=agent_base_config),
         ]
+        
+        # Fundamental agents
+        self.agents.extend([
+            DividendAgent(config=agent_base_config),
+            BalanceSheetAgent(config=agent_base_config),
+            IndustryComparisonAgent(config=agent_base_config),
+            ManagementQualityAgent(config=agent_base_config),
+        ])
+        
+        # Sentiment agents
+        self.agents.extend([
+            InsiderTradingAgent(config=agent_base_config),
+            SocialSentimentAgent(config=agent_base_config),
+        ])
+        
+        # Risk agents
+        self.agents.extend([
+            DrawdownAgent(config=agent_base_config),
+            CorrelationRiskAgent(config=agent_base_config),
+        ])
+        
+        # Macro agents
+        self.agents.extend([
+            InterestRateAgent(config=agent_base_config),
+            InflationAgent(config=agent_base_config),
+            GDPAgent(config=agent_base_config),
+            SectorRotationAgent(config=agent_base_config),
+            CurrencyAgent(config=agent_base_config),
+            CommodityAgent(config=agent_base_config),
+        ])
+        
+        # Market Structure agents
+        self.agents.extend([
+            OptionsFlowAgent(config=agent_base_config),
+            DarkPoolAgent(config=agent_base_config),
+            OrderImbalanceAgent(config=agent_base_config),
+            PutCallRatioAgent(config=agent_base_config),
+        ])
+        
+        # Quant agents
+        self.agents.extend([
+            MeanReversionAgent(config=agent_base_config),
+            StatArbAgent(config=agent_base_config),
+            FactorModelAgent(config=agent_base_config),
+            PairsTradingAgent(config=agent_base_config),
+        ])
         
         # Add fundamental agents (CRISIL, Valuation)
         try:

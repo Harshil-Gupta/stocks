@@ -43,7 +43,7 @@ class AgentConfig:
     max_retries: int = 3
     retry_delay_seconds: float = 1.0
     enable_parallel: bool = True
-    max_workers: int = 4
+    max_workers: int = 16
 
 
 class AgentError(Exception):
