@@ -1,0 +1,40 @@
+# ML Meta Model Strategy Configuration
+# 
+# Strategy: ML-based signal aggregation
+# Uses trained meta model instead of rule-based weights
+
+name: ml_meta_strategy
+description: ML-based meta model for signal aggregation
+
+agents:
+  - rsi_agent
+  - macd_agent
+  - momentum_agent
+  - mean_reversion_agent
+  - sentiment_agent
+  - volatility_regime_agent
+  - stat_arb_agent
+
+use_ml_aggregation: true
+model_path: models/trained/meta_model_v1.pkl
+
+weights:
+  technical: 0.30
+  fundamental: 0.25
+  sentiment: 0.15
+  quant: 0.15
+  risk: 0.15
+
+thresholds:
+  buy: 0.60
+  sell: 0.40
+  min_confidence: 50
+
+regime_aware: true
+
+risk:
+  max_position_size: 0.25
+  stop_loss_pct: 0.05
+  take_profit_pct: 0.12
+  use_kelly_sizing: true
+  kelly_fraction: 0.25

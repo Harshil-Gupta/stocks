@@ -1,0 +1,331 @@
+[
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "ADANIPORTS",
+    "Action": "BUY",
+    "Qty": 5,
+    "Price": 1364.85
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "AEGISLOG",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 820.75
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "ALKYLAMINE",
+    "Action": "BUY",
+    "Qty": 4,
+    "Price": 2309.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "AXISBANK",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 1087.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "BAJAJHIND",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 31.16
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "BAJFINANCE",
+    "Action": "BUY",
+    "Qty": 10,
+    "Price": 704.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "BALAMINES",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 2227.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "BERGEPAINT",
+    "Action": "BUY",
+    "Qty": 69,
+    "Price": 481.68
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "BRIGADE",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 1256.3
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "CANBK",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 105.63
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "COALINDIA",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 389.55
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "DEEPAKNTR",
+    "Action": "BUY",
+    "Qty": 5,
+    "Price": 2015.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "DMART",
+    "Action": "BUY",
+    "Qty": 3,
+    "Price": 3727.35
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "DRAGARWQ",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 6517.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "EDELWEISS",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 126.73
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "FLUOROCHEM",
+    "Action": "BUY",
+    "Qty": 3,
+    "Price": 2910.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "GREAVESCOT",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 275.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "HDFCBANK",
+    "Action": "BUY",
+    "Qty": 58,
+    "Price": 760.41
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "HEROMOTOCO",
+    "Action": "BUY",
+    "Qty": 11,
+    "Price": 4951.53
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "HINDUNILVR",
+    "Action": "BUY",
+    "Qty": 4,
+    "Price": 2269.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "ICICIAMC",
+    "Action": "BUY",
+    "Qty": 10,
+    "Price": 2165.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "ICICIBANK",
+    "Action": "BUY",
+    "Qty": 14,
+    "Price": 1097.03
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "INFY",
+    "Action": "BUY",
+    "Qty": 5,
+    "Price": 1444.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "JIOFIN",
+    "Action": "BUY",
+    "Qty": 30,
+    "Price": 219.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "KNRCON",
+    "Action": "BUY",
+    "Qty": 175,
+    "Price": 278.43
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "KOTAKBANK",
+    "Action": "BUY",
+    "Qty": 90,
+    "Price": 338.89
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "KWIL",
+    "Action": "BUY",
+    "Qty": 4,
+    "Price": 43.34
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "LICI",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 905.35
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "LT",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 3773.75
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "MAFANG",
+    "Action": "BUY",
+    "Qty": 1330,
+    "Price": 110.3
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "MANAPPURAM",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 190.17
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "NAUKRI",
+    "Action": "BUY",
+    "Qty": 5,
+    "Price": 1783.79
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "NTPC",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 425.5
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "ONGC",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 286.3
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "PIIND",
+    "Action": "BUY",
+    "Qty": 3,
+    "Price": 3505.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "PNB",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 106.07
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "POLYCAB",
+    "Action": "BUY",
+    "Qty": 3,
+    "Price": 3993.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "PRESTIGE",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 1300.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "RELIANCE",
+    "Action": "BUY",
+    "Qty": 6,
+    "Price": 1193.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "SBCL",
+    "Action": "BUY",
+    "Qty": 15,
+    "Price": 537.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "SBIN",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 791.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "SJVN",
+    "Action": "BUY",
+    "Qty": 1,
+    "Price": 110.75
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "SONATSOFTW",
+    "Action": "BUY",
+    "Qty": 6,
+    "Price": 505.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "TENNIND",
+    "Action": "BUY",
+    "Qty": 37,
+    "Price": 397.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "TITAN",
+    "Action": "BUY",
+    "Qty": 4,
+    "Price": 3286.0
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "VBL",
+    "Action": "BUY",
+    "Qty": 27,
+    "Price": 437.32
+  },
+  {
+    "Time": "2026-03-10 09:15:00",
+    "Symbol": "WAAREEENER",
+    "Action": "BUY",
+    "Qty": 115,
+    "Price": 1848.94
+  }
+]

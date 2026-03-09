@@ -1495,3 +1495,925 @@
 2026-03-08 22:46:27,466 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
 2026-03-08 22:46:27,991 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
 2026-03-08 22:46:27,991 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-09 23:34:39,644 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-09 23:34:39,645 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-09 23:40:23,656 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-09 23:40:23,656 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-09 23:40:23,657 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-09 23:40:23,657 - __main__ - INFO - Added MF Holdings agent
+2026-03-09 23:40:23,657 - __main__ - INFO - Initialized 44 total agents
+2026-03-09 23:40:23,658 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-09 23:40:23,658 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-09 23:40:23,658 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-09 23:40:23,658 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-09 23:40:23,658 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-09 23:40:23,658 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-09 23:40:23,658 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-09 23:40:23,659 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-09 23:40:23,660 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-09 23:40:23,661 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-09 23:40:23,662 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-09 23:40:23,662 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-09 23:40:23,662 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-09 23:40:23,662 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-09 23:40:23,662 - __main__ - INFO - Initialized with 44 agents
+2026-03-09 23:40:23,662 - __main__ - INFO - Analyzing stock: TCS
+2026-03-09 23:40:24,402 - data.ingestion.india_data - INFO - Fetched 247 data points for TCS
+2026-03-09 23:40:24,865 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-09 23:40:25,063 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-09 23:40:26,920 - ingestion.mf.engine - INFO - Using simulated MF data for TCS
+2026-03-09 23:40:27,445 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-09 23:40:27,445 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-09 23:59:25,789 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-09 23:59:25,789 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-09 23:59:25,790 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-09 23:59:25,790 - __main__ - INFO - Added MF Holdings agent
+2026-03-09 23:59:25,790 - __main__ - INFO - Initialized 44 total agents
+2026-03-09 23:59:25,790 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-09 23:59:25,790 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-09 23:59:25,790 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-09 23:59:25,790 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-09 23:59:25,791 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-09 23:59:25,792 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-09 23:59:25,793 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-09 23:59:25,794 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-09 23:59:25,794 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-09 23:59:25,794 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-09 23:59:25,794 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-09 23:59:25,794 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-09 23:59:25,794 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-09 23:59:25,794 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-09 23:59:25,794 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-09 23:59:25,794 - __main__ - INFO - Initialized with 44 agents
+2026-03-09 23:59:25,794 - __main__ - INFO - Analyzing stock: TCS
+2026-03-09 23:59:26,441 - data.ingestion.india_data - INFO - Fetched 247 data points for TCS
+2026-03-09 23:59:26,847 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-09 23:59:27,017 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-09 23:59:27,757 - ingestion.mf.engine - INFO - Using simulated MF data for TCS
+2026-03-09 23:59:28,195 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-09 23:59:28,195 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 01:58:06,446 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 01:58:06,446 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 01:58:06,447 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 01:58:06,447 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 01:58:06,447 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 01:58:06,447 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 01:58:06,447 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 01:58:06,447 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 01:58:06,447 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 01:58:06,448 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 01:58:06,448 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 01:58:06,448 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 01:58:06,448 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-10 01:58:09,766 - data.ingestion.india_data - INFO - Fetched 247 data points for RELIANCE
+2026-03-10 01:58:10,144 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 01:58:10,345 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 01:58:11,216 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-10 01:58:11,661 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 01:58:11,662 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:00:11,048 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:00:11,048 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:00:11,049 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:00:11,049 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:00:11,049 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:00:11,051 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:00:11,051 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:00:11,051 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:00:11,051 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:00:11,052 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:00:11,053 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:00:11,054 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:00:11,054 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:00:11,055 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:00:11,055 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-10 02:00:12,333 - data.ingestion.india_data - INFO - Fetched 247 data points for RELIANCE
+2026-03-10 02:00:12,681 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:00:12,863 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:00:13,570 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-10 02:00:14,074 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:00:14,074 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:00:33,690 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:00:33,690 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:00:33,691 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:00:33,692 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:00:33,692 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:00:33,692 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:00:33,692 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:00:33,692 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:00:33,692 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:00:33,692 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:00:33,692 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:00:33,692 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:00:33,693 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:00:33,694 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:00:33,695 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:00:33,696 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:00:33,696 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:00:33,696 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:00:33,696 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:00:33,696 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:00:33,696 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-10 02:00:34,317 - data.ingestion.india_data - INFO - Fetched 247 data points for RELIANCE
+2026-03-10 02:00:34,711 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:00:34,911 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:00:35,619 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-10 02:00:36,072 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:00:36,072 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:00:54,037 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:00:54,037 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:00:54,038 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:00:54,039 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:00:54,039 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:00:54,039 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:00:54,039 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:00:54,039 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:00:54,039 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:00:54,039 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:00:54,039 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:00:54,039 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:00:54,039 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:00:54,039 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:00:54,040 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:00:54,041 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:00:54,042 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:00:54,042 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:00:54,042 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:00:54,044 - __main__ - INFO - Analyzing stock: TCS
+2026-03-10 02:00:54,682 - data.ingestion.india_data - INFO - Fetched 247 data points for TCS
+2026-03-10 02:00:55,076 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:00:55,248 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:00:55,916 - ingestion.mf.engine - INFO - Using simulated MF data for TCS
+2026-03-10 02:00:56,363 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:00:56,363 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:01:18,903 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:01:18,903 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:01:18,905 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:01:18,907 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:01:18,907 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:01:18,908 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:01:18,908 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:01:18,908 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:01:18,908 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:01:18,908 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:01:18,908 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:01:18,908 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:01:18,908 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:01:18,908 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:01:18,909 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:01:18,909 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:01:18,909 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:01:18,909 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:01:18,909 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:01:18,910 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:01:18,910 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:01:18,910 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:01:18,911 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:01:18,911 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:01:18,911 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:01:18,911 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:01:18,912 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:01:18,912 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:01:18,912 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:01:18,912 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:01:18,912 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:01:18,912 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:01:18,912 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:01:18,913 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:01:18,913 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:01:18,913 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:01:18,913 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:01:18,913 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:01:18,913 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:01:18,913 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:01:18,914 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:01:18,914 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:01:18,914 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:01:18,914 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:01:18,914 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:01:18,915 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:01:18,915 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:01:18,915 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:01:18,915 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:01:18,915 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:01:18,916 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:01:18,916 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:01:18,916 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:01:18,916 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:01:18,916 - __main__ - INFO - Analyzing stock: HDFCBANK
+2026-03-10 02:01:19,513 - data.ingestion.india_data - INFO - Fetched 247 data points for HDFCBANK
+2026-03-10 02:01:19,874 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:01:20,076 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:01:21,012 - ingestion.mf.engine - INFO - Using simulated MF data for HDFCBANK
+2026-03-10 02:01:21,541 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:01:21,541 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:03:19,745 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:03:19,745 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:03:19,745 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:03:19,745 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:03:19,745 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:03:19,745 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:03:19,745 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:03:19,745 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:03:19,745 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:03:19,745 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:03:19,746 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:03:19,747 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:03:19,747 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:03:19,747 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:03:19,747 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-10 02:03:20,373 - data.ingestion.india_data - INFO - Fetched 247 data points for RELIANCE
+2026-03-10 02:03:20,715 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:03:20,926 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:03:21,874 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-10 02:03:22,320 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:03:22,320 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:03:32,082 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:03:32,082 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:03:32,082 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:03:32,082 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:03:32,082 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:03:32,082 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:03:32,083 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:03:32,083 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:03:32,083 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:03:32,084 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:03:32,084 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:03:32,084 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:03:32,084 - __main__ - INFO - Analyzing stock: TCS
+2026-03-10 02:03:32,695 - data.ingestion.india_data - INFO - Fetched 247 data points for TCS
+2026-03-10 02:03:33,043 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:03:33,225 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:03:33,232 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:03:33,232 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:03:33,233 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:03:33,233 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:03:33,233 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:03:33,233 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:03:33,233 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:03:33,233 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:03:33,233 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:03:33,234 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:03:33,234 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:03:33,234 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:03:33,234 - __main__ - INFO - Analyzing stock: HDFCBANK
+2026-03-10 02:03:33,339 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:03:33,339 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:03:33,339 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:03:33,339 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:03:33,339 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:03:33,339 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:03:33,339 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:03:33,339 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:03:33,339 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:03:33,340 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:03:33,340 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:03:33,340 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:03:33,340 - __main__ - INFO - Analyzing stock: INFY
+2026-03-10 02:03:33,902 - data.ingestion.india_data - INFO - Fetched 247 data points for INFY
+2026-03-10 02:03:34,072 - ingestion.mf.engine - INFO - Using simulated MF data for TCS
+2026-03-10 02:03:34,293 - data.ingestion.india_data - INFO - Fetched 247 data points for HDFCBANK
+2026-03-10 02:03:34,348 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:03:34,527 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:03:34,527 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:03:34,550 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:03:34,662 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:03:34,831 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:03:35,458 - ingestion.mf.engine - INFO - Using simulated MF data for INFY
+2026-03-10 02:03:35,676 - ingestion.mf.engine - INFO - Using simulated MF data for HDFCBANK
+2026-03-10 02:03:35,933 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:03:35,934 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:03:36,140 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:03:36,140 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:04:00,130 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:04:00,130 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:04:00,131 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:04:00,131 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:04:00,131 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:04:00,131 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:04:00,131 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:04:00,131 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:04:00,131 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:04:00,132 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:04:00,133 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:04:00,133 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:04:00,133 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:04:00,133 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:04:00,133 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:04:00,133 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:04:00,133 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:04:00,133 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:04:00,133 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:04:00,133 - __main__ - INFO - Running backtest: ['RELIANCE', 'TCS', 'HDFCBANK', 'INFY'] from 2025-01-01 to 2026-03-10
+2026-03-10 02:04:00,777 - data.ingestion.india_data - INFO - Fetched 494 data points for RELIANCE
+2026-03-10 02:04:00,803 - __main__ - INFO - Loaded 494 days of data for RELIANCE
+2026-03-10 02:04:01,027 - data.ingestion.india_data - INFO - Fetched 494 data points for TCS
+2026-03-10 02:04:01,051 - __main__ - INFO - Loaded 494 days of data for TCS
+2026-03-10 02:04:01,368 - data.ingestion.india_data - INFO - Fetched 494 data points for HDFCBANK
+2026-03-10 02:04:01,389 - __main__ - INFO - Loaded 494 days of data for HDFCBANK
+2026-03-10 02:04:01,652 - data.ingestion.india_data - INFO - Fetched 494 data points for INFY
+2026-03-10 02:04:01,674 - __main__ - INFO - Loaded 494 days of data for INFY
+2026-03-10 02:04:01,674 - backtesting.engine - INFO - Starting backtest: 4 symbols, 44 agents, 2025-01-01 to 2026-03-10
+2026-03-10 02:04:59,679 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:04:59,679 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:28:43,815 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:28:43,816 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:28:43,816 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:28:43,816 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:28:43,816 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:28:43,816 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:28:43,816 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:28:43,817 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:28:43,817 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:28:43,818 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:28:43,818 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:28:43,818 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:28:43,818 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-10 02:28:44,683 - data.ingestion.india_data - INFO - Fetched 247 data points for RELIANCE
+2026-03-10 02:28:45,053 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:28:45,266 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:28:45,975 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-10 02:28:46,638 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:28:46,638 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:33:46,768 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:33:46,768 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:33:46,770 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:33:46,770 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:33:46,770 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:33:46,770 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:33:46,770 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:33:46,770 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:33:46,770 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:33:46,771 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:33:46,772 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:33:46,772 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:33:46,772 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:33:46,772 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:33:46,772 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:33:46,772 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:33:46,772 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:33:46,773 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:33:46,774 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:33:46,775 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:33:46,776 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:33:46,776 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:33:46,776 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:33:46,776 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-10 02:33:47,418 - data.ingestion.india_data - INFO - Fetched 247 data points for RELIANCE
+2026-03-10 02:33:47,771 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:33:47,988 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:33:48,638 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-10 02:33:49,087 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:33:49,087 - __main__ - INFO - Quant Trading System shutdown complete
+2026-03-10 02:39:47,801 - __main__ - INFO - Initializing Quant Trading System...
+2026-03-10 02:39:47,803 - __main__ - WARNING - No API keys found, using mock data source
+2026-03-10 02:39:47,803 - __main__ - INFO - Added CRISIL and Valuation agents
+2026-03-10 02:39:47,803 - __main__ - INFO - Added MF Holdings agent
+2026-03-10 02:39:47,803 - __main__ - INFO - Initialized 44 total agents
+2026-03-10 02:39:47,803 - orchestration.dispatcher - INFO - Using ThreadPoolExecutor with 32 workers
+2026-03-10 02:39:47,803 - orchestration.dispatcher - INFO - AgentDispatcher initialized with backend: threadpool
+2026-03-10 02:39:47,803 - __main__ - INFO - Dispatcher created: AgentDispatcher(backend=threadpool, agents=0)
+2026-03-10 02:39:47,803 - agents.base_agent - INFO - Registered agent: rsi_agent
+2026-03-10 02:39:47,803 - agents.base_agent - INFO - Registered agent: macd_agent
+2026-03-10 02:39:47,803 - agents.base_agent - INFO - Registered agent: momentum_agent
+2026-03-10 02:39:47,803 - agents.base_agent - INFO - Registered agent: trend_agent
+2026-03-10 02:39:47,803 - agents.base_agent - INFO - Registered agent: breakout_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: volume_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: bollinger_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: atr_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: support_resistance_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: volume_profile_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: ichimoku_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: williams_r_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: cci_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: adx_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: obv_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: vwap_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: mfi_agent
+2026-03-10 02:39:47,804 - agents.base_agent - INFO - Registered agent: keltner_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: donchian_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: dividend_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: balance_sheet_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: industry_comparison_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: management_quality_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: insider_trading_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: social_sentiment_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: drawdown_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: correlation_risk_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: interest_rate_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: inflation_agent
+2026-03-10 02:39:47,805 - agents.base_agent - INFO - Registered agent: gdp_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: sector_rotation_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: currency_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: commodity_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: options_flow_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: dark_pool_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: order_imbalance_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: put_call_ratio_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: mean_reversion_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: stat_arb_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: factor_model_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: pairs_trading_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: crisil_analysis_agent
+2026-03-10 02:39:47,806 - agents.base_agent - INFO - Registered agent: valuation_agent
+2026-03-10 02:39:47,807 - agents.base_agent - INFO - Registered agent: mf_holdings_agent
+2026-03-10 02:39:47,807 - __main__ - INFO - Dispatcher initialized with 44 agents
+2026-03-10 02:39:47,807 - __main__ - INFO - Initialized with 44 agents
+2026-03-10 02:39:47,807 - __main__ - INFO - Analyzing stock: RELIANCE
+2026-03-10 02:39:48,433 - data.ingestion.india_data - INFO - Fetched 247 data points for RELIANCE
+2026-03-10 02:39:48,847 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY 50
+2026-03-10 02:39:49,005 - data.ingestion.india_data - INFO - Fetched 60 data points for NIFTY BANK
+2026-03-10 02:39:49,675 - ingestion.mf.engine - INFO - Using simulated MF data for RELIANCE
+2026-03-10 02:39:50,125 - orchestration.dispatcher - INFO - AgentDispatcher shutdown complete
+2026-03-10 02:39:50,125 - __main__ - INFO - Quant Trading System shutdown complete

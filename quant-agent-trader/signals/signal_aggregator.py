@@ -1,7 +1,7 @@
 """
 Signal Aggregator Engine - Multi-agent signal aggregation system.
 Aggregates signals from multiple agents using weighted ensemble logic
-with regime-based weight adjustments.
+with regime-based weight adjustments and explainability.
 """
 
 from typing import List, Dict, Optional, Tuple
@@ -10,6 +10,17 @@ from datetime import datetime
 
 from signals.signal_schema import AgentSignal, AggregatedSignal
 from config.settings import REGIME_WEIGHTS, config
+
+
+@dataclass
+class SignalExplanation:
+    """Explanation for an aggregated signal decision."""
+    decision: str
+    confidence: float
+    supporting_signals: List[Dict]
+    conflicting_signals: List[Dict]
+    category_breakdown: Dict[str, Dict]
+    reasoning: str
 
 
 @dataclass
@@ -366,6 +377,130 @@ class SignalAggregator:
                 )
         
         return breakdown
+    
+    def explain(
+        self,
+        signals: List[AgentSignal],
+        regime: str = "sideways",
+        stock_symbol: str = "UNKNOWN"
+    ) -> SignalExplanation:
+        """
+        Generate detailed explanation for signal decision.
+        
+        Args:
+            signals: List of agent signals
+            regime: Current market regime
+            stock_symbol: Stock symbol
+            
+        Returns:
+            SignalExplanation with detailed reasoning
+        """
+        if not signals:
+            return SignalExplanation(
+                decision="hold",
+                confidence=0.0,
+                supporting_signals=[],
+                conflicting_signals=[],
+                category_breakdown={},
+                reasoning="No signals provided"
+            )
+        
+        weights = self._get_regime_weights(regime)
+        breakdown = self.get_weight_breakdown(signals, regime)
+        
+        supporting = []
+        conflicting = []
+        
+        for signal in signals:
+            signal_info = {
+                "agent": signal.agent_name,
+                "category": signal.agent_category,
+                "signal": signal.signal,
+                "confidence": signal.confidence,
+                "score": signal.numerical_score,
+                "reasoning": signal.reasoning
+            }
+            
+            if signal.signal.lower() == "buy":
+                supporting.append(signal_info)
+            elif signal.signal.lower() == "sell":
+                conflicting.append(signal_info)
+        
+        decision = self._score_to_decision(
+            self._normalize_score(
+                self._apply_weights(signals, weights)
+            )
+        )
+        
+        consensus = self._detect_consensus(signals)
+        confidence = self._calculate_confidence(signals, consensus)
+        
+        reasoning = self._generate_reasoning(
+            decision=decision,
+            supporting=supporting,
+            conflicting=conflicting,
+            breakdown=breakdown,
+            regime=regime
+        )
+        
+        return SignalExplanation(
+            decision=decision,
+            confidence=confidence,
+            supporting_signals=supporting,
+            conflicting_signals=conflicting,
+            category_breakdown=breakdown,
+            reasoning=reasoning
+        )
+    
+    def _generate_reasoning(
+        self,
+        decision: str,
+        supporting: List[Dict],
+        conflicting: List[Dict],
+        breakdown: Dict,
+        regime: str
+    ) -> str:
+        """Generate human-readable reasoning."""
+        reasons = []
+        
+        if decision == "buy":
+            if supporting:
+                top_signals = sorted(
+                    supporting, 
+                    key=lambda x: x["confidence"], 
+                    reverse=True
+                )[:3]
+                names = [s["agent"].replace("_agent", "") for s in top_signals]
+                reasons.append(f"Buy signals from: {', '.join(names)}")
+            
+            if breakdown:
+                top_cats = sorted(
+                    breakdown.items(),
+                    key=lambda x: x[1].get("contribution", 0),
+                    reverse=True
+                )[:2]
+                cat_names = [c[0] for c in top_cats]
+                reasons.append(f"Strong categories: {', '.join(cat_names)}")
+        
+        elif decision == "sell":
+            if conflicting:
+                top_signals = sorted(
+                    conflicting,
+                    key=lambda x: x["confidence"],
+                    reverse=True
+                )[:3]
+                names = [s["agent"].replace("_agent", "") for s in top_signals]
+                reasons.append(f"Sell signals from: {', '.join(names)}")
+        
+        else:
+            reasons.append("Mixed signals from agents")
+            if breakdown:
+                reasons.append(f"No clear consensus in: {', '.join(breakdown.keys())}")
+        
+        if regime != "sideways":
+            reasons.append(f"Market regime: {regime}")
+        
+        return ". ".join(reasons)
 
 
 def aggregate_signals(

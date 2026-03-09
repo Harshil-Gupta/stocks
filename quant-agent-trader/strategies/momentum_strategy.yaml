@@ -1,0 +1,43 @@
+# Momentum Strategy Configuration
+# 
+# Strategy: Pure momentum following
+# Agents: RSI, MACD, Momentum, Trend
+# Weights: Momentum-focused
+
+name: momentum_strategy
+description: Pure momentum strategy focusing on trend-following agents
+
+agents:
+  - rsi_agent
+  - macd_agent
+  - momentum_agent
+  - trend_agent
+  - breakout_agent
+  - adx_agent
+
+weights:
+  technical: 0.80
+  fundamental: 0.05
+  sentiment: 0.10
+  macro: 0.05
+
+thresholds:
+  buy: 0.65
+  sell: 0.35
+  min_confidence: 60
+
+regime_adjustments:
+  bull:
+    momentum_weight: 1.5
+    min_confidence: 50
+  bear:
+    momentum_weight: 0.5
+    min_confidence: 70
+  sideways:
+    momentum_weight: 0.8
+    min_confidence: 65
+
+risk:
+  max_position_size: 0.20
+  stop_loss_pct: 0.05
+  take_profit_pct: 0.15

@@ -1,0 +1,378 @@
+[
+  {
+    "Symbol": "ADANIPORTS",
+    "Qty": 5,
+    "Entry": 1364.85,
+    "LTP": 1421.3,
+    "P&L": "Rs.282",
+    "P&L%": "+4.14%"
+  },
+  {
+    "Symbol": "AEGISLOG",
+    "Qty": 1,
+    "Entry": 820.75,
+    "LTP": 652.95,
+    "P&L": "Rs.-168",
+    "P&L%": "-20.44%"
+  },
+  {
+    "Symbol": "ALKYLAMINE",
+    "Qty": 4,
+    "Entry": 2309.0,
+    "LTP": 1306.7,
+    "P&L": "Rs.-4,009",
+    "P&L%": "-43.41%"
+  },
+  {
+    "Symbol": "AXISBANK",
+    "Qty": 1,
+    "Entry": 1087.0,
+    "LTP": 1288.35,
+    "P&L": "Rs.201",
+    "P&L%": "+18.52%"
+  },
+  {
+    "Symbol": "BAJAJHIND",
+    "Qty": 1,
+    "Entry": 31.16,
+    "LTP": 16.41,
+    "P&L": "Rs.-15",
+    "P&L%": "-47.34%"
+  },
+  {
+    "Symbol": "BAJFINANCE",
+    "Qty": 10,
+    "Entry": 704.0,
+    "LTP": 938.05,
+    "P&L": "Rs.2,340",
+    "P&L%": "+33.25%"
+  },
+  {
+    "Symbol": "BALAMINES",
+    "Qty": 1,
+    "Entry": 2227.0,
+    "LTP": 1003.7,
+    "P&L": "Rs.-1,223",
+    "P&L%": "-54.93%"
+  },
+  {
+    "Symbol": "BERGEPAINT",
+    "Qty": 69,
+    "Entry": 481.68,
+    "LTP": 434.35,
+    "P&L": "Rs.-3,266",
+    "P&L%": "-9.83%"
+  },
+  {
+    "Symbol": "BRIGADE",
+    "Qty": 1,
+    "Entry": 1256.3,
+    "LTP": 662.1,
+    "P&L": "Rs.-594",
+    "P&L%": "-47.3%"
+  },
+  {
+    "Symbol": "CANBK",
+    "Qty": 1,
+    "Entry": 105.63,
+    "LTP": 139.91,
+    "P&L": "Rs.34",
+    "P&L%": "+32.45%"
+  },
+  {
+    "Symbol": "COALINDIA",
+    "Qty": 1,
+    "Entry": 389.55,
+    "LTP": 437.65,
+    "P&L": "Rs.48",
+    "P&L%": "+12.35%"
+  },
+  {
+    "Symbol": "DEEPAKNTR",
+    "Qty": 5,
+    "Entry": 2015.0,
+    "LTP": 1478.0,
+    "P&L": "Rs.-2,685",
+    "P&L%": "-26.65%"
+  },
+  {
+    "Symbol": "DMART",
+    "Qty": 3,
+    "Entry": 3727.35,
+    "LTP": 3965.7,
+    "P&L": "Rs.715",
+    "P&L%": "+6.39%"
+  },
+  {
+    "Symbol": "DRAGARWQ",
+    "Qty": 1,
+    "Entry": 6517.0,
+    "LTP": 4500.0,
+    "P&L": "Rs.-2,017",
+    "P&L%": "-30.95%"
+  },
+  {
+    "Symbol": "EDELWEISS",
+    "Qty": 1,
+    "Entry": 126.73,
+    "LTP": 105.6,
+    "P&L": "Rs.-21",
+    "P&L%": "-16.67%"
+  },
+  {
+    "Symbol": "FLUOROCHEM",
+    "Qty": 3,
+    "Entry": 2910.0,
+    "LTP": 3289.7,
+    "P&L": "Rs.1,139",
+    "P&L%": "+13.05%"
+  },
+  {
+    "Symbol": "GREAVESCOT",
+    "Qty": 1,
+    "Entry": 275.0,
+    "LTP": 147.94,
+    "P&L": "Rs.-127",
+    "P&L%": "-46.2%"
+  },
+  {
+    "Symbol": "HDFCBANK",
+    "Qty": 58,
+    "Entry": 760.41,
+    "LTP": 839.2,
+    "P&L": "Rs.4,570",
+    "P&L%": "+10.36%"
+  },
+  {
+    "Symbol": "HEROMOTOCO",
+    "Qty": 11,
+    "Entry": 4951.53,
+    "LTP": 5480.0,
+    "P&L": "Rs.5,813",
+    "P&L%": "+10.67%"
+  },
+  {
+    "Symbol": "HINDUNILVR",
+    "Qty": 4,
+    "Entry": 2269.0,
+    "LTP": 2194.0,
+    "P&L": "Rs.-300",
+    "P&L%": "-3.31%"
+  },
+  {
+    "Symbol": "ICICIAMC",
+    "Qty": 10,
+    "Entry": 2165.0,
+    "LTP": 2907.0,
+    "P&L": "Rs.7,420",
+    "P&L%": "+34.27%"
+  },
+  {
+    "Symbol": "ICICIBANK",
+    "Qty": 14,
+    "Entry": 1097.03,
+    "LTP": 1278.4,
+    "P&L": "Rs.2,539",
+    "P&L%": "+16.53%"
+  },
+  {
+    "Symbol": "INFY",
+    "Qty": 5,
+    "Entry": 1444.0,
+    "LTP": 1315.0,
+    "P&L": "Rs.-645",
+    "P&L%": "-8.93%"
+  },
+  {
+    "Symbol": "JIOFIN",
+    "Qty": 30,
+    "Entry": 219.0,
+    "LTP": 232.2,
+    "P&L": "Rs.396",
+    "P&L%": "+6.03%"
+  },
+  {
+    "Symbol": "KNRCON",
+    "Qty": 175,
+    "Entry": 278.43,
+    "LTP": 120.52,
+    "P&L": "Rs.-27,634",
+    "P&L%": "-56.71%"
+  },
+  {
+    "Symbol": "KOTAKBANK",
+    "Qty": 90,
+    "Entry": 338.89,
+    "LTP": 386.05,
+    "P&L": "Rs.4,244",
+    "P&L%": "+13.92%"
+  },
+  {
+    "Symbol": "KWIL",
+    "Qty": 4,
+    "Entry": 43.34,
+    "LTP": 25.45,
+    "P&L": "Rs.-72",
+    "P&L%": "-41.28%"
+  },
+  {
+    "Symbol": "LICI",
+    "Qty": 1,
+    "Entry": 905.35,
+    "LTP": 805.15,
+    "P&L": "Rs.-100",
+    "P&L%": "-11.07%"
+  },
+  {
+    "Symbol": "LT",
+    "Qty": 1,
+    "Entry": 3773.75,
+    "LTP": 3842.1,
+    "P&L": "Rs.68",
+    "P&L%": "+1.81%"
+  },
+  {
+    "Symbol": "MAFANG",
+    "Qty": 1330,
+    "Entry": 110.3,
+    "LTP": 161.32,
+    "P&L": "Rs.67,857",
+    "P&L%": "+46.26%"
+  },
+  {
+    "Symbol": "MANAPPURAM",
+    "Qty": 1,
+    "Entry": 190.17,
+    "LTP": 257.75,
+    "P&L": "Rs.68",
+    "P&L%": "+35.54%"
+  },
+  {
+    "Symbol": "NAUKRI",
+    "Qty": 5,
+    "Entry": 1783.79,
+    "LTP": 979.3,
+    "P&L": "Rs.-4,022",
+    "P&L%": "-45.1%"
+  },
+  {
+    "Symbol": "NTPC",
+    "Qty": 1,
+    "Entry": 425.5,
+    "LTP": 376.25,
+    "P&L": "Rs.-49",
+    "P&L%": "-11.57%"
+  },
+  {
+    "Symbol": "ONGC",
+    "Qty": 1,
+    "Entry": 286.3,
+    "LTP": 270.8,
+    "P&L": "Rs.-16",
+    "P&L%": "-5.41%"
+  },
+  {
+    "Symbol": "PIIND",
+    "Qty": 3,
+    "Entry": 3505.0,
+    "LTP": 3033.2,
+    "P&L": "Rs.-1,415",
+    "P&L%": "-13.46%"
+  },
+  {
+    "Symbol": "PNB",
+    "Qty": 1,
+    "Entry": 106.07,
+    "LTP": 115.07,
+    "P&L": "Rs.9",
+    "P&L%": "+8.48%"
+  },
+  {
+    "Symbol": "POLYCAB",
+    "Qty": 3,
+    "Entry": 3993.0,
+    "LTP": 8228.5,
+    "P&L": "Rs.12,706",
+    "P&L%": "+106.07%"
+  },
+  {
+    "Symbol": "PRESTIGE",
+    "Qty": 1,
+    "Entry": 1300.0,
+    "LTP": 1304.6,
+    "P&L": "Rs.5",
+    "P&L%": "+0.35%"
+  },
+  {
+    "Symbol": "RELIANCE",
+    "Qty": 6,
+    "Entry": 1193.0,
+    "LTP": 1424.45,
+    "P&L": "Rs.1,389",
+    "P&L%": "+19.4%"
+  },
+  {
+    "Symbol": "SBCL",
+    "Qty": 15,
+    "Entry": 537.0,
+    "LTP": 413.3,
+    "P&L": "Rs.-1,856",
+    "P&L%": "-23.04%"
+  },
+  {
+    "Symbol": "SBIN",
+    "Qty": 1,
+    "Entry": 791.0,
+    "LTP": 1098.7,
+    "P&L": "Rs.308",
+    "P&L%": "+38.9%"
+  },
+  {
+    "Symbol": "SJVN",
+    "Qty": 1,
+    "Entry": 110.75,
+    "LTP": 69.0,
+    "P&L": "Rs.-42",
+    "P&L%": "-37.7%"
+  },
+  {
+    "Symbol": "SONATSOFTW",
+    "Qty": 6,
+    "Entry": 505.0,
+    "LTP": 247.4,
+    "P&L": "Rs.-1,546",
+    "P&L%": "-51.01%"
+  },
+  {
+    "Symbol": "TENNIND",
+    "Qty": 37,
+    "Entry": 397.0,
+    "LTP": 521.9,
+    "P&L": "Rs.4,621",
+    "P&L%": "+31.46%"
+  },
+  {
+    "Symbol": "TITAN",
+    "Qty": 4,
+    "Entry": 3286.0,
+    "LTP": 4159.2,
+    "P&L": "Rs.3,493",
+    "P&L%": "+26.57%"
+  },
+  {
+    "Symbol": "VBL",
+    "Qty": 27,
+    "Entry": 437.32,
+    "LTP": 437.75,
+    "P&L": "Rs.12",
+    "P&L%": "+0.1%"
+  },
+  {
+    "Symbol": "WAAREEENER",
+    "Qty": 115,
+    "Entry": 1848.94,
+    "LTP": 2598.3,
+    "P&L": "Rs.86,176",
+    "P&L%": "+40.53%"
+  }
+]

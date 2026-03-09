@@ -1,0 +1,40 @@
+# Mean Reversion Strategy Configuration
+# 
+# Strategy: Buy oversold, sell overbought
+# Agents: RSI, Bollinger, Mean Reversion
+# Weights: Mean reversion-focused
+
+name: mean_reversion_strategy
+description: Mean reversion strategy focusing on oversold/overbought signals
+
+agents:
+  - rsi_agent
+  - bollinger_agent
+  - mean_reversion_agent
+  - stochastic_agent
+  - williams_r_agent
+  - mfi_agent
+
+weights:
+  technical: 0.70
+  fundamental: 0.05
+  sentiment: 0.15
+  quant: 0.10
+
+thresholds:
+  buy: 0.60
+  sell: 0.40
+  min_confidence: 55
+
+regime_adjustments:
+  bull:
+    rsi_oversold_threshold: 25
+  bear:
+    rsi_oversold_threshold: 35
+  sideways:
+    rsi_oversold_threshold: 30
+
+risk:
+  max_position_size: 0.15
+  stop_loss_pct: 0.03
+  take_profit_pct: 0.08

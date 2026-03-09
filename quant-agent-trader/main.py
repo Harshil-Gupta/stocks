@@ -17,9 +17,11 @@ import sys
 import os
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
-
+from dotenv import load_dotenv
 import pandas as pd
 import numpy as np
+
+load_dotenv()
 
 from config.settings import (
     config as system_config,
@@ -1024,6 +1026,22 @@ def print_live_results(results: Dict[str, Any]) -> None:
 
 
 async def main_async(args: argparse.Namespace) -> None:
+    # Check for holdings CSV before any computation
+    from data.import_portfolio import check_holdings_exists, get_holdings_path
+    
+    if not check_holdings_exists():
+        holdings_path = get_holdings_path()
+        print("="*60)
+        print("ERROR: Holdings CSV not found!")
+        print("="*60)
+        print(f"\nRequired file: {holdings_path}")
+        print("\nPlease export your holdings from your broker (Zerodha/Upstox)")
+        print("and save as holdings.csv at the above path.")
+        print("\nAlternatively, update HOLDINGS_CSV_PATH in .env file")
+        print("\nAborting - no computation will be performed without holdings data.")
+        print("="*60)
+        sys.exit(1)
+    
     system = QuantTradingSystem()
     
     try:

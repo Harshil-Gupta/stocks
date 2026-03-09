@@ -7,7 +7,9 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
+load_dotenv()
 # Get optimal worker count based on CPU cores
 def _get_optimal_workers() -> int:
     """Get optimal worker count based on CPU cores."""
@@ -70,6 +72,9 @@ class PortfolioConfig:
     max_portfolio_stocks: int = 20
     rebalance_threshold: float = 0.15
     risk_per_trade: float = 0.02  # 2% risk per trade
+    holdings_csv_path: str = os.getenv("HOLDINGS_CSV_PATH", "C:\\Users\\Harshil\\Desktop\\holdings.csv")
+    trades_csv_path: str = os.getenv("TRADES_CSV_PATH", "C:\\Users\\Harshil\\Desktop\\trades.csv")
+    daily_holdings_dir: str = os.getenv("DAILY_HOLDINGS_DIR", "data/daily_holdings")
 
 
 @dataclass

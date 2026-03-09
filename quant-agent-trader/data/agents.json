@@ -1,0 +1,7 @@
+[
+  {"Category": "Technical", "Agents": 18, "Avg Accuracy": 62, "Signal %": 45},
+  {"Category": "Fundamental", "Agents": 8, "Avg Accuracy": 58, "Signal %": 25},
+  {"Category": "Sentiment", "Agents": 4, "Avg Accuracy": 55, "Signal %": 15},
+  {"Category": "Macro", "Agents": 6, "Avg Accuracy": 52, "Signal %": 10},
+  {"Category": "Risk", "Agents": 5, "Avg Accuracy": 48, "Signal %": 5}
+]
