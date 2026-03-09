@@ -110,7 +110,7 @@ class BatchDispatchResult:
 @dataclass
 class DispatcherConfig:
     """Configuration for agent dispatcher."""
-    max_workers: int = 8
+    max_workers: int = 16
     timeout_seconds: float = 30.0
     enable_ray: bool = True
     ray_address: Optional[str] = None

@@ -44,7 +44,7 @@ class AgentDispatcher:
     def __init__(
         self,
         default_timeout: float = 30.0,
-        max_workers: int = 4
+        max_workers: int = 16
     ) -> None:
         """
         Initialize the agent dispatcher.

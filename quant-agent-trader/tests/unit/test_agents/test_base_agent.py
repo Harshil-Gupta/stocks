@@ -99,7 +99,7 @@ class TestAgentConfig:
         assert config.timeout_seconds == 30
         assert config.max_retries == 3
         assert config.enable_parallel is True
-        assert config.max_workers == 4
+        assert config.max_workers == 16
     
     def test_custom_values(self):
         """Test custom config values."""

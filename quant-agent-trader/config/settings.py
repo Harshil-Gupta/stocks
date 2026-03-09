@@ -14,10 +14,10 @@ def _get_optimal_workers() -> int:
     try:
         import multiprocessing
         cpu_count = os.cpu_count() or 4
-        # Optimal: min(cpu_count * 2, 16) for CPU-bound tasks
-        return min(cpu_count * 2, 16)
+        # Optimal: min(cpu_count * 2, 32) for CPU-bound tasks - increased for more agents
+        return min(cpu_count * 2, 32)
     except Exception:
-        return 8
+        return 16
 
 # Project root
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -280,7 +280,9 @@ AGENT_CATEGORIES = {
     "technical": [
         "rsi_agent", "macd_agent", "momentum_agent", "trend_agent",
         "moving_average_agent", "breakout_agent", "support_resistance_agent",
-        "bollinger_agent", "atr_agent", "volume_profile_agent"
+        "bollinger_agent", "atr_agent", "volume_profile_agent",
+        "ichimoku_agent", "williams_r_agent", "cci_agent", "adx_agent",
+        "obv_agent", "vwap_agent", "mfi_agent", "keltner_agent", "donchian_agent"
     ],
     "fundamental": [
         "valuation_agent", "earnings_agent", "cashflow_agent",

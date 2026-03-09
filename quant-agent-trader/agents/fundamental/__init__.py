@@ -6,16 +6,28 @@ This package contains agents for fundamental analysis including:
 - EarningsAgent: Analyzes EPS growth, revenue growth, earnings beats
 - CashflowAgent: Analyzes FCF, OCF, FCF yield
 - GrowthAgent: Analyzes revenue growth, earnings growth, PEG ratio
+- DividendAgent: Analyzes dividend yield, payout ratio, dividend growth
+- BalanceSheetAgent: Analyzes debt, assets, equity
+- IndustryComparisonAgent: Compares against industry peers
+- ManagementQualityAgent: Analyzes management effectiveness
 """
 
 from agents.fundamental.valuation_agent import ValuationAgent
 from agents.fundamental.earnings_agent import EarningsAgent
 from agents.fundamental.cashflow_agent import CashflowAgent
 from agents.fundamental.growth_agent import GrowthAgent
+from agents.fundamental.dividend_agent import DividendAgent
+from agents.fundamental.balance_sheet_agent import BalanceSheetAgent
+from agents.fundamental.industry_comparison_agent import IndustryComparisonAgent
+from agents.fundamental.management_quality_agent import ManagementQualityAgent
 
 __all__ = [
     "ValuationAgent",
     "EarningsAgent",
     "CashflowAgent",
     "GrowthAgent",
+    "DividendAgent",
+    "BalanceSheetAgent",
+    "IndustryComparisonAgent",
+    "ManagementQualityAgent",
 ]
