@@ -169,7 +169,10 @@ class SignalAggregator:
 
             numerical = signal.numerical_score
             confidence_factor = signal.confidence / 100.0
-            weighted_signal = numerical * confidence_factor
+            # Increase confidence weight for more decisive signals
+            weighted_signal = numerical * (
+                confidence_factor**0.5
+            )  # Square root reduces the damping effect
             category_scores[category].append(weighted_signal)
 
         weighted_sum = 0.0
@@ -186,6 +189,17 @@ class SignalAggregator:
             normalized_weighted = weighted_sum / total_weight_used
         else:
             normalized_weighted = 0.0
+
+        # Add bias to push towards BUY or SELL
+        # This helps break the HOLD deadlock when signals are balanced
+        # Use supporting vs conflicting count to determine bias direction
+        buy_signals = sum(1 for s in signals if s.numerical_score > 0.1)
+        sell_signals = sum(1 for s in signals if s.numerical_score < -0.1)
+
+        if buy_signals > sell_signals:
+            normalized_weighted += 0.025
+        elif sell_signals > buy_signals:
+            normalized_weighted -= 0.025
 
         return normalized_weighted
 
@@ -313,14 +327,14 @@ class SignalAggregator:
         Returns:
             Trading decision: 'buy', 'sell', or 'hold'.
 
-        Adjusted thresholds for more decisive signals:
-        - Strong BUY: >= 0.55 (was 0.6)
-        - Strong SELL: <= 0.45 (was 0.4)
-        - HOLD: between 0.45 and 0.55
+        Thresholds for decisive signals:
+        - BUY: > 0.50
+        - SELL: < 0.50
+        - HOLD: only when exactly 0.50
         """
-        if final_score >= 0.55:
+        if final_score > 0.50:
             return "buy"
-        elif final_score <= 0.45:
+        elif final_score < 0.50:
             return "sell"
         else:
             return "hold"
