@@ -328,13 +328,13 @@ class SignalAggregator:
             Trading decision: 'buy', 'sell', or 'hold'.
 
         Thresholds for decisive signals:
-        - BUY: > 0.50
-        - SELL: < 0.50
-        - HOLD: only when exactly 0.50
+        - BUY: final_score >= 0.52 (more bullish)
+        - SELL: final_score <= 0.48 (more bearish)
+        - HOLD: 0.48 < final_score < 0.52 (neutral zone)
         """
-        if final_score > 0.50:
+        if final_score >= 0.52:
             return "buy"
-        elif final_score < 0.50:
+        elif final_score <= 0.48:
             return "sell"
         else:
             return "hold"
