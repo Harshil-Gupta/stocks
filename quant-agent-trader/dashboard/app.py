@@ -347,48 +347,28 @@ def show_overview():
     with col2:
         st.subheader("Quick Actions")
 
-        if st.button("Run Holdings Analysis"):
+        if st.button("Run Holdings Analysis", key="run_analysis_btn"):
             st.info("Run: python -m data.run_holdings_analysis")
 
-        if st.button("Refresh Data"):
+        if st.button("Refresh Data", key="refresh_btn"):
             st.rerun()
 
     st.divider()
-
-    col1, col2 = st.columns([2, 1])
-
-    with col1:
-        st.subheader("Equity Curve")
-
-        equity_df = load_csv("equity_curve.csv")
-
-        if equity_df is not None:
-            equity_df["date"] = pd.to_datetime(equity_df["date"])
-            st.line_chart(equity_df.set_index("date")["equity"])
-        else:
-            st.warning("No equity curve data available")
-
-    with col2:
-        st.subheader("Quick Actions")
-
-        if st.button("Run Holdings Analysis"):
-            st.info("Run: python -m data.run_holdings_analysis")
-
-        if st.button("Refresh Data"):
-            st.rerun()
-
-
-def color_signal(val):
-    if val == "BUY":
-        return "color:green;font-weight:bold"
-    if val == "SELL":
-        return "color:red;font-weight:bold"
-    return "color:orange"
 
 
 def show_signals():
     """Show signal analysis."""
     st.subheader("Signal Analysis")
+
+    def color_signal(val):
+        val_upper = str(val).upper()
+        if val_upper == "BUY":
+            return "color:green;font-weight:bold"
+        if val_upper == "SELL":
+            return "color:red;font-weight:bold"
+        if val_upper == "HOLD":
+            return "color:orange"
+        return ""
 
     col1, col2 = st.columns([1, 2])
 
