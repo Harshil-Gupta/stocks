@@ -2,14 +2,22 @@
 Indian Market Data Source - NSE/BSE Support
 
 Optimized using yf.download() for bulk fetching (10-20x faster than yf.Ticker)
+Supports Upstox API for live prices when configured.
 """
 
 import asyncio
+import os
+
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv()
+
 import pandas as pd
 from typing import Optional, Dict, List, Any
 from datetime import datetime, timedelta
 import logging
 import yfinance as yf
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -70,6 +78,169 @@ BSE_SYMBOLS = {
     "HDFCBANK": "HDFCBANK.BO",
     "INFY": "INFY.BO",
 }
+
+# Upstox instrument keys for NSE stocks (NSE_EQ| token)
+UPSTOX_INSTRUMENT_KEYS = {
+    "RELIANCE": "NSE_EQ|INE002A01018",
+    "TCS": "NSE_EQ|INE467B01029",
+    "HDFCBANK": "NSE_EQ|INE040A01034",
+    "INFY": "NSE_EQ|INE009A01021",
+    "HINDUNILVR": "NSE_EQ|INE296A01024",
+    "ICICIBANK": "NSE_EQ|INE090A01021",
+    "SBIN": "NSE_EQ|INE062A01020",
+    "BHARTIARTL": "NSE_EQ|INE374D01014",
+    "KOTAKBANK": "NSE_EQ|INE237A01028",
+    "LT": "NSE_EQ|INE018A01030",
+    "HCLTECH": "NSE_EQ|INE860A01027",
+    "ASIANPAINT": "NSE_EQ|INE021A01026",
+    "MARUTI": "NSE_EQ|INE585B01010",
+    "TITAN": "NSE_EQ|INE280A01028",
+    "BAJFINANCE": "NSE_EQ|INE238A01034",
+    "WIPRO": "NSE_EQ|INE075A01022",
+    "ULTRACEMCO": "NSE_EQ|INE481G01011",
+    "NTPC": "NSE_EQ|INE733E01010",
+    "POWERGRID": "NSE_EQ|INE752E01010",
+    "M&M": "NSE_EQ|INE101A01026",
+    "SUNPHARMA": "NSE_EQ|INE044A01036",
+    "TATASTEEL": "NSE_EQ|INE814A01030",
+    "DRREDDY": "NSE_EQ|INE089A01023",
+    "CIPLA": "NSE_EQ|INE059A01024",
+    "ADANIPORTS": "NSE_EQ|INE742F01010",
+    "BAJAJFINSV": "NSE_EQ|INE245A01024",
+    "GRASIM": "NSE_EQ|INE047A01021",
+    "HEROMOTOCO": "NSE_EQ|INE158A01026",
+    "INDUSINDBK": "NSE_EQ|INE438A01024",
+    "JSWSTEEL": "NSE_EQ|INE019A01024",
+    "SBILIFE": "NSE_EQ|INE714G01038",
+    "SHREECEM": "NSE_EQ|INE703A01027",
+    "AXISBANK": "NSE_EQ|INE238A01034",
+    "ADANIENT": "NSE_EQ|INE423G01014",
+    "DIVISLAB": "NSE_EQ|INE758G01017",
+    "AEGISLOG": "NSE_EQ|INE342A01018",
+    "ALKYLAMINE": "NSE_EQ|INE269Y01018",
+    "BAJAJHIND": "NSE_EQ|INE391A01016",
+    "BALAMINES": "NSE_EQ|INE365A01019",
+    "BERGEPAINT": "NSE_EQ|INE463A01010",
+    "BRIGADE": "NSE_EQ|INE791I01019",
+    "CANBK": "NSE_EQ|INE608A01013",
+    "GUJGASLTD": "NSE_EQ|INE844A01023",
+    "HINDUNILVR": "NSE_EQ|INE296A01024",
+    "IEX": "NSE_EQ|INE022Y01019",
+    "INDIACEM": "NSE_EQ|INE115A01022",
+    "IRCTC": "NSE_EQ|INE335Y01012",
+    "ITC": "NSE_EQ|INE210A01034",
+    "JUBLFOOD": "NSE_EQ|INE619G01017",
+    "KPRMILL": "NSE_EQ|INE296F01018",
+    "LIC": "NSE_EQ|INE115A01022",
+    "MFSL": "NSE_EQ|INE180A01020",
+    "NESTLEIND": "NSE_EQ|INE239A01016",
+    "NMDC": "NSE_EQ|INE098A01020",
+    "NYKAA": "NSE_EQ|INE388Y01029",
+    "OFSS": "NSE_EQ|INE886A01019",
+    "PAGEIND": "NSE_EQ|INE761H01022",
+    "PERSISTENT": "NSE_EQ|INE262H01014",
+    "PETRONET": "NSE_EQ|INE245G01014",
+    "PFC": "NSE_EQ|INE134E01011",
+    "PIDILITIND": "NSE_EQ|INE318A01026",
+    "POWERGRID": "NSE_EQ|INE752E01010",
+    "RECLTD": "NSE_EQ|INE261H01013",
+    "SAIL": "NSE_EQ|INE114A01014",
+    "SBICARD": "NSE_EQ|INE060A01015",
+    "SHRIRAMFIN": "NSE_EQ|INE296A01024",
+    "SIEMENS": "NSE_EQ|INE045A01026",
+    "SRF": "NSE_EQ|INE647A01010",
+    "SUNPHARMA": "NSE_EQ|INE044A01036",
+    "TATACONSUM": "NSE_EQ|INE305A01034",
+    "TATASTEEL": "NSE_EQ|INE814A01030",
+    "TCS": "NSE_EQ|INE467B01029",
+    "TECHM": "NSE_EQ|INE467B01029",
+    "TITAN": "NSE_EQ|INE280A01028",
+    "TRENT": "NSE_EQ|INE849A01023",
+    "TVSMOTOR": "NSE_EQ|INE499G01012",
+    "UBL": "NSE_EQ|INE686A01026",
+    "ULTRACEMCO": "NSE_EQ|INE481G01011",
+    "UNITECH": "NSE_EQ|INE694A01013",
+    "VAIBHAVGBL": "NSE_EQ|INE369A01015",
+    "VBL": "NSE_EQ|INE209A01017",
+    "VEDL": "NSE_EQ|INE057A01022",
+    "VOLTAS": "NSE_EQ|INE226A01021",
+    "WELCORP": "NSE_EQ|INE281B01031",
+    "WHIRLPOOL": "NSE_EQ|INE716A01041",
+    "ZEEL": "NSE_EQ|INE758A01010",
+    "ZOMATO": "NSE_EQ|INE758G01017",
+    "WAAREEENER": "NSE_EQ|INE539G01019",
+}
+
+
+def get_upstox_live_price(symbol: str) -> Optional[float]:
+    """
+    Get live price from Upstox API using access token.
+    """
+    access_token = os.getenv("UPSTOX_ACCESS_TOKEN", "")
+    
+    if not access_token:
+        return None
+    
+    try:
+        # Get instrument key using ISIN
+        instrument = UPSTOX_INSTRUMENT_KEYS.get(symbol.upper())
+        if not instrument:
+            return None
+        
+        url = f"https://api.upstox.com/v3/market-quote/ltp"
+        params = {"instrument_key": instrument}
+        headers = {
+            "Accept": "application/json",
+            "Authorization": f"Bearer {access_token}"
+        }
+        
+        response = requests.get(url, params=params, headers=headers, timeout=5)
+        
+        if response.status_code == 200:
+            data = response.json()
+            # Find the data - key format is "NSE_EQ:SYMBOL"
+            for key, value in data.get("data", {}).items():
+                if value.get("last_price"):
+                    return value.get("last_price")
+            return None
+        else:
+            logger.debug(f"Upstox API error: {response.status_code}")
+            return None
+            
+    except Exception as e:
+        logger.debug(f"Upstox price fetch failed for {symbol}: {e}")
+        return None
+
+
+def get_upstox_quote(symbol: str) -> Optional[Dict]:
+    """Get full quote from Upstox."""
+    access_token = os.getenv("UPSTOX_ACCESS_TOKEN", "")
+    
+    if not access_token:
+        return None
+    
+    try:
+        instrument = UPSTOX_INSTRUMENT_KEYS.get(symbol.upper())
+        if not instrument:
+            instrument = f"NSE_EQ|{symbol.upper()}"
+        
+        url = f"https://api.upstox.com/v3/market-quote/quotes"
+        params = {"instrument_key": instrument}
+        headers = {
+            "Accept": "application/json",
+            "Authorization": f"Bearer {access_token}"
+        }
+        
+        response = requests.get(url, params=params, headers=headers, timeout=5)
+        
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("data", {}).get(instrument, {})
+        return None
+            
+    except Exception as e:
+        logger.debug(f"Upstox quote fetch failed for {symbol}: {e}")
+        return None
 
 
 class IndiaDataSource:

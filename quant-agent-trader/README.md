@@ -321,6 +321,51 @@ REGIME_WEIGHTS = {
 }
 ```
 
+## Holdings Configuration
+
+The system requires your portfolio holdings to function. Configure the holdings directory:
+
+### 1. Create Holdings Directory
+
+Create a directory to store your holdings CSV files:
+```bash
+# Default: C:\Users\Harshil\Desktop\holdings (Windows)
+# Or configure custom path in .env
+```
+
+### 2. Export Holdings from Broker
+
+Export your holdings CSV from your broker (Zerodha/Upstox) and save to the holdings directory.
+
+**Expected CSV format:**
+```
+Instrument,Qty.,Avg. cost,LTP,Invested,Cur. val,P&L,Net chg.,Day chg.
+RELIANCE,100,1350.00,1424.00,135000,142400,7400,5.48,-1.2
+TCS,50,2450.00,2527.40,122500,126370,3870,3.16,0.8
+```
+
+### 3. Configure Path (Optional)
+
+Edit `.env` file to set custom holdings directory:
+```bash
+HOLDINGS_DIR=C:\path\to\your\holdings
+```
+
+### 4. Import and Analyze
+
+```bash
+# Import holdings from directory
+python -m data.import_portfolio
+
+# Run analysis on all holdings
+python -m data.run_holdings_analysis
+
+# View dashboard
+streamlit run dashboard/app.py
+```
+
+**Note:** The system will abort if no holdings are found. Add at least one CSV file to the holdings directory before running any commands.
+
 ## Troubleshooting
 
 - **Import errors**: Install all dependencies `pip install -r requirements.txt`

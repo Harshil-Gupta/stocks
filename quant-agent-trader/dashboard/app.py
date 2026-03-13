@@ -91,9 +91,9 @@ def show_overview():
     # Calculate signal accuracy
     if holdings_signals:
         total_signals = len(holdings_signals)
-        buy_signals = sum(1 for s in holdings_signals if s.get("decision") == "BUY")
-        sell_signals = sum(1 for s in holdings_signals if s.get("decision") == "SELL")
-        hold_signals = sum(1 for s in holdings_signals if s.get("decision") == "HOLD")
+        buy_signals = sum(1 for s in holdings_signals if s.get("decision", "").upper() == "BUY")
+        sell_signals = sum(1 for s in holdings_signals if s.get("decision", "").upper() == "SELL")
+        hold_signals = sum(1 for s in holdings_signals if s.get("decision", "").upper() == "HOLD")
         
         # Calculate average confidence
         avg_confidence = sum(s.get("confidence", 0) for s in holdings_signals) / total_signals if total_signals > 0 else 0
@@ -158,11 +158,12 @@ def show_overview():
         
         # Color function for signals
         def color_signal_val(val):
-            if val == "BUY":
+            val_upper = str(val).upper()
+            if val_upper == "BUY":
                 return "color:green;font-weight:bold"
-            if val == "SELL":
+            if val_upper == "SELL":
                 return "color:red;font-weight:bold"
-            if val == "HOLD":
+            if val_upper == "HOLD":
                 return "color:orange"
             return ""
         

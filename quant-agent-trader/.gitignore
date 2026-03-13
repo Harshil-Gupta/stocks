@@ -1,18 +1,63 @@
-data/__pycache__/*
-features/__pycache__/*
-data/ingestion/__pycache__/*
-__pycache__/*
-kite_login/
-orchestration/__pycache__/*
-signals/__pycache__/*
-quant_trader.log
-agents/__pycache__/*
-config/__pycache__
-agents/fundamental/__pycache__/*
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
+# Virtual environments
 venv/
+env/
+ENV/
 site-packages/
 
-__pycache__/*
-*.pyc
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment files (contains sensitive data)
 .env
+.env.local
+.env.*.local
+
+# Log files
+*.log
+quant_trader.log
+
+# Data files (contains personal/sensitive data)
+data/portfolio.json
+data/trades.json
+data/holdings_signals.json
+data/market_regime.json
+data/equity_curve.csv
+data/*.json
+data/*.csv
+
+# Holdings directory (contains personal portfolio data)
+C:/Users/Harshil/Desktop/holdings/
+**/holdings/
+
+# Kite login
+kite_login/
+
+# OS
+.DS_Store
+Thumbs.db

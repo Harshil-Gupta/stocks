@@ -33,6 +33,8 @@ class DataConfig:
     """Market data source configurations."""
     polygon_api_key: str = ""  # Optional - using NSE India API now
     alpha_vantage_key: str = ""  # Optional
+    upstox_api_key: str = os.getenv("UPSTOX_API_KEY", "")
+    upstox_api_secret: str = os.getenv("UPSTOX_API_SECRET_KEY", "")
     cache_ttl: int = 300  # seconds
     max_retries: int = 3
     rate_limit_delay: float = 0.1
@@ -74,7 +76,7 @@ class PortfolioConfig:
     risk_per_trade: float = 0.02  # 2% risk per trade
     holdings_csv_path: str = os.getenv("HOLDINGS_CSV_PATH", "C:\\Users\\Harshil\\Desktop\\holdings.csv")
     trades_csv_path: str = os.getenv("TRADES_CSV_PATH", "C:\\Users\\Harshil\\Desktop\\trades.csv")
-    daily_holdings_dir: str = os.getenv("DAILY_HOLDINGS_DIR", "data/daily_holdings")
+    holdings_dir: str = os.getenv("HOLDINGS_DIR", "C:\\Users\\Harshil\\Desktop\\holdings")
 
 
 @dataclass

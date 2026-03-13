@@ -1026,18 +1026,18 @@ def print_live_results(results: Dict[str, Any]) -> None:
 
 
 async def main_async(args: argparse.Namespace) -> None:
-    # Check for holdings CSV before any computation
-    from data.import_portfolio import check_holdings_exists, get_holdings_path
+    # Check for holdings directory before any computation
+    from data.import_portfolio import check_holdings_exists, get_holdings_dir
     
     if not check_holdings_exists():
-        holdings_path = get_holdings_path()
+        holdings_dir = get_holdings_dir()
         print("="*60)
-        print("ERROR: Holdings CSV not found!")
+        print("ERROR: Holdings directory not found or empty!")
         print("="*60)
-        print(f"\nRequired file: {holdings_path}")
+        print(f"\nRequired directory: {holdings_dir}")
         print("\nPlease export your holdings from your broker (Zerodha/Upstox)")
-        print("and save as holdings.csv at the above path.")
-        print("\nAlternatively, update HOLDINGS_CSV_PATH in .env file")
+        print("and save as CSV file(s) in the above directory.")
+        print("\nAlternatively, update HOLDINGS_DIR in .env file")
         print("\nAborting - no computation will be performed without holdings data.")
         print("="*60)
         sys.exit(1)

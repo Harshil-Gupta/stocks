@@ -15,7 +15,7 @@ from typing import Dict, List, Any
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config.settings import PortfolioConfig
-from data.import_portfolio import get_holdings_symbols, get_latest_daily_holdings, get_holdings_path
+from data.import_portfolio import get_holdings_symbols, get_holdings_dir
 
 
 async def analyze_symbol(symbol: str) -> Dict[str, Any]:
