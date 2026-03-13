@@ -357,83 +357,214 @@ def show_overview():
 
 
 def show_signals():
-    """Show signal analysis."""
-    st.subheader("Signal Analysis")
+    """
+    Show market sentiment and signals for all holdings.
 
-    def color_signal(val):
-        val_upper = str(val).upper()
-        if val_upper == "BUY":
-            return "color:green;font-weight:bold"
-        if val_upper == "SELL":
-            return "color:red;font-weight:bold"
-        if val_upper == "HOLD":
-            return "color:orange"
-        return ""
+    This tab displays:
+    1. Overall market sentiment (derived from holdings analysis)
+    2. Individual stock signals for all holdings
+    """
+    st.subheader("📊 Market Sentiment & Stock Signals")
 
-    col1, col2 = st.columns([1, 2])
+    # Load holdings and signals
+    holdings = load_holdings_from_csv()
+    holdings_signals = load_json("holdings_signals.json")
+    market_regime = load_json("market_regime.json")
+
+    if not holdings:
+        st.info("Add holdings to see market sentiment and signals")
+        return
+
+    # Create signals dictionary
+    signals_dict = {}
+    if holdings_signals:
+        signals_dict = {s["symbol"]: s for s in holdings_signals}
+
+    # Determine market sentiment from holdings signals
+    buy_count = 0
+    sell_count = 0
+    hold_count = 0
+    total_confidence = 0
+    symbols_analyzed = 0
+
+    for h in holdings:
+        sig = signals_dict.get(h["Symbol"], {})
+        decision = str(sig.get("decision", "")).upper()
+
+        if decision == "BUY":
+            buy_count += 1
+            total_confidence += sig.get("confidence", 0)
+            symbols_analyzed += 1
+        elif decision == "SELL":
+            sell_count += 1
+            total_confidence += sig.get("confidence", 0)
+            symbols_analyzed += 1
+        else:
+            hold_count += 1
+
+    avg_confidence = total_confidence / symbols_analyzed if symbols_analyzed > 0 else 0
+
+    # Determine market sentiment
+    if buy_count > sell_count + hold_count:
+        market_sentiment = "BULLISH"
+        sentiment_emoji = "🐂"
+        sentiment_color = "green"
+    elif sell_count > buy_count + hold_count:
+        market_sentiment = "BEARISH"
+        sentiment_emoji = "🐻"
+        sentiment_color = "red"
+    else:
+        market_sentiment = "NEUTRAL"
+        sentiment_emoji = "➡️"
+        sentiment_color = "orange"
+
+    # Display market sentiment
+    st.markdown("### 🌍 Overall Market Sentiment")
+
+    col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        symbol = st.selectbox("Select Symbol", ["RELIANCE", "TCS", "HDFCBANK", "INFY"])
-        regime = st.selectbox(
-            "Market Regime", ["Bull", "Bear", "Sideways", "High Volatility"]
-        )
+        if market_sentiment == "BULLISH":
+            st.success(f"{sentiment_emoji} {market_sentiment}")
+        elif market_sentiment == "BEARISH":
+            st.error(f"{sentiment_emoji} {market_sentiment}")
+        else:
+            st.warning(f"{sentiment_emoji} {market_sentiment}")
 
     with col2:
-        st.write("Current regime weights:")
+        st.metric("Buy Signals", buy_count)
 
-        weights = {
-            "Technical": 0.30,
-            "Fundamental": 0.25,
-            "Sentiment": 0.15,
-            "Macro": 0.10,
-            "Risk": 0.10,
-            "Market Structure": 0.10,
-        }
+    with col3:
+        st.metric("Sell Signals", sell_count)
 
-        st.bar_chart(pd.Series(weights))
+    with col4:
+        st.metric("Hold Signals", hold_count)
+
+    # Market regime
+    regime = market_regime.get("regime", "unknown") if market_regime else "unknown"
+    regime_emoji = {"bull": "📈", "bear": "📉", "normal": "➡️", "volatile": "⚡"}.get(
+        regime.lower(), "➡️"
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric("Market Regime", f"{regime_emoji} {regime.title()}")
+
+    with col2:
+        st.metric("Avg Confidence", f"{avg_confidence:.1f}%")
 
     st.divider()
 
-    st.subheader("Signal Breakdown")
+    # Explanation
+    with st.expander("📖 How is Market Sentiment Calculated?"):
+        st.markdown("""
+        **Market Sentiment** is derived from analyzing all your holdings:
+        
+        - **BULLISH**: More than 50% of holdings have BUY signals
+        - **BEARISH**: More than 50% of holdings have SELL signals  
+        - **NEUTRAL**: No clear majority (mostly HOLD signals)
+        
+        **Market Regime** is determined by technical indicators:
+        - **Bull**: Strong uptrend, high confidence
+        - **Bear**: Strong downtrend
+        - **Normal**: Sideways/no clear trend
+        - **Volatile**: High volatility, uncertain
+        """)
 
-    # signal_data = [
-    #     {"Agent": "RSI", "Signal": "BUY", "Confidence": 75, "Score": 0.8},
-    #     {"Agent": "MACD", "Signal": "BUY", "Confidence": 68, "Score": 0.6},
-    #     {"Agent": "Momentum", "Signal": "HOLD", "Confidence": 55, "Score": 0.2},
-    #     {"Agent": "Sentiment", "Signal": "BUY", "Confidence": 72, "Score": 0.7},
-    #     {"Agent": "Volatility", "Signal": "SELL", "Confidence": 60, "Score": -0.5},
-    # ]
+    st.divider()
 
-    signal_data = load_json("signals.json")
+    # Stock signals table
+    st.markdown("### 📈 Signals for Your Holdings")
 
-    if signal_data is None:
-        st.warning("No signals available")
-        return
+    # Build signals data
+    signals_data = []
+    for h in holdings:
+        sig = signals_dict.get(h["Symbol"], {})
+        decision = str(sig.get("decision", "N/A")).upper()
+        confidence = sig.get("confidence", 0)
+        score = sig.get("score", 0)
 
-    df_signals = pd.DataFrame(signal_data)
+        # Calculate P&L
+        current_price = h.get("LTP", 0)
+        entry_price = h["Entry"]
+        pnl_pct = (
+            ((current_price - entry_price) / entry_price * 100)
+            if entry_price > 0
+            else 0
+        )
+
+        signals_data.append(
+            {
+                "Symbol": h["Symbol"],
+                "Signal": decision,
+                "Confidence": confidence,
+                "Score": score,
+                "Entry": entry_price,
+                "Current": current_price,
+                "P&L%": pnl_pct,
+                "Value": current_price * h["Qty"],
+            }
+        )
+
+    df_signals = pd.DataFrame(signals_data)
+
+    def color_signal(val):
+        val = str(val).upper()
+        if val == "BUY":
+            return "color:green;font-weight:bold"
+        elif val == "SELL":
+            return "color:red;font-weight:bold"
+        elif val == "HOLD":
+            return "color:orange"
+        return ""
+
+    def color_pnl(val):
+        if val > 0:
+            return "color:green"
+        elif val < 0:
+            return "color:red"
+        return ""
+
+    # Sort by confidence (highest first)
+    df_signals = df_signals.sort_values("Confidence", ascending=False)
 
     st.dataframe(
-        df_signals.style.map(color_signal, subset=["Signal"]),
+        df_signals.style.map(color_signal, subset=["Signal"]).map(
+            color_pnl, subset=["P&L%"]
+        ),
         column_config={
             "Signal": st.column_config.TextColumn("Signal"),
             "Confidence": st.column_config.ProgressColumn(
-                "Confidence", format="%d%%", min_value=0, max_value=100
+                "Confidence", format="%.0f%%", min_value=0, max_value=100
             ),
             "Score": st.column_config.NumberColumn("Score", format="%.2f"),
+            "Entry": st.column_config.NumberColumn("Entry (Rs)", format="Rs.%.0f"),
+            "Current": st.column_config.NumberColumn("Current (Rs)", format="Rs.%.0f"),
+            "P&L%": st.column_config.NumberColumn("P&L%", format="%.1f%%"),
+            "Value": st.column_config.NumberColumn("Value (Rs)", format="Rs.%.0f"),
         },
-        width="stretch",
+        use_container_width=True,
     )
 
-    st.subheader("Aggregated Signal")
+    st.divider()
 
-    agg_col1, agg_col2, agg_col3 = st.columns(3)
+    # Signal distribution
+    col1, col2 = st.columns(2)
 
-    with agg_col1:
-        st.metric("Final Score", "0.65")
-    with agg_col2:
-        st.metric("Decision", "BUY", "+0.15")
-    with agg_col3:
-        st.metric("Confidence", "72%")
+    with col1:
+        st.markdown("**Signal Distribution**")
+        signal_dist = pd.Series(
+            {"BUY": buy_count, "HOLD": hold_count, "SELL": sell_count}
+        )
+        st.bar_chart(signal_dist)
+
+    with col2:
+        st.markdown("**Top Holdings by Value**")
+        top_holdings = df_signals.nlargest(5, "Value")[["Symbol", "Value"]].set_index(
+            "Symbol"
+        )
+        st.bar_chart(top_holdings["Value"])
 
 
 def show_portfolio():
