@@ -1,0 +1,16 @@
+{
+  "experiment_id": "grid_search_3_20260314_020339_920f92",
+  "timestamp": "2026-03-14T02:03:39.612908",
+  "status": "success",
+  "parameters": {
+    "a": 2,
+    "b": 4
+  },
+  "metrics": {
+    "sharpe_ratio": 0.35969387049050805,
+    "max_drawdown": 0.19649920864373574,
+    "total_return": 0.48889615116044605
+  },
+  "duration_seconds": 1.4e-05,
+  "error": null
+}

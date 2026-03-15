@@ -1,0 +1,16 @@
+{
+  "experiment_id": "param_test_cead_20260314_020339_dfd9b4",
+  "timestamp": "2026-03-14T02:03:39.506485",
+  "status": "success",
+  "parameters": {
+    "short_window": 20,
+    "long_window": 100
+  },
+  "metrics": {
+    "sharpe_ratio": 0.43593042815997385,
+    "max_drawdown": 0.13324523945084885,
+    "total_return": 0.3344807378760378
+  },
+  "duration_seconds": 1.2e-05,
+  "error": null
+}

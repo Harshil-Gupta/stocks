@@ -87,7 +87,10 @@ class ModelRegistry:
         try:
             with open(self.registry_file, "r") as f:
                 return json.load(f)
-        except:
+        except (json.JSONDecodeError, IOError, OSError) as e:
+            import logging
+
+            logging.getLogger(__name__).warning(f"Failed to load registry: {e}")
             return {}
 
     def _save_registry(self, registry: Dict) -> None:
@@ -275,7 +278,7 @@ class MetaModelTrainer:
 
         df = dataset.dropna(subset=[target] + feature_cols)
 
-        X = df[feature_cols].fillna(0)
+        X = df[feature_cols].fillna(df[feature_cols].median())
         y = df[target]
 
         from sklearn.model_selection import train_test_split
@@ -604,7 +607,7 @@ class WalkForwardTrainer:
                 ]
             ]
 
-            X_test = test_data[test_features].fillna(0)
+            X_test = test_data[test_features].fillna(test_data[test_features].median())
             y_test = test_data[target]
 
             y_pred = trainer.model.predict(X_test)

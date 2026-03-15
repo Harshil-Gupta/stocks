@@ -1,0 +1,16 @@
+{
+  "experiment_id": "param_test_7805_20260314_020339_6993db",
+  "timestamp": "2026-03-14T02:03:39.518006",
+  "status": "success",
+  "parameters": {
+    "short_window": 30,
+    "long_window": 50
+  },
+  "metrics": {
+    "sharpe_ratio": 0.348290713138354,
+    "max_drawdown": 0.061192760650089516,
+    "total_return": 0.18725483337855642
+  },
+  "duration_seconds": 1.5e-05,
+  "error": null
+}

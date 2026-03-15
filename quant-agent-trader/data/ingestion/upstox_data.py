@@ -185,7 +185,9 @@ class UpstoxDataSource:
         params = {"instrument": instrument}
 
         try:
-            response = requests.get(url, params=params, headers=self.headers)
+            response = requests.get(
+                url, params=params, headers=self.headers, timeout=10
+            )
             if response.status_code == 200:
                 data = response.json()
                 return data.get("data", {}).get(instrument, {})
@@ -236,7 +238,9 @@ class UpstoxDataSource:
         }
 
         try:
-            response = requests.get(url, params=params, headers=self.headers)
+            response = requests.get(
+                url, params=params, headers=self.headers, timeout=15
+            )
             if response.status_code == 200:
                 data = response.json()
                 candles = data.get("data", {}).get("candles", [])
@@ -276,7 +280,9 @@ class UpstoxDataSource:
         params = {"instrument": instrument}
 
         try:
-            response = requests.get(url, params=params, headers=self.headers)
+            response = requests.get(
+                url, params=params, headers=self.headers, timeout=10
+            )
             if response.status_code == 200:
                 return response.json().get("data", {})
             else:
@@ -291,10 +297,10 @@ class UpstoxDataSource:
         url = f"{self.BASE_URL}/portfolio/holdings"
 
         try:
-            response = requests.get(url, headers=self.headers)
+            response = requests.get(url, headers=self.headers, timeout=10)
             if response.status_code == 200:
                 data = response.json()
-                return (data.get("data", []),)
+                return data.get("data", [])
             else:
                 logger.warning(f"Upstox holdings error: {response.status_code}")
                 return None

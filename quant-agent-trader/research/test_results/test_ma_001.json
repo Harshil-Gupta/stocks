@@ -1,0 +1,16 @@
+{
+  "experiment_id": "test_ma_001",
+  "timestamp": "2024-01-01T00:00:00",
+  "status": "success",
+  "parameters": {
+    "short_window": 20,
+    "long_window": 50
+  },
+  "metrics": {
+    "sharpe_ratio": 1.5,
+    "max_drawdown": 0.15,
+    "total_return": 0.25
+  },
+  "duration_seconds": 10.5,
+  "error": null
+}

@@ -5,7 +5,7 @@ This module provides:
 - DataIngestionEngine: Main engine for fetching market data
 - MockDataSource: Mock data source for testing
 - IndiaDataSource: India-specific market data source
-- india_data_engine: Pre-configured India data engine
+- MarketDataCache: Local parquet caching layer
 - mf_data_engine: Mutual fund data engine
 - unified_data_service: Unified interface to all data sources
 """
@@ -26,6 +26,7 @@ from data.services import (
     get_amfi_sector_holdings,
     DataServiceRegistry,
 )
+from data.cache import MarketDataCache, DataCacheManager, CacheMetadata
 
 __all__ = [
     "DataIngestionEngine",
@@ -46,4 +47,8 @@ __all__ = [
     "get_amfi_top_holders",
     "get_amfi_sector_holdings",
     "DataServiceRegistry",
+    # Cache
+    "MarketDataCache",
+    "DataCacheManager",
+    "CacheMetadata",
 ]
