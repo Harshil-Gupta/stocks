@@ -8,8 +8,30 @@ from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 from datetime import datetime
 
-from signals.signal_schema import AgentSignal, AggregatedSignal
+from signals.signal_schema import (
+    AgentSignal,
+    AggregatedSignal,
+    SignalType,
+    VALID_SIGNALS,
+)
 from config.settings import REGIME_WEIGHTS, config
+
+
+SIGNAL_SCORE_MAP = {
+    "strong_buy": 1.0,
+    "buy": 0.5,
+    "hold": 0.0,
+    "sell": -0.5,
+    "strong_sell": -1.0,
+}
+
+REVERSE_SCORE_MAP = {
+    1.0: "strong_buy",
+    0.5: "buy",
+    0.0: "hold",
+    -0.5: "sell",
+    -1.0: "strong_sell",
+}
 
 
 @dataclass
@@ -38,6 +60,8 @@ class SignalAggregator:
 
     Supports regime-based weight adjustments to adapt to different market
     conditions (bull, bear, sideways, high_volatility).
+
+    Outputs 5-class signals: strong_buy, buy, hold, sell, strong_sell
     """
 
     DEFAULT_WEIGHTS = {
@@ -77,6 +101,59 @@ class SignalAggregator:
         if missing:
             raise ValueError(f"Missing weight categories: {missing}")
 
+    def _get_signal_score(self, signal_str: str) -> float:
+        """Get numerical score for a signal string."""
+        return SIGNAL_SCORE_MAP.get(signal_str.lower(), 0.0)
+
+    def _score_to_signal(self, score: float) -> str:
+        """Convert numerical score to 5-class signal.
+
+        Thresholds (0-100 scale, normalized from -1 to 1):
+        - >= 85: STRONG_BUY
+        - 60 to 85: BUY
+        - 40 to 60: HOLD
+        - 25 to 40: SELL
+        - < 25: STRONG_SELL
+
+        Boundary values (like 25, 40, 60, 85) choose lower signal.
+        """
+        # Normalize score from [-1, 1] to [0, 100]
+        normalized = (score + 1) * 50
+
+        if normalized >= 85:
+            return "strong_buy"
+        elif normalized >= 60:
+            return "buy"
+        elif normalized >= 40:
+            return "hold"
+        elif normalized >= 25:
+            return "sell"
+        else:
+            return "strong_sell"
+
+    def _score_to_signal_direct(self, score: float) -> str:
+        """Convert numerical score (0-100) directly to 5-class signal.
+
+        Thresholds:
+        - >= 85: STRONG_BUY
+        - 60 to 85: BUY
+        - 40 to 60: HOLD
+        - 25 to 40: SELL
+        - < 25: STRONG_SELL
+
+        Boundary values (like 25, 40, 60, 85) choose lower signal.
+        """
+        if score >= 85:
+            return "strong_buy"
+        elif score >= 60:
+            return "buy"
+        elif score >= 40:
+            return "hold"
+        elif score >= 25:
+            return "sell"
+        else:
+            return "strong_sell"
+
     def aggregate_signals(
         self,
         signals: List[AgentSignal],
@@ -102,9 +179,7 @@ class SignalAggregator:
         weights = self._get_regime_weights(regime)
         weighted_score = self._apply_weights(signals, weights)
 
-        final_score = self._normalize_score(weighted_score)
-
-        decision = self._score_to_decision(final_score)
+        decision = self._score_to_signal(weighted_score)
 
         consensus = self._detect_consensus(signals)
 
@@ -115,7 +190,7 @@ class SignalAggregator:
 
         return AggregatedSignal(
             stock_symbol=stock_symbol,
-            final_score=final_score,
+            final_score=weighted_score,
             decision=decision,
             confidence=confidence,
             supporting_agents=supporting_agents,
@@ -167,12 +242,9 @@ class SignalAggregator:
             if category not in category_scores:
                 category_scores[category] = []
 
-            numerical = signal.numerical_score
+            numerical = self._get_signal_score(signal.signal)
             confidence_factor = signal.confidence / 100.0
-            # Increase confidence weight for more decisive signals
-            weighted_signal = numerical * (
-                confidence_factor**0.5
-            )  # Square root reduces the damping effect
+            weighted_signal = numerical * (confidence_factor**0.5)
             category_scores[category].append(weighted_signal)
 
         weighted_sum = 0.0
@@ -190,13 +262,18 @@ class SignalAggregator:
         else:
             normalized_weighted = 0.0
 
-        # Add bias to push towards BUY or SELL
-        # This helps break the HOLD deadlock when signals are balanced
-        # Use supporting vs conflicting count to determine bias direction
-        buy_signals = sum(1 for s in signals if s.numerical_score > 0.1)
-        sell_signals = sum(1 for s in signals if s.numerical_score < -0.1)
+        buy_signals = sum(1 for s in signals if self._get_signal_score(s.signal) > 0.1)
+        sell_signals = sum(
+            1 for s in signals if self._get_signal_score(s.signal) < -0.1
+        )
+        strong_buy = sum(1 for s in signals if s.signal == "strong_buy")
+        strong_sell = sum(1 for s in signals if s.signal == "strong_sell")
 
-        if buy_signals > sell_signals:
+        if strong_buy > strong_sell:
+            normalized_weighted += 0.1
+        elif strong_sell > strong_buy:
+            normalized_weighted -= 0.1
+        elif buy_signals > sell_signals:
             normalized_weighted += 0.025
         elif sell_signals > buy_signals:
             normalized_weighted -= 0.025
@@ -292,7 +369,7 @@ class SignalAggregator:
         if len(signals) <= 1:
             return 50.0
 
-        numerical_scores = [s.numerical_score for s in signals]
+        numerical_scores = [self._get_signal_score(s.signal) for s in signals]
 
         mean_score = sum(numerical_scores) / len(numerical_scores)
 
@@ -307,37 +384,34 @@ class SignalAggregator:
 
     def _normalize_score(self, score: float) -> float:
         """
-        Normalize score to [0, 1] range.
+        Normalize score to [-1, 1] range.
 
         Args:
-            score: Score in range [-1, 1].
+            score: Score in any range.
 
         Returns:
-            Normalized score in range [0, 1].
+            Score clamped to [-1, 1].
         """
-        return (score + 1) / 2
+        return max(-1.0, min(1.0, score))
 
     def _score_to_decision(self, final_score: float) -> str:
         """
-        Convert numerical score to trading decision.
+        Convert numerical score to 5-class trading decision.
 
         Args:
-            final_score: Score in range [0, 1].
+            final_score: Score in range [-1, 1].
 
         Returns:
-            Trading decision: 'buy', 'sell', or 'hold'.
+            5-class trading decision: 'strong_buy', 'buy', 'hold', 'sell', or 'strong_sell'
 
-        Thresholds for decisive signals:
-        - BUY: final_score >= 0.52 (more bullish)
-        - SELL: final_score <= 0.48 (more bearish)
-        - HOLD: 0.48 < final_score < 0.52 (neutral zone)
+        Thresholds (normalized to 0-100):
+        - STRONG_BUY: >= 85
+        - BUY: 60-85
+        - HOLD: 40-60
+        - SELL: 25-40
+        - STRONG_SELL: < 25
         """
-        if final_score >= 0.52:
-            return "buy"
-        elif final_score <= 0.48:
-            return "sell"
-        else:
-            return "hold"
+        return self._score_to_signal(final_score)
 
     def _create_empty_aggregated_signal(
         self, stock_symbol: str, regime: str
@@ -345,7 +419,7 @@ class SignalAggregator:
         """Create an empty aggregated signal when no signals are provided."""
         return AggregatedSignal(
             stock_symbol=stock_symbol,
-            final_score=0.5,
+            final_score=0.0,
             decision="hold",
             confidence=0.0,
             supporting_agents=[],
@@ -383,7 +457,7 @@ class SignalAggregator:
                 }
 
             breakdown[category]["agent_count"] += 1
-            breakdown[category]["avg_score"] += signal.numerical_score
+            breakdown[category]["avg_score"] += self._get_signal_score(signal.signal)
 
         for category in breakdown:
             count = breakdown[category]["agent_count"]
@@ -434,13 +508,13 @@ class SignalAggregator:
                 "category": signal.agent_category,
                 "signal": signal.signal,
                 "confidence": signal.confidence,
-                "score": signal.numerical_score,
+                "score": self._get_signal_score(signal.signal),
                 "reasoning": signal.reasoning,
             }
 
-            if signal.signal.lower() == "buy":
+            if signal.is_buy:
                 supporting.append(signal_info)
-            elif signal.signal.lower() == "sell":
+            elif signal.is_sell:
                 conflicting.append(signal_info)
 
         decision = self._score_to_decision(
@@ -478,7 +552,7 @@ class SignalAggregator:
         """Generate human-readable reasoning."""
         reasons = []
 
-        if decision == "buy":
+        if decision in ("strong_buy", "buy"):
             if supporting:
                 top_signals = sorted(
                     supporting, key=lambda x: x["confidence"], reverse=True
@@ -495,13 +569,19 @@ class SignalAggregator:
                 cat_names = [c[0] for c in top_cats]
                 reasons.append(f"Strong categories: {', '.join(cat_names)}")
 
-        elif decision == "sell":
+            if decision == "strong_buy":
+                reasons.append("Strong momentum indicating high conviction")
+
+        elif decision in ("strong_sell", "sell"):
             if conflicting:
                 top_signals = sorted(
                     conflicting, key=lambda x: x["confidence"], reverse=True
                 )[:3]
                 names = [s["agent"].replace("_agent", "") for s in top_signals]
                 reasons.append(f"Sell signals from: {', '.join(names)}")
+
+            if decision == "strong_sell":
+                reasons.append("Strong bearish momentum indicating high conviction")
 
         else:
             reasons.append("Mixed signals from agents")

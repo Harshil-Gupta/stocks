@@ -20,15 +20,15 @@ from features.indicators import TechnicalFeatures
 class RSIAgent(BaseAgent):
     """
     Agent for RSI-based trading signals.
-    
+
     Analyzes RSI indicator for overbought/oversold conditions and divergences
     to generate buy/sell/hold signals.
     """
-    
+
     def __init__(
         self,
         config: Optional[AgentConfig] = None,
-        metadata: Optional[AgentMetadata] = None
+        metadata: Optional[AgentMetadata] = None,
     ) -> None:
         """Initialize the RSI agent."""
         if metadata is None:
@@ -37,85 +37,93 @@ class RSIAgent(BaseAgent):
                 description="RSI-based trading signals using overbought/oversold levels and divergence detection",
                 required_features=["rsi", "close", "high", "low", "price_position_20"],
                 author="Quant Team",
-                tags=["rsi", "oscillator", "momentum", "technical"]
+                tags=["rsi", "oscillator", "momentum", "technical"],
             )
-        
+
         super().__init__(
             agent_name="rsi_agent",
             agent_category=AgentCategory.TECHNICAL,
             metadata=metadata,
-            config=config
+            config=config,
         )
-        
+
         self._overbought_threshold: float = 70.0
         self._oversold_threshold: float = 30.0
         self._neutral_zone_min: float = 40.0
         self._neutral_zone_max: float = 60.0
-    
+
     def compute_signal(self, features: Dict[str, Any]) -> AgentSignal:
         """
         Compute RSI-based trading signal.
-        
+
         Args:
             features: Dictionary containing RSI and price data
-            
+
         Returns:
-            AgentSignal with trading recommendation
+            AgentSignal with 5-class trading recommendation
         """
         try:
             rsi: float = features.get("rsi", 50.0)
             close: float = features.get("close", 0.0)
             price_position: float = features.get("price_position_20", 0.5)
-            
+
             signal = "hold"
             confidence: float = 50.0
             numerical_score: float = 0.0
             reasoning: str = ""
             supporting_data: Dict[str, Any] = {}
-            
+
             rsi_overbought = rsi > self._overbought_threshold
             rsi_oversold = rsi < self._oversold_threshold
             rsi_neutral = self._neutral_zone_min <= rsi <= self._neutral_zone_max
-            
+
             if rsi_oversold:
-                signal = "buy"
-                confidence = min(90.0, 80.0 + (30 - rsi))
+                if rsi < 15:
+                    signal = "strong_buy"
+                    confidence = min(95.0, 90.0 + (30 - rsi) / 2)
+                else:
+                    signal = "buy"
+                    confidence = min(85.0, 75.0 + (30 - rsi))
                 numerical_score = -1.0 * (30 - rsi) / 30
                 reasoning = (
                     f"RSI is oversold at {rsi:.1f}, indicating potential buying opportunity. "
                     f"Price position: {price_position:.2f}. "
-                    f"Previous oversold conditions often precede rebounds."
+                    f"Signal strength: {'strong' if rsi < 15 else 'moderate'}."
                 )
                 supporting_data = {
                     "rsi_value": rsi,
                     "rsi_condition": "oversold",
                     "threshold_oversold": self._oversold_threshold,
                     "price_position": price_position,
-                    "atr": features.get("atr", 0.0)
+                    "atr": features.get("atr", 0.0),
                 }
-                
+
             elif rsi_overbought:
-                signal = "sell"
-                confidence = min(90.0, 80.0 + (rsi - 70))
+                if rsi > 85:
+                    signal = "strong_sell"
+                    confidence = min(95.0, 90.0 + (rsi - 70) / 2)
+                else:
+                    signal = "sell"
+                    confidence = min(85.0, 75.0 + (rsi - 70))
                 numerical_score = (rsi - 70) / 30
                 reasoning = (
                     f"RSI is overbought at {rsi:.1f}, indicating potential selling opportunity. "
                     f"Price position: {price_position:.2f}. "
-                    f"Previous overbought conditions often precede corrections."
+                    f"Signal strength: {'strong' if rsi > 85 else 'moderate'}."
                 )
                 supporting_data = {
                     "rsi_value": rsi,
                     "rsi_condition": "overbought",
                     "threshold_overbought": self._overbought_threshold,
                     "price_position": price_position,
-                    "atr": features.get("atr", 0.0)
+                    "atr": features.get("atr", 0.0),
                 }
-                
+
             elif rsi_neutral:
                 if rsi < 50:
                     signal = "buy"
                     confidence = 55.0 + (50 - rsi)
-                    numerical_score = -0.3
+                    numerical_score = -0.2
                     reasoning = (
                         f"RSI at {rsi:.1f} is in neutral zone but leaning bearish. "
                         f"Potential momentum building toward oversold."
@@ -132,9 +140,9 @@ class RSIAgent(BaseAgent):
                     "rsi_value": rsi,
                     "rsi_condition": "neutral",
                     "price_position": price_position,
-                    "atr": features.get("atr", 0.0)
+                    "atr": features.get("atr", 0.0),
                 }
-                
+
             else:
                 if rsi > 60:
                     signal = "hold"
@@ -148,7 +156,7 @@ class RSIAgent(BaseAgent):
                         "rsi_value": rsi,
                         "rsi_condition": "elevated",
                         "price_position": price_position,
-                        "atr": features.get("atr", 0.0)
+                        "atr": features.get("atr", 0.0),
                     }
                 else:
                     signal = "hold"
@@ -162,9 +170,9 @@ class RSIAgent(BaseAgent):
                         "rsi_value": rsi,
                         "rsi_condition": "depressed",
                         "price_position": price_position,
-                        "atr": features.get("atr", 0.0)
+                        "atr": features.get("atr", 0.0),
                     }
-            
+
             return AgentSignal(
                 agent_name=self._agent_name,
                 agent_category=self._agent_category.value,
@@ -172,16 +180,16 @@ class RSIAgent(BaseAgent):
                 confidence=confidence,
                 numerical_score=numerical_score,
                 reasoning=reasoning,
-                supporting_data=supporting_data
+                supporting_data=supporting_data,
             )
-            
+
         except Exception as e:
             return self._create_error_signal(f"RSI signal computation failed: {str(e)}")
-    
+
     def set_thresholds(self, overbought: float, oversold: float) -> None:
         """
         Set custom overbought/oversold thresholds.
-        
+
         Args:
             overbought: RSI threshold for overbought condition
             oversold: RSI threshold for oversold condition

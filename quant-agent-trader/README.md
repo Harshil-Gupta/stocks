@@ -20,18 +20,16 @@ python main.py research --symbol TCS --start 2020 --end 2024 --walk-forward
 streamlit run dashboard/app.py
 ```
 
-## What's New (v2.0)
+## What's New (v3.0)
 
-- **ML Meta Model**: Agents → Features → ML Model → Decision
-- **Walk-Forward Backtesting**: Professional train/test validation
-- **Feature Store**: Persisted agent outputs in Parquet
-- **Portfolio Optimizer**: Kelly Criterion, Risk Parity, Volatility Scaling
-- **Signal Explainability**: Human-readable reasoning for decisions
-- **Self-Evaluation Loop**: Agents learn from their mistakes
-- **Market Microstructure**: Order book, VWAP, depth signals
-- **Strategy Sandbox**: YAML-based strategy configs
-- **Live Dashboard**: Streamlit visualization
-- **Paper Trading**: Simulated execution with slippage
+- **5-Class Signal Classification**: STRONG_BUY, BUY, HOLD, SELL, STRONG_SELL for more context
+- **Upstox API V3 Integration**: Real historical data from Indian markets
+- **Vectorized Backtesting**: 100x faster event-driven backtesting
+- **Feature Engineering Pipeline**: 19 modular technical indicators
+- **Portfolio Optimization**: Mean-Variance, Max Sharpe, Risk Parity, Black-Litterman
+- **Strategy Plugin System**: Extensible strategy architecture
+- **Research Platform**: Experiment tracking, hyperparameter optimization
+- **Production Deployment**: Docker, Makefile, structured logging
 
 ## Architecture
 
@@ -40,191 +38,186 @@ streamlit run dashboard/app.py
 │                     QUANT RESEARCH PLATFORM                      │
 ├─────────────────────────────────────────────────────────────────┤
 │  DATA LAYER                                                    │
-│    ├── data/feature_store.py      # Parquet persistence        │
-│    ├── data/validators.py        # Quality checks              │
-│    └── data/training_data_generator.py                          │
+│    ├── data/ingestion/upstox_v3.py  # Upstox API V3            │
+│    ├── data/cache/                 # Parquet caching            │
+│    └── data/validators.py          # Quality checks             │
+├─────────────────────────────────────────────────────────────────┤
+│  FEATURE ENGINEERING                                           │
+│    ├── features/generators/         # 19 technical indicators    │
+│    ├── features/pipeline.py        # No-lookahead-bias design   │
+│    └── features/config.py          # Strategy presets            │
 ├─────────────────────────────────────────────────────────────────┤
 │  AGENT LAYER                                                   │
-│    ├── agents/technical/ (18)     # Technical agents           │
-│    ├── agents/fundamental/ (8)    # Fundamental agents        │
-│    ├── agents/market_microstructure.py # Order book, VWAP       │
-│    └── signals/                   # Schema + aggregator        │
+│    ├── agents/technical/ (18)       # Technical agents           │
+│    ├── agents/fundamental/ (8)      # Fundamental agents        │
+│    ├── agents/sentiment/ (4)        # Sentiment agents           │
+│    └── signals/                     # Schema + aggregator        │
 ├─────────────────────────────────────────────────────────────────┤
-│  ML LAYER                                                      │
-│    ├── models/meta_model.py       # Training + inference        │
-│    ├── models/scheduler.py       # Auto-retraining             │
-│    └── models/registry.json      # Version management         │
+│  STRATEGY LAYER                                                │
+│    ├── strategies/__init__.py       # Plugin system (5-class)    │
+│    └── strategies/plugin_system.py  # Strategy ensembles         │
 ├─────────────────────────────────────────────────────────────────┤
-│  RESEARCH                                                      │
-│    ├── research_engine.py       # Research CLI                │
-│    ├── backtesting/walk_forward.py # Walk-forward validation    │
-│    └── utils/experiment_tracker.py # Experiment logging        │
+│  BACKTESTING                                                   │
+│    ├── backtesting/vectorized.py    # Vectorized engine          │
+│    └── backtesting/engine.py        # Event-driven engine        │
 ├─────────────────────────────────────────────────────────────────┤
 │  PORTFOLIO                                                     │
-│    ├── portfolio/optimizer.py    # Position sizing             │
-│    └── risk/risk_engine.py      # Risk management            │
+│    ├── portfolio/optimizer.py       # Mean-Variance, Black-Litterman│
+│    └── risk/risk_engine.py         # Risk controls             │
+├─────────────────────────────────────────────────────────────────┤
+│  RESEARCH                                                      │
+│    ├── research/                   # Experiment tracker         │
+│    └── analytics/                  # Performance metrics        │
 ├─────────────────────────────────────────────────────────────────┤
 │  EXECUTION                                                     │
-│    ├── execution/paper_trader.py # Paper trading               │
-│    └── utils/monitoring.py      # Alerts + Slack/Telegram   │
-├─────────────────────────────────────────────────────────────────┤
-│  DASHBOARD                                                     │
-│    └── dashboard/app.py          # Streamlit visualization    │
+│    └── quant_system.py             # Main orchestrator          │
 └─────────────────────────────────────────────────────────────────┘
+```
+
+## 5-Class Signal System
+
+The system now supports 5-level signal classification for more nuanced trading decisions:
+
+| Signal | Direction | Position |
+|--------|-----------|----------|
+| STRONG_BUY | +2 | Full long (100%) |
+| BUY | +1 | Half long (50%) |
+| HOLD | 0 | No position |
+| SELL | -1 | Half short (50%) |
+| STRONG_SELL | -2 | Full short (100%) |
+
+### Signal Flow
+
+```
+Strategy/Agent → SignalType (5-class) → Direction (-2 to +2) → Backtest Engine
+```
+
+```python
+from signals.signal_schema import AgentSignal, SignalType
+
+# Agents generate 5-class signals
+signal = AgentSignal(
+    agent_name="rsi_agent",
+    agent_category="technical",
+    signal="strong_buy",  # 5-class: strong_buy, buy, hold, sell, strong_sell
+    confidence=85.0,
+    numerical_score=-0.8
+)
+
+# Get numeric direction for backtesting
+direction = signal.direction  # Returns: 2 (for strong_buy)
+is_buy = signal.is_buy       # True for strong_buy, buy
+is_strong = signal.is_strong # True for strong_buy, strong_sell
 ```
 
 ## Usage Examples
 
-### Research Mode (New!)
+### Analysis with Upstox Data
 
 ```bash
-# Run full research with walk-forward validation
-python main.py research --symbol TCS --start 2018 --end 2024 --walk-forward
-
-# Run with regime analysis
-python main.py research --symbols RELIANCE,TCS --start 2020 --end 2024 --regime-analysis
-```
-
-### Analysis
-
-```bash
-# Analyze single stock
+# Analyze single stock using Upstox API
 python main.py analyze --symbol RELIANCE
 
 # Analyze multiple stocks
 python main.py analyze --symbol TCS,HDFCBANK,INFY
 ```
 
-### Backtesting
-
-```bash
-# Basic backtest
-python main.py backtest --symbols RELIANCE,TCS --start 2023-01-01 --end 2024-01-01
-```
-
-### Dashboard
-
-```bash
-# Launch interactive dashboard
-streamlit run dashboard/app.py
-```
-
-## ML Meta Model
-
-The system now supports ML-based signal aggregation:
+### Backtesting with 5-Class Signals
 
 ```python
-from signals.feature_extractor import TrainingDataBuilder
-from models.meta_model import MetaModelTrainer, ModelRegistry
+from quant_system import QuantSystem
 
-# Generate training data
-builder = TrainingDataBuilder()
-dataset = builder.generate(data, agents, start_date, end_date)
+system = QuantSystem()
 
-# Train model
-trainer = MetaModelTrainer(model_type="lightgbm")
-trainer.train(dataset, target="target_binary_5d")
+# Run backtest with vectorized engine
+result = system.backtest(
+    symbols=["RELIANCE", "TCS"],
+    start_date="2023-01-01",
+    end_date="2024-01-01",
+    strategy="ma_crossover",
+    strategy_params={"short_window": 20, "long_window": 50}
+)
 
-# Register model
-registry = ModelRegistry()
-registry.register_model(trainer.model, trainer.metadata, trainer.feature_names)
+print(f"Return: {result.metrics['total_return']:.2%}")
+print(f"Sharpe: {result.metrics['sharpe_ratio']:.2f}")
+```
 
-# Use in live trading
-from signals.meta_model_aggregator import MetaModelAggregator
-meta = MetaModelAggregator()
-result = meta.aggregate_signals(signals, regime="bull", stock_symbol="TCS")
+### Research with Experiment Tracking
+
+```python
+from research import ExperimentTracker, HyperparameterOptimizer
+
+tracker = ExperimentTracker("research/results")
+tracker.log_strategy("MA Crossover", params, metrics)
+
+# Grid search for optimal parameters
+optimizer = HyperparameterOptimizer(
+    strategy_func=run_strategy,
+    parameter_grid={"short_window": [10, 20, 30], "long_window": [50, 100]}
+)
+result = optimizer.optimize(symbols=["RELIANCE"], start_date="2023", end_date="2024")
+```
+
+## Feature Engineering Pipeline
+
+```python
+from features import FeaturePipeline, FeatureConfig, FeatureMode
+
+config = FeatureConfig(min_history=200)
+config.set_strategy("momentum")  # Preset: momentum, mean_reversion, breakout
+
+pipeline = FeaturePipeline(config)
+features = pipeline.compute_features(data, mode=FeatureMode.INFERENCE)
+
+# 19 built-in features:
+# SMA, EMA, RSI, MACD, Bollinger Bands, ATR, ADX, 
+# Stochastic, Williams %R, CCI, OBV, VWAP, etc.
 ```
 
 ## Portfolio Optimization
 
 ```python
-from portfolio.optimizer import PortfolioOptimizer
+from portfolio.optimization import PortfolioOptimizer, OptimizationMethod
 
-# Multiple sizing methods
-optimizer = PortfolioOptimizer(method="kelly")      # Kelly Criterion
-optimizer = PortfolioOptimizer(method="volatility")  # Volatility scaling
-optimizer = PortfolioOptimizer(method="risk_parity") # Risk parity
+optimizer = PortfolioOptimizer(method=OptimizationMethod.MAX_SHARPE)
+result = optimizer.optimize(expected_returns, covariance_matrix)
 
-positions = optimizer.optimize(signals, portfolio_value=100000)
+# Multiple methods available:
+# - MEAN_VARIANCE: Classic Markowitz
+# - MAX_SHARPE: Maximum Sharpe ratio
+# - MIN_VARIANCE: Minimum volatility
+# - RISK_PARITY: Equal risk contribution
+# - BLACK_LITTERMAN: Bayesian views
 ```
 
-## Self-Evaluation Loop
-
-Agents learn from their performance:
+## Strategy Plugins
 
 ```python
-from utils.self_evaluation import AgentEvaluator
+from strategies import create_strategy, StrategyEnsemble, SignalType
 
-evaluator = AgentEvaluator()
+# Create individual strategies
+ma_strategy = create_strategy("ma_crossover", short_window=20, long_window=50)
+rsi_strategy = create_strategy("rsi", period=14)
 
-# Record trade outcomes
-evaluator.record_trade(
-    symbol="TCS",
-    signals=agent_signals,
-    decision="buy",
-    entry_price=3500,
-    exit_price=3600,
-    pnl=10000,
-    holding_period=5
-)
+# Ensemble with voting
+ensemble = StrategyEnsemble([ma_strategy, rsi_strategy], method="voting")
+signal = ensemble.generate_signals(data)
 
-# Get performance
-performance = evaluator.get_agent_performance()
-
-# Identify weak agents
-weak = evaluator.get_weak_agents(threshold=0.45)
-```
-
-## Strategy Sandbox
-
-```yaml
-# strategies/momentum_strategy.yaml
-name: momentum_strategy
-agents:
-  - rsi_agent
-  - macd_agent
-  - momentum_agent
-weights:
-  technical: 0.80
-  sentiment: 0.10
-```
-
-```python
-from agents.plugin_manager import StrategyConfigLoader
-
-loader = StrategyConfigLoader()
-strategy = loader.load_strategy("strategies/momentum_strategy.yaml")
-```
-
-## Risk Management
-
-```python
-from risk.risk_engine import RiskEngine
-
-risk = RiskEngine(max_position_size=0.25, max_daily_loss=0.05)
-result = risk.check_trade("TCS", "buy", 100, 3500, portfolio_value)
-```
-
-## Monitoring
-
-```python
-from utils.monitoring import Monitor, SlackHandler
-
-monitor = Monitor()
-monitor.add_handler(SlackHandler(webhook_url="..."))
-monitor.alert("Trade executed", level="info")
-monitor.check_drawdown(0.15)
+# 5-class output
+print(signal.signal)  # strong_buy, buy, hold, sell, strong_sell
 ```
 
 ## Supported Markets
 
-### US Markets
-- AAPL, GOOGL, MSFT, TSLA, AMZN, etc.
-- SPY, QQQ, DIA, IWM
+### Indian Markets (Primary)
+- **Data Source**: Upstox API V3 (with yfinance fallback)
+- **Exchanges**: NSE, BSE
+- **Instruments**: EQ, EQ Derivatives, Currency
 
-### Indian Markets (NSE)
-- RELIANCE, TCS, HDFCBANK, INFY, etc.
-- NIFTY 50, NIFTY Bank, NIFTY IT, etc.
+### US Markets (Fallback)
+- **Data Source**: yfinance
+- **Stocks**: AAPL, GOOGL, MSFT, TSLA, etc.
+- **ETFs**: SPY, QQQ, DIA, IWM
 
 ## Agent Categories (50+ Agents)
 
@@ -232,59 +225,53 @@ monitor.check_drawdown(0.15)
 |----------|-------|----------|
 | Technical | 18 | RSI, MACD, Momentum, Bollinger, VWAP |
 | Fundamental | 8 | Valuation, Earnings, CRISIL |
-| Sentiment | 4 | News, Social, Insider |
+| Sentiment | 4 | News, Social, Analyst Ratings |
 | Macro | 6 | Interest Rate, Inflation, GDP |
 | Risk | 5 | Drawdown, Correlation, Tail Risk |
 | Market Structure | 8 | Options Flow, Order Imbalance |
-| Quant | 4 | Mean Reversion, Stat Arb |
-| India-Specific | 4 | India VIX, F&O, MF Holdings |
-| Microstructure | 6 | Order Book, VWAP Deviation |
 
 ## Project Structure
 
 ```
 quant-agent-trader/
 ├── agents/                    # Trading agents (50+)
-│   ├── technical/           # RSI, MACD, Momentum, etc.
+│   ├── technical/            # RSI, MACD, Momentum, etc.
 │   ├── fundamental/          # Valuation, Earnings
 │   ├── sentiment/            # News, Social
-│   ├── market_microstructure.py  # Order book, VWAP
-│   └── plugin_manager.py     # Dynamic agent loading
+│   └── base_agent.py         # Base class with caching
 ├── signals/                  # Signal processing
-│   ├── signal_schema.py      # Data structures
-│   ├── signal_aggregator.py  # Aggregation + explainability
-│   ├── feature_extractor.py  # ML features
-│   └── meta_model_aggregator.py  # ML-based aggregation
-├── data/                     # Data layer
-│   ├── feature_store.py     # Parquet persistence
-│   ├── validators.py         # Quality checks
-│   └── training_data_generator.py
-├── models/                   # ML training
-│   ├── meta_model.py        # Training + inference
-│   └── scheduler.py          # Auto-retraining
-├── backtesting/              # Backtesting
-│   ├── engine.py            # Main engine
-│   └── walk_forward.py       # Walk-forward validation
+│   ├── signal_schema.py      # 5-class signal structures
+│   ├── signal_aggregator.py  # Weighted ensemble aggregation
+│   └── feature_extractor.py  # ML features
+├── features/                 # Feature engineering
+│   ├── generators/          # 19 technical indicators
+│   ├── pipeline.py          # No-lookahead-bias pipeline
+│   └── config.py            # Strategy presets
+├── backtesting/              # Backtesting engines
+│   ├── vectorized.py        # Vectorized (100x faster)
+│   └── engine.py            # Event-driven
 ├── portfolio/                # Portfolio management
-│   └── optimizer.py          # Position sizing
+│   └── optimization.py      # Mean-Variance, Risk Parity
 ├── risk/                     # Risk management
-│   └── risk_engine.py       # Risk controls
-├── execution/               # Order execution
-│   └── paper_trader.py      # Paper trading
+│   └── risk_engine.py       # Position limits, drawdown
+├── research/                 # Research platform
+│   ├── experiment_tracker.py # SQLite tracking
+│   └── hyperparameter_opt.py # Grid/Random search
+├── data/                     # Data layer
+│   ├── ingestion/upstox_v3.py # Upstox API client
+│   └── cache/               # Parquet caching
+├── analytics/                # Performance metrics
+│   └── performance_metrics.py # 20+ metrics
+├── strategies/               # Strategy plugins
+│   ├── __init__.py          # 5-class strategies
+│   └── plugin_system.py      # Ensemble voting
 ├── utils/                    # Utilities
-│   ├── experiment_tracker.py # Experiment logging
-│   ├── profiler.py          # Performance profiling
-│   ├── monitoring.py        # Alerts
-│   ├── structured_logging.py
-│   └── self_evaluation.py  # Agent self-learning
-├── dashboard/                # Visualization
-│   └── app.py               # Streamlit dashboard
-├── strategies/               # Strategy configs
-│   ├── momentum_strategy.yaml
-│   ├── mean_reversion_strategy.yaml
-│   └── ml_meta_strategy.yaml
-├── research_engine.py         # Research CLI
-└── main.py                   # Entry point
+│   ├── logging_config.py    # Structured logging
+│   └── monitoring.py        # Alerts
+├── quant_system.py           # Main orchestrator
+├── Makefile                  # Production commands
+├── Dockerfile                # Container deployment
+└── main.py                   # CLI entry point
 ```
 
 ## Installation
@@ -301,6 +288,9 @@ source venv/bin/activate  # or venv\Scripts\activate on Windows
 # Install dependencies
 pip install -r requirements.txt
 
+# Setup Upstox (optional)
+# Add UPSTOX_API_KEY to .env file
+
 # Run
 python main.py analyze --symbol RELIANCE
 
@@ -308,26 +298,62 @@ python main.py analyze --symbol RELIANCE
 streamlit run dashboard/app.py
 ```
 
+## Production Deployment
+
+```bash
+# Using Makefile
+make setup          # Install dependencies
+make run            # Run main.py
+make backtest       # Run backtest
+make dashboard      # Launch Streamlit
+
+# Using Docker
+make docker-up      # Start containerized environment
+```
+
 ## Configuration
 
-### Signal Weights by Regime
+### 5-Class Signal Weights by Regime
 
 ```python
+# Signals are aggregated with category weights adjusted by regime
 REGIME_WEIGHTS = {
-    "bull": {"technical": 0.30, "fundamental": 0.25, "sentiment": 0.15, "macro": 0.10, "risk": 0.10, "market_structure": 0.10},
-    "bear": {"technical": 0.15, "fundamental": 0.25, "sentiment": 0.10, "macro": 0.15, "risk": 0.20, "market_structure": 0.15},
-    "sideways": {"technical": 0.25, "fundamental": 0.20, "sentiment": 0.15, "macro": 0.10, "risk": 0.15, "market_structure": 0.15},
-    "high_volatility": {"technical": 0.15, "fundamental": 0.20, "sentiment": 0.10, "macro": 0.15, "risk": 0.25, "market_structure": 0.15}
+    "bull": {"technical": 0.30, "fundamental": 0.25, "sentiment": 0.15, ...},
+    "bear": {"technical": 0.15, "fundamental": 0.25, "sentiment": 0.10, ...},
+    "sideways": {"technical": 0.25, "fundamental": 0.20, "sentiment": 0.15, ...},
+    "high_volatility": {"technical": 0.15, "fundamental": 0.20, "sentiment": 0.10, ...}
 }
+
+# Aggregation converts to 5-class:
+# final_score >= 0.6 → strong_buy
+# final_score >= 0.2 → buy  
+# -0.2 < final_score < 0.2 → hold
+# final_score <= -0.2 → sell
+# final_score <= -0.6 → strong_sell
+```
+
+### Environment Variables
+
+```bash
+# Upstox API (for Indian markets)
+UPSTOX_API_KEY=your_api_key
+
+# Data paths
+DATA_DIR=data
+CACHE_DIR=data/cache
+RESULTS_DIR=research/results
+
+# Trading
+INITIAL_CAPITAL=100000
+RISK_FREE_RATE=0.06
 ```
 
 ## Holdings Configuration
 
-The system requires your portfolio holdings to function. Configure the holdings directory:
+The system requires your portfolio holdings to function.
 
 ### 1. Create Holdings Directory
 
-Create a directory to store your holdings CSV files:
 ```bash
 # Default: C:\Users\Harshil\Desktop\holdings (Windows)
 # Or configure custom path in .env
@@ -341,35 +367,12 @@ Export your holdings CSV from your broker (Zerodha/Upstox) and save to the holdi
 ```
 Instrument,Qty.,Avg. cost,LTP,Invested,Cur. val,P&L,Net chg.,Day chg.
 RELIANCE,100,1350.00,1424.00,135000,142400,7400,5.48,-1.2
-TCS,50,2450.00,2527.40,122500,126370,3870,3.16,0.8
 ```
-
-### 3. Configure Path (Optional)
-
-Edit `.env` file to set custom holdings directory:
-```bash
-HOLDINGS_DIR=C:\path\to\your\holdings
-```
-
-### 4. Import and Analyze
-
-```bash
-# Import holdings from directory
-python -m data.import_portfolio
-
-# Run analysis on all holdings
-python -m data.run_holdings_analysis
-
-# View dashboard
-streamlit run dashboard/app.py
-```
-
-**Note:** The system will abort if no holdings are found. Add at least one CSV file to the holdings directory before running any commands.
 
 ## Troubleshooting
 
 - **Import errors**: Install all dependencies `pip install -r requirements.txt`
-- **No data**: Check internet connection or API keys
+- **No data**: Check internet connection or Upstox API keys
 - **Agent errors**: Some agents fail gracefully if features are missing
 - **Streamlit issues**: Ensure streamlit is installed `pip install streamlit`
 

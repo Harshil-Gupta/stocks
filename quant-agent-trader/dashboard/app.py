@@ -136,7 +136,7 @@ def get_upstox_live_price(symbol: str) -> Optional[float]:
         return None
 
 
-def load_json(filename):
+def load_json(filename: str) -> Optional[Any]:
     path = os.path.join(DATA_DIR, filename)
     if os.path.exists(path):
         with open(path) as f:
@@ -144,14 +144,14 @@ def load_json(filename):
     return None
 
 
-def load_csv(filename):
+def load_csv(filename: str) -> Optional[pd.DataFrame]:
     path = os.path.join(DATA_DIR, filename)
     if os.path.exists(path):
         return pd.read_csv(path)
     return None
 
 
-def main():
+def main() -> None:
     st.set_page_config(page_title="Quant Agent Trader", page_icon="📈", layout="wide")
 
     # The page will now auto refresh every 10 minutes.
@@ -179,7 +179,7 @@ def main():
         show_agents()
 
 
-def show_overview():
+def show_overview() -> None:
     """Show system overview with holdings and signals."""
 
     # Load portfolio data directly from CSV files in holdings directory
@@ -299,7 +299,7 @@ def show_overview():
                     "Confidence", format="%.0f%%", min_value=0, max_value=100
                 ),
             },
-            use_container_width=True,
+            width="stretch",
         )
 
         # Signal distribution
@@ -356,7 +356,7 @@ def show_overview():
     st.divider()
 
 
-def show_signals():
+def show_signals() -> None:
     """
     Show market sentiment and signals for all holdings.
 
@@ -544,7 +544,7 @@ def show_signals():
             "P&L%": st.column_config.NumberColumn("P&L%", format="%.1f%%"),
             "Value": st.column_config.NumberColumn("Value (Rs)", format="Rs.%.0f"),
         },
-        use_container_width=True,
+        width="stretch",
     )
 
     st.divider()
@@ -567,7 +567,7 @@ def show_signals():
         st.bar_chart(top_holdings["Value"])
 
 
-def show_portfolio():
+def show_portfolio() -> None:
     """Show portfolio view."""
     st.subheader("Portfolio Positions")
 
@@ -604,7 +604,7 @@ def show_portfolio():
             return "color:red"
         return "color:green"
 
-    st.dataframe(df_port.style.map(color_pnl, subset=["P&L"]), use_container_width=True)
+    st.dataframe(df_port.style.map(color_pnl, subset=["P&L"]), width="stretch")
 
     # Calculate allocation from real data
     total_value = (df_port["LTP"] * df_port["Qty"]).sum()
@@ -646,7 +646,7 @@ def show_portfolio():
             st.metric(k, v)
 
 
-def show_backtest():
+def show_backtest() -> None:
     """
     Show backtest results and strategy performance.
 
@@ -755,7 +755,7 @@ def show_backtest():
                 "Risk": [10, 20, 15, 25],
             }
         ).set_index("Regime")
-        st.dataframe(regime_weights, use_container_width=True)
+        st.dataframe(regime_weights, width="stretch")
 
     st.divider()
 
@@ -783,11 +783,11 @@ def show_backtest():
             "Return": st.column_config.NumberColumn("Return %", format="%.1f%%"),
             "Value": st.column_config.NumberColumn("Value (Rs)", format="Rs.%.0f"),
         },
-        use_container_width=True,
+        width="stretch",
     )
 
 
-def show_agents():
+def show_agents() -> None:
     """
     Show agent analysis for user's holdings.
 
@@ -811,12 +811,17 @@ def show_agents():
         
         1. **44 Agents** analyze each stock in your portfolio
         2. Each agent belongs to a **category** (Technical, Fundamental, etc.)
-        3. Agents produce signals: **BUY** (price going up), **SELL** (price going down), **HOLD**
+        3. Agents produce **5-class signals**:
+           - 🟢 **STRONG_BUY** - High confidence bullish (direction: +2)
+           - 🟢 **BUY** - Bullish signal (direction: +1)
+           - 🟡 **HOLD** - No clear direction (direction: 0)
+           - 🔴 **SELL** - Bearish signal (direction: -1)
+           - 🔴 **STRONG_SELL** - High confidence bearish (direction: -2)
         4. **Confidence** shows how strong the signal is (0-100%)
         5. **Supporting Agents** = agents voting for current decision
         6. **Conflicting Agents** = agents voting against
         
-        **Final Decision**: Weighted average of all agent signals
+        **Final Decision**: Weighted average of all agent signals → 5-class output
         """)
 
     # Create signals dictionary
@@ -871,8 +876,12 @@ def show_agents():
             col1, col2, col3 = st.columns(3)
 
             with col1:
-                if decision == "BUY":
+                if decision == "STRONG_BUY":
+                    st.success(f"🟢 SIGNAL: STRONG_BUY ({confidence:.0f}%)")
+                elif decision == "BUY":
                     st.success(f"🟢 SIGNAL: BUY ({confidence:.0f}%)")
+                elif decision == "STRONG_SELL":
+                    st.error(f"🔴 SIGNAL: STRONG_SELL ({confidence:.0f}%)")
                 elif decision == "SELL":
                     st.error(f"🔴 SIGNAL: SELL ({confidence:.0f}%)")
                 else:
@@ -888,44 +897,165 @@ def show_agents():
 
             st.divider()
 
-        # Agent categories explanation
-        st.markdown("### 🔍 Agent Category Breakdown")
+        # Show individual agent breakdown - ONLY if signal_breakdown exists
+        if signal_data and signal_data.get("signal_breakdown"):
+            st.markdown("### 🔍 Agent Category Breakdown")
 
-        col1, col2 = st.columns(2)
+            breakdown = signal_data.get("signal_breakdown", {})
+            has_agents = False
 
-        with col1:
-            st.markdown("""
-            **Technical (18 agents)**
-            - RSI, MACD, Moving Averages
-            - Bollinger Bands, ATR
-            - Support/Resistance
-            - Volume Analysis
-            
-            **Fundamental (8 agents)**
-            - Valuation metrics
-            - Balance Sheet health
-            - Dividend yield
-            - Industry comparison
-            """)
+            for category, agents_list in breakdown.items():
+                if not agents_list:
+                    continue
+                has_agents = True
+                st.markdown(f"**{category.title()} ({len(agents_list)} agents)**")
 
-        with col2:
-            st.markdown("""
-            **Sentiment (4 agents)**
-            - Social media trends
-            - Insider trading activity
-            
-            **Macro (6 agents)**
-            - Interest rates impact
-            - GDP, Inflation effects
-            - Sector rotation
-            
-            **Risk (5 agents)**
-            - Portfolio correlation
-            - Drawdown analysis
-            - Volatility assessment
-            """)
+                cols = st.columns(3)
+                for i, agent in enumerate(agents_list):
+                    sig = agent.get("signal", "hold").upper()
+                    conf = agent.get("confidence", 0)
+
+                    if sig in ["STRONG_BUY", "BUY"]:
+                        emoji = "🟢"
+                    elif sig in ["STRONG_SELL", "SELL"]:
+                        emoji = "🔴"
+                    else:
+                        emoji = "🟡"
+
+                    with cols[i % 3]:
+                        st.caption(
+                            f"{emoji} {agent.get('agent_name', 'N/A')}: {sig} ({conf:.0f}%)"
+                        )
+
+            if has_agents:
+                st.markdown("### 📋 All Agents Breakdown")
+
+                all_agents = []
+                for category, agents_list in breakdown.items():
+                    for agent in agents_list:
+                        all_agents.append(
+                            {
+                                "Category": category.title(),
+                                "Agent": agent.get("agent_name", "N/A"),
+                                "Signal": agent.get("signal", "hold").upper(),
+                                "Confidence": agent.get("confidence", 0),
+                            }
+                        )
+
+                if all_agents:
+                    df_agents = pd.DataFrame(all_agents)
+
+                    buy_agents = df_agents[
+                        df_agents["Signal"].isin(["STRONG_BUY", "BUY"])
+                    ]
+                    sell_agents = df_agents[
+                        df_agents["Signal"].isin(["STRONG_SELL", "SELL"])
+                    ]
+                    hold_agents = df_agents[df_agents["Signal"] == "HOLD"]
+
+                    col1, col2 = st.columns(2)
+
+                    with col1:
+                        st.markdown("#### 🟢 BUY/STRONG_BUY Signals")
+                        if not buy_agents.empty:
+                            st.dataframe(
+                                buy_agents[["Agent", "Signal", "Confidence"]],
+                                hide_index=True,
+                                width="stretch",
+                                height=250,
+                            )
+                        else:
+                            st.caption("No BUY signals")
+
+                    with col2:
+                        st.markdown("#### 🔴 SELL/STRONG_SELL Signals")
+                        if not sell_agents.empty:
+                            st.dataframe(
+                                sell_agents[["Agent", "Signal", "Confidence"]],
+                                hide_index=True,
+                                width="stretch",
+                                height=250,
+                            )
+                        else:
+                            st.caption("No SELL signals")
+
+                    if not hold_agents.empty:
+                        st.markdown("#### 🟡 HOLD Signals")
+                        st.dataframe(
+                            hold_agents[["Agent", "Category", "Confidence"]],
+                            hide_index=True,
+                            width="stretch",
+                            height=200,
+                        )
+        else:
+            st.info(
+                "Run `python -m data.run_holdings_analysis` to generate agent signals"
+            )
 
         st.divider()
+
+        # Show all agents with their signals
+        if signal_data and "signal_breakdown" in signal_data:
+            st.markdown("### 📋 All Agents Breakdown")
+
+            # Collect all agents
+            all_agents = []
+            breakdown = signal_data.get("signal_breakdown", {})
+            for category, agents_list in breakdown.items():
+                for agent in agents_list:
+                    all_agents.append(
+                        {
+                            "Category": category.title(),
+                            "Agent": agent.get("agent_name", "N/A"),
+                            "Signal": agent.get("signal", "hold").upper(),
+                            "Confidence": agent.get("confidence", 0),
+                            "Score": agent.get("numerical_score", 0),
+                        }
+                    )
+
+            if all_agents:
+                df_agents = pd.DataFrame(all_agents)
+
+                buy_agents = df_agents[df_agents["Signal"].isin(["STRONG_BUY", "BUY"])]
+                sell_agents = df_agents[
+                    df_agents["Signal"].isin(["STRONG_SELL", "SELL"])
+                ]
+                hold_agents = df_agents[df_agents["Signal"] == "HOLD"]
+
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    st.markdown("#### 🟢 BUY Signals")
+                    if not buy_agents.empty:
+                        st.dataframe(
+                            buy_agents[["Agent", "Signal", "Confidence"]],
+                            hide_index=True,
+                            width="stretch",
+                            height=250,
+                        )
+                    else:
+                        st.caption("No BUY signals")
+
+                with col2:
+                    st.markdown("#### 🔴 SELL Signals")
+                    if not sell_agents.empty:
+                        st.dataframe(
+                            sell_agents[["Agent", "Signal", "Confidence"]],
+                            hide_index=True,
+                            width="stretch",
+                            height=250,
+                        )
+                    else:
+                        st.caption("No SELL signals")
+
+                if not hold_agents.empty:
+                    st.markdown("#### 🟡 HOLD Signals")
+                    st.dataframe(
+                        hold_agents[["Agent", "Category", "Confidence"]],
+                        hide_index=True,
+                        width="stretch",
+                        height=200,
+                    )
 
         # Show signals from holdings_signals.json if available
         if signal_data:
@@ -949,9 +1079,7 @@ def show_agents():
                     signal_data.get("regime", "unknown").title(),
                 ],
             }
-            st.dataframe(
-                pd.DataFrame(details), hide_index=True, use_container_width=True
-            )
+            st.dataframe(pd.DataFrame(details), hide_index=True, width="stretch")
 
     st.divider()
 
@@ -970,15 +1098,15 @@ def show_agents():
                 "Signal": sig.get("decision", "N/A").upper() if sig else "N/A",
                 "Confidence": f"{sig.get('confidence', 0):.0f}%" if sig else "N/A",
                 "Return": f"{ret:+.1f}%",
-                "Value": h.get("LTP", 0) * h["Qty"],
+                "Value": float(h.get("LTP", 0) or 0) * float(h["Qty"] or 0),
             }
         )
 
     def color_signal(sig):
         sig = str(sig).upper()
-        if sig == "BUY":
+        if sig in ["BUY", "STRONG_BUY"]:
             return "color:green;font-weight:bold"
-        elif sig == "SELL":
+        elif sig in ["SELL", "STRONG_SELL"]:
             return "color:red;font-weight:bold"
         elif sig == "HOLD":
             return "color:orange"
@@ -993,11 +1121,11 @@ def show_agents():
             column_config={
                 "Value": st.column_config.NumberColumn("Value (Rs)", format="Rs.%.0f"),
             },
-            use_container_width=True,
+            width="stretch",
         )
 
 
-def show_experiment_tracker():
+def show_experiment_tracker() -> None:
     """Show experiment tracking."""
     st.subheader("Experiments")
 
@@ -1030,7 +1158,7 @@ def show_experiment_tracker():
     st.dataframe(df_exp, width="stretch")
 
 
-def show_live_trading():
+def show_live_trading() -> None:
     """Show live trading view."""
     st.subheader("Live Trading")
 

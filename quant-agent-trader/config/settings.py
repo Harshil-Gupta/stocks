@@ -50,6 +50,10 @@ class DataConfig:
     max_retries: int = 3
     rate_limit_delay: float = 0.1
 
+    def has_upstox_keys(self) -> bool:
+        """Check if Upstox API keys are configured."""
+        return bool(self.upstox_api_key and self.upstox_api_secret)
+
 
 @dataclass
 class AgentConfig:
